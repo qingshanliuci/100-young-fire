@@ -35,9 +35,9 @@
 
 | # | 人物 | 标签 | 事实层 | 抽象层 |
 |---|------|------|--------|--------|
-| 01 | [郭宇](郭宇/) | 28 岁字节退休 · 日本温泉 · AI 创业 | [人生路线图](郭宇/人生路线图.html) | [思维模型](郭宇/思维模型.html) |
+| 01 | [郭宇](郭宇/) | 28 岁字节退休 · 日本温泉 · AI 创业 | [📊 人生路线图](https://qingshanliuci.github.io/100-young-fire/郭宇/人生路线图.html) | [🧠 思维模型](https://qingshanliuci.github.io/100-young-fire/郭宇/思维模型.html) |
 
-> HTML 在 GitHub 仓库视图里只能看源码。访问可视化版本请用 [GitHub Pages 链接](#在线访问)（开通后补充）。
+> 表格里的链接是 GitHub Pages 在线版，点开就是渲染后的暗色系可视化页面。仓库里的 `.html` 源文件可以 fork 后自行修改。
 
 ## 项目方法论
 
@@ -53,7 +53,14 @@
 
 本仓库的 HTML 可视化档案通过 GitHub Pages 提供：
 
-> ⚠️ 待开通后补充链接
+🌐 **项目主页**：https://qingshanliuci.github.io/100-young-fire/
+
+**已上线档案**：
+
+- 郭宇 · [人生路线图](https://qingshanliuci.github.io/100-young-fire/郭宇/人生路线图.html)（事实层 · 5 分钟扫完）
+- 郭宇 · [思维模型](https://qingshanliuci.github.io/100-young-fire/郭宇/思维模型.html)（抽象层 · OS 三层架构）
+
+> 中文路径在浏览器地址栏会显示成 `%E9%83%AD%E5%AE%87` 这种 URL 编码字符，能正常打开，只是不太好看。后续可能改用纯英文路径优化分享体验。
 
 ## 引用规范
 

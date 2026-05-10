@@ -2,6 +2,10 @@
 
 > 1991 江西矿山小镇 → 2014 字节工号 #473 → 2020 年 28 岁退休 → 日本温泉 → 2025 AI 一人公司
 
+🌐 **在线查看完整可视化档案**：[📊 人生路线图](https://qingshanliuci.github.io/100-young-fire/郭宇/人生路线图.html) · [🧠 思维模型](https://qingshanliuci.github.io/100-young-fire/郭宇/思维模型.html)
+
+---
+
 ## 三个数字理解他
 
 - **#473** — 2014 年加入字节跳动时的工号，全公司当时约 300 人。早期员工 vs 后期员工的期权差距通常 100 倍以上。
@@ -10,17 +14,35 @@
 
 ## 看哪份档案
 
-### 📊 [人生路线图](人生路线图.html) · 事实层
+### 📊 人生路线图 · 事实层
 
 5 分钟扫完。6 个人生阶段时间线，每条事实带可信度色标（🟢 一手 / 🟡 二手），底部有 4 处交叉验证勘误（包括"出生地是江西不是湖南"等媒体误报修正）。
 
 适合：**第一次了解他的人**。
 
-### 🧠 [思维模型](思维模型.html) · 抽象层
+🔗 [在线版（推荐）](https://qingshanliuci.github.io/100-young-fire/郭宇/人生路线图.html) · [HTML 源文件](人生路线图.html)
+
+<details>
+<summary>📸 点击展开预览图（长截图，约 800KB）</summary>
+
+<a href="https://qingshanliuci.github.io/100-young-fire/郭宇/人生路线图.html"><img src="预览_人生路线图.jpg" alt="郭宇人生路线图预览"></a>
+
+</details>
+
+### 🧠 思维模型 · 抽象层
 
 从 7 份材料中蒸馏出的"郭宇 OS"——3 条元规则 + 12 条原则，每条原则都用"默认做法 vs 郭宇做法"两栏对比验证过，附 AI 时代实操映射。
 
 适合：**已经看过路线图，想从他身上拿到可迁移东西的人**。
+
+🔗 [在线版（推荐）](https://qingshanliuci.github.io/100-young-fire/郭宇/思维模型.html) · [HTML 源文件](思维模型.html)
+
+<details>
+<summary>📸 点击展开预览图（长截图，约 850KB）</summary>
+
+<a href="https://qingshanliuci.github.io/100-young-fire/郭宇/思维模型.html"><img src="预览_思维模型.jpg" alt="郭宇思维模型预览"></a>
+
+</details>
 
 > ⚠️ 思维模型是**事后归纳**，不是郭宇本人写过的"OS 文档"。HTML 末尾有诚实标注的 caveat，区分哪些是他明说的、哪些是从行为推出的隐含规则。
 
