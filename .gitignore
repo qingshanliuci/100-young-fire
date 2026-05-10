@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code working files
+.claude/
+CLAUDE.md
+
+# Temp / Draft
+*.tmp
+*.draft.md
+草稿/

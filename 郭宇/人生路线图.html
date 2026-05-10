@@ -1,0 +1,1061 @@
+<!-- INPUT: 7份交叉验证后的郭宇研究资料（01-07维度） -->
+<!-- OUTPUT: 可视化人生路线图，含来源标注，供快速浏览 -->
+<!-- POS: 郭宇资料收集的最终可视化产出 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>郭宇 · 人生路线图</title>
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --card: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #e0e0e0;
+    --text-dim: #888;
+    --accent-blue: #4a9eff;
+    --accent-green: #4aff8a;
+    --accent-orange: #ff9f4a;
+    --accent-purple: #b44aff;
+    --accent-red: #ff4a6a;
+    --accent-cyan: #4af0ff;
+    --tag-1st: #2d5a1e;
+    --tag-1st-text: #7fff5a;
+    --tag-2nd: #5a4a1e;
+    --tag-2nd-text: #ffd85a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0;
+  }
+  .hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(180deg, #1a1a2e 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 {
+    font-size: 2.4em;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .hero .subtitle {
+    color: var(--text-dim);
+    font-size: 1.05em;
+    margin-bottom: 16px;
+  }
+  .hero .tags {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .hero .tag {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    color: var(--text-dim);
+  }
+  .legend {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 20px 0;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 0.82em;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-dim);
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .src-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 0.72em;
+    font-weight: 500;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+  .src-1 {
+    background: var(--tag-1st);
+    color: var(--tag-1st-text);
+  }
+  .src-2 {
+    background: var(--tag-2nd);
+    color: var(--tag-2nd-text);
+  }
+
+  .timeline {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px 60px;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .phase {
+    margin-bottom: 40px;
+  }
+  .phase-title {
+    position: relative;
+    padding-left: 56px;
+    margin-bottom: 16px;
+  }
+  .phase-title h2 {
+    font-size: 1.15em;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .phase-title .dot {
+    position: absolute;
+    left: 19px;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid;
+    background: var(--bg);
+  }
+
+  .event {
+    position: relative;
+    padding-left: 56px;
+    margin-bottom: 14px;
+  }
+  .event::before {
+    content: '';
+    position: absolute;
+    left: 25px;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .event-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    transition: border-color 0.2s;
+  }
+  .event-card:hover {
+    border-color: #444;
+  }
+  .event-time {
+    font-size: 0.8em;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .event-title {
+    font-size: 0.95em;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .event-detail {
+    font-size: 0.85em;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .event-source {
+    margin-top: 6px;
+    font-size: 0.75em;
+    color: #555;
+  }
+
+  .wealth-bar {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .wealth-bar .bar-bg {
+    flex: 1;
+    height: 6px;
+    background: #222;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .wealth-bar .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s;
+  }
+  .wealth-bar .bar-label {
+    font-size: 0.72em;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  .summary-box {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .summary-card h3 {
+    font-size: 1em;
+    margin-bottom: 12px;
+    color: var(--accent-cyan);
+  }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .summary-item {
+    font-size: 0.85em;
+  }
+  .summary-item .label {
+    color: var(--text-dim);
+    font-size: 0.8em;
+  }
+  .summary-item .value {
+    font-weight: 500;
+  }
+
+  .correction-box {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+  .correction-card {
+    background: #1a1515;
+    border: 1px solid #3a2020;
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+  .correction-card h3 {
+    font-size: 0.95em;
+    margin-bottom: 12px;
+    color: var(--accent-red);
+  }
+  .correction-item {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a1a1a;
+    font-size: 0.83em;
+  }
+  .correction-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .correction-wrong {
+    color: #ff6b6b;
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+  .correction-right {
+    color: var(--accent-green);
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #444;
+    font-size: 0.78em;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ═══ 给年轻人的洞察模块 ═══ */
+  .insight-section {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+  .insight-section > h2 {
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: 0.03em;
+  }
+  .insight-section > .sec-sub {
+    color: var(--text-dim);
+    font-size: 0.88em;
+    margin-bottom: 18px;
+  }
+  .insight-section .accent-blue { color: var(--accent-blue); }
+  .insight-section .accent-green { color: var(--accent-green); }
+  .insight-section .accent-orange { color: var(--accent-orange); }
+  .insight-section .accent-purple { color: var(--accent-purple); }
+  .insight-section .accent-red { color: var(--accent-red); }
+  .insight-section .accent-cyan { color: var(--accent-cyan); }
+
+  .path-step {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+  .path-step .step-num {
+    font-size: 1.8em;
+    font-weight: 800;
+    line-height: 1;
+    text-align: center;
+    padding-top: 4px;
+  }
+  .path-step .step-body .step-head {
+    font-size: 0.98em;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .path-step .step-body .step-detail {
+    font-size: 0.85em;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+  .path-step .step-body .step-evidence {
+    margin-top: 6px;
+    font-size: 0.75em;
+    color: #555;
+  }
+
+  .play-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .play-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .play-card .play-head {
+    font-size: 0.92em;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .play-card .play-detail {
+    font-size: 0.82em;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .quote-block {
+    background: #1a1a25;
+    border-left: 3px solid var(--accent-cyan);
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+  }
+  .quote-block .q-text {
+    font-size: 0.92em;
+    font-weight: 500;
+    line-height: 1.55;
+  }
+  .quote-block .q-meta {
+    margin-top: 6px;
+    font-size: 0.75em;
+    color: var(--text-dim);
+  }
+
+  .matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .matrix-col {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .matrix-col.col-no { border-color: #4a2020; }
+  .matrix-col.col-yes { border-color: #204a2a; }
+  .matrix-col.col-new { border-color: #20354a; }
+  .matrix-col h4 {
+    font-size: 0.88em;
+    margin-bottom: 8px;
+  }
+  .matrix-col.col-no h4 { color: var(--accent-red); }
+  .matrix-col.col-yes h4 { color: var(--accent-green); }
+  .matrix-col.col-new h4 { color: var(--accent-blue); }
+  .matrix-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .matrix-col li {
+    font-size: 0.78em;
+    padding: 4px 0;
+    color: var(--text-dim);
+    line-height: 1.45;
+    border-bottom: 1px dashed #252525;
+  }
+  .matrix-col li:last-child { border-bottom: none; }
+
+  .section-divider {
+    max-width: 800px;
+    margin: 50px auto 30px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.78em;
+    letter-spacing: 0.3em;
+  }
+  .section-divider::before,
+  .section-divider::after {
+    content: '';
+    display: inline-block;
+    width: 60px;
+    height: 1px;
+    background: var(--border);
+    vertical-align: middle;
+    margin: 0 16px;
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.8em; }
+    .summary-grid { grid-template-columns: 1fr; }
+    .timeline::before { left: 18px; }
+    .phase-title { padding-left: 42px; }
+    .phase-title .dot { left: 9px; width: 16px; height: 16px; }
+    .event { padding-left: 42px; }
+    .event::before { left: 15px; }
+    .play-grid { grid-template-columns: 1fr; }
+    .matrix { grid-template-columns: 1fr; }
+    .path-step { grid-template-columns: 36px 1fr; gap: 10px; }
+    .path-step .step-num { font-size: 1.4em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>郭 宇</h1>
+  <div class="subtitle">1991 · 江西 → 深圳 → 字节跳动 → 28岁退休 → 日本 → AI创业</div>
+  <div class="tags">
+    <span class="tag">前端工程师</span>
+    <span class="tag">字节跳动 #473</span>
+    <span class="tag">BTC 早期持有者</span>
+    <span class="tag">温泉旅馆主</span>
+    <span class="tag">Wanman AI 创始人</span>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><span class="src-tag src-1">一手</span> 本人自述/直接受访</div>
+  <div class="legend-item"><span class="src-tag src-2">二手</span> 正规媒体报道</div>
+</div>
+
+<!-- ═══════ 人生路线图 ═══════ -->
+
+<div class="timeline">
+
+<!-- ── 第一阶段：起源 ── -->
+<div class="phase">
+  <div class="phase-title">
+    <div class="dot" style="border-color: var(--accent-blue);"></div>
+    <h2 style="color: var(--accent-blue);">起源 · 1991—2008</h2>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">1991年3月4日</div>
+      <div class="event-title">出生于江西矿山小镇</div>
+      <div class="event-detail">父亲是电工，后因工作事故卧床。童年留守儿童，初中才被接到深圳。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> 36氪本人自述 · PANews专访
+        <span class="src-tag src-2">二手</span> 21财经
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">~2003年</div>
+      <div class="event-title">转学至深圳中学</div>
+      <div class="event-detail">母亲让他 5 岁多就开始上学——他后来认为这个决定让他赶上了移动互联网爆发的窗口期。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> 南方周末/21财经专访（本人原话）
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2008年 · 盛夏</div>
+      <div class="event-title">高考后自学 PHP — 程序员生涯的原点</div>
+      <div class="event-detail">高考结束休息三天，为高中社团搭建网站下载了 phpwind 压缩包，从此走上编程之路。这个故事在多个场合被反复讲述，措辞高度一致。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> 界面新闻/36氪 本人原话 · 多源交叉验证
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 第二阶段：蓄力 ── -->
+<div class="phase">
+  <div class="phase-title">
+    <div class="dot" style="border-color: var(--accent-green);"></div>
+    <h2 style="color: var(--accent-green);">蓄力 · 2008—2014</h2>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2008—2012</div>
+      <div class="event-title">暨南大学 · 政治与行政管理专业</div>
+      <div class="event-detail">非计算机科班出身。大学期间疯狂写开源代码，GitHub 中国区排名前三。大三即拿到支付宝 offer。好友罗磊回忆他"经常晚上一个人安静地写代码"。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> 36氪/凤凰网 本人自述
+        <span class="src-tag src-1">一手</span> 罗磊博客（好友亲述）
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2011—2013</div>
+      <div class="event-title">支付宝 · 前端工程师</div>
+      <div class="event-detail">第一份正式工作。在这里接触到 Hacker News，看到比特币突破 $100 的消息。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> PANews专访
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2013年4月</div>
+      <div class="event-title">首次购入比特币 · ~$100/枚</div>
+      <div class="event-detail">在支付宝工作期间，被 Hacker News 上的新闻吸引。此后长期持有，成为财富积累的关键一环。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> PANews 2025专访 本人确认
+      </div>
+      <div class="wealth-bar">
+        <div class="bar-bg"><div class="bar-fill" style="width:5%;background:var(--accent-orange);"></div></div>
+        <div class="bar-label">财富 ▸ 起步</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2013—2014</div>
+      <div class="event-title">糗事百科 → 多说/图虫 创业</div>
+      <div class="event-detail">离开支付宝后短暂加入糗事百科，后参与创业项目图虫。</div>
+      <div class="event-source">
+        <span class="src-tag src-2">二手</span> 凤凰网地球青年
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 第三阶段：字节六年 ── -->
+<div class="phase">
+  <div class="phase-title">
+    <div class="dot" style="border-color: var(--accent-orange);"></div>
+    <h2 style="color: var(--accent-orange);">字节六年 · 2014—2020</h2>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2014年12月</div>
+      <div class="event-title">图虫被收购 → 加入字节跳动 · 工号 #473</div>
+      <div class="event-detail">当时字节跳动约 300 人。作为早期员工获得期权，这是财务自由最核心的来源。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> 36氪 本人自述
+        <span class="src-tag src-2">二手</span> China Daily
+      </div>
+      <div class="wealth-bar">
+        <div class="bar-bg"><div class="bar-fill" style="width:15%;background:var(--accent-orange);"></div></div>
+        <div class="bar-label">财富 ▸ 期权开始积累</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2014—2020</div>
+      <div class="event-title">Senior Principal Engineer</div>
+      <div class="event-detail">负责前端/支付相关技术。主导《百万英雄》直播答题项目（两三人三班倒一个月）、搭建字节小程序平台 SDK（不到十人团队从零攻坚半年）。评价字节氛围："一家很激进的公司，所有人挤在一起讨论问题像吵架。"</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> 凤凰网风眼/创业邦 本人回忆
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">~2015—2019</div>
+      <div class="event-title">同步投资：腾讯股票长期持有 + 日本房产</div>
+      <div class="event-detail">在字节期间开始日本房产投资，租金收益 7-10%。同时长期持有腾讯股票。逐步构建被动收入体系。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> 凤凰网风眼 本人确认
+        <span class="src-tag src-2">二手</span> China Daily
+      </div>
+      <div class="wealth-bar">
+        <div class="bar-bg"><div class="bar-fill" style="width:55%;background:var(--accent-orange);"></div></div>
+        <div class="bar-label">财富 ▸ 多线积累</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">~2019</div>
+      <div class="event-title">被动收入 ≥ 字节工资 → 财务自由临界点</div>
+      <div class="event-detail">日本房产租金收入达到与字节跳动薪资持平的水平。期权变现约数千万。这是他判断可以退休的关键节点。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> PANews 2025专访
+        <span class="src-tag src-2">二手</span> China Daily
+      </div>
+      <div class="wealth-bar">
+        <div class="bar-bg"><div class="bar-fill" style="width:80%;background:var(--accent-green);"></div></div>
+        <div class="bar-label">财富 ▸ 被动收入覆盖生活</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 第四阶段：退休 ── -->
+<div class="phase">
+  <div class="phase-title">
+    <div class="dot" style="border-color: var(--accent-purple);"></div>
+    <h2 style="color: var(--accent-purple);">28岁退休 · 2020</h2>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2020年2月</div>
+      <div class="event-title">微博宣布退休 · 全网刷屏</div>
+      <div class="event-detail">"我选择在28岁的末尾退休，拥抱山间清泉与峡谷的风。" 6月引爆热搜，知乎阅读量近千万，1600+ 陌生人加微信，最常被问"你到底挣了多少钱"。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> 微博原文
+        <span class="src-tag src-1">一手</span> 凤凰网风眼专访
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2020年6月</div>
+      <div class="event-title">密集回应：定义"退休"</div>
+      <div class="event-detail">"所谓的28岁退休，于我而言，只是从互联网行业退休。" 否认富二代标签，坦承赚钱目标。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> 界面新闻/36氪/眼界TALK
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2020年11月</div>
+      <div class="event-title">退休后的第一个真实感受：焦虑</div>
+      <div class="event-detail">"以往我觉得财务自由就是绝对的自由，其实是一个错误的判断。" 面对无限选择反而不知该做什么。身份认同危机："你是谁？你在做什么？"</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> 腾讯眼界TALK 本人出镜
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 第五阶段：日本 ── -->
+<div class="phase">
+  <div class="phase-title">
+    <div class="dot" style="border-color: var(--accent-cyan);"></div>
+    <h2 style="color: var(--accent-cyan);">日本生活 · 2020—至今</h2>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2020—</div>
+      <div class="event-title">移居日本 · 创建株式会社山月夜</div>
+      <div class="event-detail">在日本大分县经营温泉旅馆。疫情期间住过 530+ 家日本温泉旅馆。自嘲"在这个陌生的岛国彻底活成了社会边缘人"。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> paragraph.com 本人博客
+        <span class="src-tag src-1">一手</span> PANews专访
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2022—2023</div>
+      <div class="event-title">Web3 创业间隔年</div>
+      <div class="event-detail">"对于我来说，这是无比安静的两年，但在 Web3 的世界，这却是惊涛拍浪的两年。" 创建 Checks Finance 和 CodeforDAO。退休后创造欲从未消失，只是换了载体。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> paragraph.com 本人博客
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2024</div>
+      <div class="event-title">旅行与探索</div>
+      <div class="event-detail">美国公路旅行（佛罗里达→乔治亚）、上海回访。告别宾利，购入法拉利。足迹延伸至坦桑尼亚、斯里兰卡、马尔代夫。持续居住在东京。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> Twitter @turingou
+        <span class="src-tag src-1">一手</span> PANews专访
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">当前居住</div>
+      <div class="event-title">四处居所 · 季节轮转</div>
+      <div class="event-detail">东京港区两栋住宅 + 长野安曇野度假别墅 + 冲绳宫古岛别墅。享受"隐形人"状态——便利店自助结账、温泉旅馆用假名登记。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> PANews专访 + 日媒报道
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 第六阶段：AI ── -->
+<div class="phase">
+  <div class="phase-title">
+    <div class="dot" style="border-color: var(--accent-red);"></div>
+    <h2 style="color: var(--accent-red);">AI 转型 · 2025—2026</h2>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2025年</div>
+      <div class="event-title">重新定义财务自由</div>
+      <div class="event-detail">"以往我觉得财务自由就是绝对的自由，其实是一个错误的判断……最重要的是，我们需要在人生很早期的阶段意识到这个问题以及它的重要性。" 34岁回望，自由不是终点，而是一个结构性的人生问题。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> PANews 2025专访
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2025年3—4月</div>
+      <div class="event-title">单向街书店（东京）演讲：知识工作者的终结</div>
+      <div class="event-detail">在银座单向街书店做 AI 主题公开演讲。核心论点：AI 编程工具将终结传统知识工作者模式。OneManAI 项目正式亮相。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> 本人公开演讲 + Twitter
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2026年3月</div>
+      <div class="event-title">Wanman AI — "一人公司"全力投入</div>
+      <div class="event-detail">"我在 CLI 告诉 CEO，帮我在中目黑开一家咖啡馆，它全自动帮我执行 20 个'工作日'。" 从 50 个工作日循环到 200 个循环，131 个提交大幅重构。用 Claude Opus 4.6 做 CEO+CTO。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> Twitter @turingou 系列推文
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2026年4月</div>
+      <div class="event-title">NHK 纪录片拍摄</div>
+      <div class="event-detail">在安曇野蓝莓农场向不懂 AI 的农户演示 Wanman AI。用自研翻译工具 tuwa 实现中日同步翻译。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> Twitter @turingou
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2026年5月</div>
+      <div class="event-title">B站访谈 · 最新公开亮相</div>
+      <div class="event-detail">B站 UP主"课代表立正"人物专访，分享从字节跳动到温泉旅馆到 AI 创业的完整叙事弧。对年轻人说：不要被"财务自由"绑架，找到内驱力更重要。</div>
+      <div class="event-source">
+        <span class="src-tag src-1">一手</span> B站视频访谈 本人出镜
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /timeline -->
+
+<!-- ═══════ 关键数字 ═══════ -->
+<div class="summary-box">
+  <div class="summary-card">
+    <h3>关键数字</h3>
+    <div class="summary-grid">
+      <div class="summary-item">
+        <div class="label">生日</div>
+        <div class="value">1991-03-04</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">字节工号</div>
+        <div class="value">#473（当时约300人）</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">GitHub</div>
+        <div class="value">guo-yu · 5.8k followers</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">Twitter/X</div>
+        <div class="value">@turingou · ~17万粉丝 · 9400+推文</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">首次 BTC 买入</div>
+        <div class="value">2013.04 · ~$100/枚</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">退休年龄</div>
+        <div class="value">28岁（2020年2月宣布）</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">温泉旅馆住过</div>
+        <div class="value">530+ 家</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">日本房产租金收益</div>
+        <div class="value">7-10%（≥字节工资水平）</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider">给年轻人的拆解</div>
+
+<!-- ═══════ 一、怎么实现的？ ═══════ -->
+<div class="insight-section">
+  <h2><span class="accent-orange">①</span> 怎么实现的？<span style="color:var(--text-dim);font-weight:400;font-size:0.7em;">　财富积累的五重叠加</span></h2>
+  <div class="sec-sub">不是单点暴富，是 5 个动作连续叠加 12 年的复利结果。任何一步缺位都到不了 28 岁退休。</div>
+
+  <div class="path-step">
+    <div class="step-num accent-orange">1</div>
+    <div class="step-body">
+      <div class="step-head">早入行 + 自学（2008，17岁）</div>
+      <div class="step-detail">高考结束当晚自学 PHP，下载 phpwind 给社团做网站。不是科班出身，技能比文凭跑得快。暨南大学没毕业就已经在接外包活。</div>
+      <div class="step-evidence"><span class="src-tag src-1">一手</span> 36氪自述 · 界面新闻专访</div>
+    </div>
+  </div>
+
+  <div class="path-step">
+    <div class="step-num accent-orange">2</div>
+    <div class="step-body">
+      <div class="step-head">押对超级公司 + 早期入职（2014，23岁）</div>
+      <div class="step-detail">2014 年加入字节跳动（当时叫今日头条），全公司约 300 人，工号 #473。这不是"加入大厂"，是"在它变成大厂之前进去"。早期员工 vs 后期员工的期权差距通常是 100 倍以上。</div>
+      <div class="step-evidence"><span class="src-tag src-1">一手</span> PANews 2025 · 凤凰网风眼</div>
+    </div>
+  </div>
+
+  <div class="path-step">
+    <div class="step-num accent-orange">3</div>
+    <div class="step-body">
+      <div class="step-head">第二条曲线：BTC 早期持有（2013，22岁）</div>
+      <div class="step-detail">2013 年 4 月以约 $100/枚买入比特币，长期持有未频繁交易。字节期权是单点公司风险，BTC 是去中心化资产对冲。两条曲线一起涨，财务自由的"最后一公里"是 BTC 给的。</div>
+      <div class="step-evidence"><span class="src-tag src-1">一手</span> 凤凰网风眼 · 36氪</div>
+    </div>
+  </div>
+
+  <div class="path-step">
+    <div class="step-num accent-orange">4</div>
+    <div class="step-body">
+      <div class="step-head">拿满期权时间窗口才走（2014—2020，6年）</div>
+      <div class="step-detail">不是"工作几年攒钱跑路"，是把每一份期权 vesting 到位才离职。6 年深耕 + 期权全额变现 = 数千万级现金。中途跳槽会损失 50%+ 的潜在收益，这是大多数人犯的错。</div>
+      <div class="step-evidence"><span class="src-tag src-1">一手</span> PANews 2025 · 36氪</div>
+    </div>
+  </div>
+
+  <div class="path-step">
+    <div class="step-num accent-orange">5</div>
+    <div class="step-body">
+      <div class="step-head">退休后被动现金流接力（2020—至今）</div>
+      <div class="step-detail">本金不直接消耗：日本房产年化 7-10% 租金回报，已 ≥ 字节工资水平。这意味着退休后不卖资产也能覆盖生活，本金继续滚雪球。"钱够花就不变现" — 减少税负 + 保留升值空间。</div>
+      <div class="step-evidence"><span class="src-tag src-1">一手</span> PANews 2025 · 一起散步去播客</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 二、做对了什么？ ═══════ -->
+<div class="insight-section">
+  <h2><span class="accent-green">②</span> 做对了什么？<span style="color:var(--text-dim);font-weight:400;font-size:0.7em;">　6 个反直觉的决策模式</span></h2>
+  <div class="sec-sub">钱是结果，决策才是变量。这 6 条是郭宇区别于"同样有期权但没自由"那批人的关键差异。</div>
+
+  <div class="play-grid">
+    <div class="play-card">
+      <div class="play-head accent-green">① 早早写下退休时间表</div>
+      <div class="play-detail">"30 岁前一定要退休"是十几岁就有的目标，不是临时起意。倒推每一步：什么阶段做什么、积累多少。大多数人只有"赚更多钱"的方向，没有终点。</div>
+    </div>
+    <div class="play-card">
+      <div class="play-head accent-green">② 不为"职业规划"提前消耗优势</div>
+      <div class="play-detail">字节期权 vesting 期没结束就不跳槽。同事提早离职去"创业""管理岗"的，回头看大多数都是用期权换title。郭宇拒绝这种交换。</div>
+    </div>
+    <div class="play-card">
+      <div class="play-head accent-green">③ 高储蓄率：让消费远低于收入</div>
+      <div class="play-detail">字节工资+期权时期没有给自己加杠杆消费。"钱够花"是真的"花得少"才成立的命题。币圈很多人持仓比他多但永远不自由 — 因为消费跟着资产涨。</div>
+    </div>
+    <div class="play-card">
+      <div class="play-head accent-green">④ 押注大趋势，且不在涨幅最高时离场</div>
+      <div class="play-detail">字节早期 + BTC 早期都是"看起来还没那么稳"时入场，赚到主升浪而非尾部。但他不预测顶部 — 持有到资产远超生活需求才停手。</div>
+    </div>
+    <div class="play-card">
+      <div class="play-head accent-green">⑤ 退休 ≠ 躺平：保留创造惯性</div>
+      <div class="play-detail">退休后做温泉旅馆、Web3、Wanman AI。退出的是"互联网行业"，不是"做事"。这条很关键 — 真躺平的人会失去手感，再也回不到主流，自由就退化成被动。</div>
+    </div>
+    <div class="play-card">
+      <div class="play-head accent-green">⑥ 主动降噪：物理 + 信息双重隔离</div>
+      <div class="play-detail">移居日本 = 物理远离 996 文化。退出微信公众号生态、转 Twitter/paragraph = 信息源换轨。"自由"不只是钱，更是不再被环境议程绑架的能力。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 三、如果是 2026 年的你？ ═══════ -->
+<div class="insight-section">
+  <h2><span class="accent-cyan">③</span> 如果是 2026 年的你？<span style="color:var(--text-dim);font-weight:400;font-size:0.7em;">　郭宇本人对当下年轻人的回答</span></h2>
+  <div class="sec-sub">他在 2025-2026 多个采访中反复强调的话，按时间倒序。注意他自己的态度已经从 28 岁那年的"退休最好"明显转向。</div>
+
+  <div class="quote-block">
+    <div class="q-text">"以往我觉得财务自由就是绝对的自由，其实是一个错误的判断。最重要的是，我们需要在人生很早期意识到这个问题以及它的重要性。"</div>
+    <div class="q-meta"><span class="src-tag src-1">一手</span> PANews 2025-10 · 34 岁回望</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="q-text">"退休只是手段，找到有意义的事才是目的。不要被'财务自由'绑架，重要的是找到内驱力。"</div>
+    <div class="q-meta"><span class="src-tag src-1">一手</span> B站「课代表立正」2026-05</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="q-text">"币圈很多朋友对钱没有概念，今天梭哈这个，明天 All in 那个。常年盯盘，容易脱离现实感。"</div>
+    <div class="q-meta"><span class="src-tag src-1">一手</span> PANews 2025 · 谈早期就同行的加密玩家</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="q-text">"Claude Code 改变了我对编程的理解。一个人 + AI 工具链 = 完整产品团队。这是 AI 时代的'个体户'。"</div>
+    <div class="q-meta"><span class="src-tag src-1">一手</span> 单向街书店东京演讲 2025-03 · Wanman AI 项目</div>
+  </div>
+
+  <h3 style="font-size:0.95em;color:var(--accent-cyan);margin:22px 0 8px;">📋 郭宇路径的可复制性矩阵</h3>
+  <div class="matrix">
+    <div class="matrix-col col-no">
+      <h4>❌ 不可复制</h4>
+      <ul>
+        <li>2014 年字节早期员工的时机窗口（早就关了）</li>
+        <li>2013 年 BTC 入场点（1500 万倍上涨已发生）</li>
+        <li>家庭被迫早熟带来的"必须自己赚钱"驱动力</li>
+        <li>17 岁就开始写代码的复利时间</li>
+      </ul>
+    </div>
+    <div class="matrix-col col-yes">
+      <h4>✅ 可复制</h4>
+      <ul>
+        <li>定一个明确的财务退休年龄并倒推</li>
+        <li>选公司比"努力工作"重要 100 倍</li>
+        <li>vesting 拿满才走，不被 title 诱惑</li>
+        <li>消费水平不跟着收入涨</li>
+        <li>主动降噪，远离焦虑制造源</li>
+      </ul>
+    </div>
+    <div class="matrix-col col-new">
+      <h4>🆕 2026 新窗口</h4>
+      <ul>
+        <li>AI 工具链 = 这一代的"早期字节"</li>
+        <li>"一个人公司"门槛史上最低</li>
+        <li>不再依赖期权大厂的二选一</li>
+        <li>郭宇本人正在 all in 这个方向（Wanman AI）</li>
+        <li>窗口期 2-5 年，过了就和 2014 年错过字节一样</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:18px;padding:14px 16px;background:#1a1a25;border-radius:8px;font-size:0.85em;color:var(--text-dim);line-height:1.6;">
+    <strong style="color:var(--accent-cyan);">一句话总结：</strong>
+    郭宇 28 岁退休的剧本无法照抄，但他的<strong style="color:var(--text);">决策框架</strong>可以——
+    早定目标、押大趋势、拿满才走、低消费、退休不躺平、主动降噪。
+    现在的窗口不在字节也不在 BTC，<strong style="color:var(--accent-blue);">在于"个人 + AI"能不能像 2014 年的字节一样长出新公司。</strong>
+    郭宇自己也已经把筹码押在这里。
+  </div>
+</div>
+
+<!-- ═══════ 勘误：交叉验证纠正 ═══════ -->
+<div class="correction-box">
+  <div class="correction-card">
+    <h3>交叉验证勘误（4 处重大矛盾已纠正）</h3>
+
+    <div class="correction-item">
+      <div><strong>出生地</strong></div>
+      <div><span class="correction-wrong">湖南小城（凤凰网风眼误报）</span></div>
+      <div><span class="correction-right">→ 江西矿山小镇</span> <span class="src-tag src-1">一手</span> 36氪本人自述 · PANews · 南方周末/21财经 多源一致</div>
+    </div>
+
+    <div class="correction-item">
+      <div><strong>父亲职业</strong></div>
+      <div><span class="correction-wrong">公务员（凤凰网风眼误报）</span></div>
+      <div><span class="correction-right">→ 电工</span> <span class="src-tag src-1">一手</span> 36氪本人自述</div>
+    </div>
+
+    <div class="correction-item">
+      <div><strong>父亲卧床原因</strong></div>
+      <div><span class="correction-wrong">心血管疾病（05-决策链 来源不明）</span></div>
+      <div><span class="correction-right">→ 工作事故</span> <span class="src-tag src-1">一手</span> 36氪自述 · China Daily 确认 · 与电工身份一致</div>
+    </div>
+
+    <div class="correction-item">
+      <div><strong>2024年是否搬至硅谷</strong></div>
+      <div><span class="correction-wrong">"2024年8月搬至硅谷"（05-决策链 误报）</span></div>
+      <div><span class="correction-right">→ 持续居住日本，曾赴美考察</span> <span class="src-tag src-1">一手</span> Twitter 2024-2026 连续日本动态 · 2025年1月东京看房 · 2026年4月安曇野 NHK 拍摄</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 一句话哲学 ═══════ -->
+<div class="summary-box">
+  <div class="summary-card" style="text-align:center;">
+    <h3 style="margin-bottom:16px;">他的哲学</h3>
+    <div style="font-size:1.1em;font-weight:500;margin-bottom:8px;">
+      "只活一次等于没活"
+    </div>
+    <div style="font-size:0.85em;color:var(--text-dim);">
+      追求体验的丰富性，但日常标准是情绪平稳的一天。<br>
+      用人生框架保障体验多样性，用日常节奏保障内心平静。
+    </div>
+    <div style="margin-top:8px;">
+      <span class="src-tag src-1">一手</span> Twitter bio（引自米兰·昆德拉）· 播客「一起散步去」
+    </div>
+  </div>
+</div>
+
+<footer>
+  数据采集于 2026-05-10 · 交叉验证 7 个维度 · 排除知乎/微信公众号/百度百科来源<br>
+  主要一手来源：36氪 · PANews · 凤凰网风眼 · 腾讯眼界TALK · Twitter @turingou · paragraph.com
+</footer>
+
+</body>
+</html>

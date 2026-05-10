@@ -1,0 +1,829 @@
+<!-- INPUT: 7份交叉验证后的郭宇研究资料（01-07维度） -->
+<!-- OUTPUT: 蒸馏出的"郭宇 OS" - 起源/信仰/决策三层思维模型 -->
+<!-- POS: 郭宇资料收集的抽象层产出 - 与"人生路线图.html"互补 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>郭宇 · 思维模型</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --card: #161616;
+    --card-deep: #1c1c1c;
+    --border: #252525;
+    --border-light: #333;
+    --text: #e8e8e8;
+    --text-mid: #aaa;
+    --text-dim: #777;
+    --text-faint: #555;
+
+    --layer-3: #4af0ff;   /* 决策层 - 青 */
+    --layer-2: #b48aff;   /* 信仰层 - 紫 */
+    --layer-1: #ff9f4a;   /* 起源层 - 橙 */
+    --meta:    #ffd24a;   /* 元规则 - 金 */
+
+    --tag-1st: #2d5a1e;
+    --tag-1st-text: #7fff5a;
+    --tag-2nd: #5a4a1e;
+    --tag-2nd-text: #ffd85a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+  }
+
+  /* ═══ Hero ═══ */
+  .hero {
+    text-align: center;
+    padding: 70px 20px 50px;
+    background: radial-gradient(ellipse at top, #1a1a2e 0%, var(--bg) 70%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero .eyebrow {
+    color: var(--text-dim);
+    font-size: 0.78em;
+    letter-spacing: 0.4em;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 2.6em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .hero .tagline {
+    color: var(--text-mid);
+    font-size: 1.05em;
+    max-width: 600px;
+    margin: 16px auto 0;
+    line-height: 1.6;
+  }
+  .hero .source-note {
+    margin-top: 24px;
+    font-size: 0.78em;
+    color: var(--text-faint);
+  }
+
+  /* ═══ OS 核心命题 ═══ */
+  .os-core {
+    max-width: 820px;
+    margin: 50px auto 60px;
+    padding: 0 20px;
+  }
+  .os-core .label {
+    text-align: center;
+    color: var(--meta);
+    font-size: 0.78em;
+    letter-spacing: 0.3em;
+    margin-bottom: 18px;
+  }
+  .os-core h2 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 28px;
+    font-weight: 600;
+  }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+  .meta-rule {
+    background: linear-gradient(180deg, #1a1810 0%, var(--card) 100%);
+    border: 1px solid #3a3520;
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .meta-rule .num {
+    color: var(--meta);
+    font-size: 0.78em;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.1em;
+  }
+  .meta-rule .title {
+    font-weight: 600;
+    font-size: 1em;
+    margin-bottom: 6px;
+  }
+  .meta-rule .body {
+    color: var(--text-mid);
+    font-size: 0.83em;
+    line-height: 1.55;
+  }
+
+  /* ═══ OS 层级图 ═══ */
+  .os-stack {
+    max-width: 820px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+  }
+  .stack-label {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.78em;
+    letter-spacing: 0.3em;
+    margin-bottom: 20px;
+  }
+  .stack {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .stack-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+  }
+  .stack-row:last-child { border-bottom: none; }
+  .stack-row .layer-tag {
+    font-weight: 700;
+    font-size: 0.82em;
+    letter-spacing: 0.08em;
+  }
+  .stack-row .layer-desc {
+    color: var(--text-mid);
+    font-size: 0.88em;
+  }
+  .stack-row.l3 { background: #0e1c1f; }
+  .stack-row.l3 .layer-tag { color: var(--layer-3); }
+  .stack-row.l2 { background: #161020; }
+  .stack-row.l2 .layer-tag { color: var(--layer-2); }
+  .stack-row.l1 { background: #1f1610; }
+  .stack-row.l1 .layer-tag { color: var(--layer-1); }
+
+  /* ═══ Section 通用 ═══ */
+  .section {
+    max-width: 820px;
+    margin: 0 auto 70px;
+    padding: 0 20px;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 14px;
+  }
+  .section-head .layer-num {
+    font-size: 1.6em;
+    font-weight: 800;
+    line-height: 1;
+  }
+  .section-head h2 {
+    font-size: 1.4em;
+    font-weight: 700;
+  }
+  .section-head .question {
+    margin-left: auto;
+    color: var(--text-dim);
+    font-size: 0.85em;
+    font-style: italic;
+  }
+  .section-intro {
+    color: var(--text-mid);
+    font-size: 0.92em;
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+
+  .l1 .layer-num { color: var(--layer-1); }
+  .l2 .layer-num { color: var(--layer-2); }
+  .l3 .layer-num { color: var(--layer-3); }
+
+  /* ═══ 原则卡 ═══ */
+  .principle {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+  }
+  .principle .p-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .principle .p-num {
+    font-size: 0.85em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    min-width: 28px;
+  }
+  .principle .p-title {
+    font-size: 1.08em;
+    font-weight: 600;
+  }
+  .l1 .principle .p-num { color: var(--layer-1); }
+  .l2 .principle .p-num { color: var(--layer-2); }
+  .l3 .principle .p-num { color: var(--layer-3); }
+
+  /* 反常识对比表 */
+  .vs-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 12px 0;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .vs-cell {
+    padding: 12px 14px;
+    font-size: 0.85em;
+    line-height: 1.55;
+  }
+  .vs-cell.vs-default {
+    background: #1a1212;
+    color: #c89090;
+    border-right: 1px solid var(--border-light);
+  }
+  .vs-cell.vs-guoyu {
+    background: #121a14;
+    color: #a8d8b0;
+  }
+  .vs-cell .vs-tag {
+    display: block;
+    font-size: 0.72em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 5px;
+    opacity: 0.8;
+  }
+  .vs-default .vs-tag { color: #ff7a7a; }
+  .vs-guoyu .vs-tag { color: #6fff90; }
+
+  .principle .takeaway {
+    color: var(--text);
+    font-size: 0.92em;
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #15151a;
+    border-left: 3px solid;
+    border-radius: 4px;
+  }
+  .l1 .principle .takeaway { border-color: var(--layer-1); }
+  .l2 .principle .takeaway { border-color: var(--layer-2); }
+  .l3 .principle .takeaway { border-color: var(--layer-3); }
+
+  .principle .evidence {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+    font-size: 0.82em;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+  .principle .evidence .ev-quote {
+    color: var(--text);
+    font-style: italic;
+    margin: 4px 0;
+  }
+  .principle .evidence .ev-source {
+    color: var(--text-faint);
+    font-size: 0.92em;
+  }
+
+  .src-tag {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 8px;
+    font-size: 0.7em;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
+  }
+  .src-1 { background: var(--tag-1st); color: var(--tag-1st-text); }
+  .src-2 { background: var(--tag-2nd); color: var(--tag-2nd-text); }
+
+  /* ═══ AI时代实操清单 ═══ */
+  .ai-section {
+    max-width: 820px;
+    margin: 0 auto 50px;
+    padding: 30px 24px;
+    background: linear-gradient(180deg, #0e1820 0%, var(--card) 100%);
+    border: 1px solid #2a3a4a;
+    border-radius: 14px;
+  }
+  .ai-section h2 {
+    color: var(--layer-3);
+    font-size: 1.25em;
+    margin-bottom: 6px;
+  }
+  .ai-section .ai-sub {
+    color: var(--text-mid);
+    font-size: 0.88em;
+    margin-bottom: 22px;
+  }
+  .ai-mapping {
+    display: grid;
+    gap: 12px;
+  }
+  .ai-row {
+    display: grid;
+    grid-template-columns: 1fr 30px 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 12px 14px;
+    background: #0a1418;
+    border-radius: 8px;
+    font-size: 0.86em;
+  }
+  .ai-row .arrow {
+    text-align: center;
+    color: var(--layer-3);
+    font-weight: 700;
+  }
+  .ai-row .from { color: var(--text-mid); }
+  .ai-row .to { color: var(--text); font-weight: 500; }
+
+  /* ═══ Caveat ═══ */
+  .caveat {
+    max-width: 820px;
+    margin: 0 auto 40px;
+    padding: 18px 22px;
+    background: #1a1515;
+    border-left: 3px solid var(--text-faint);
+    border-radius: 4px;
+    color: var(--text-mid);
+    font-size: 0.85em;
+    line-height: 1.65;
+  }
+  .caveat strong { color: var(--text); }
+
+  footer {
+    text-align: center;
+    padding: 36px 20px;
+    color: var(--text-faint);
+    font-size: 0.78em;
+    border-top: 1px solid var(--border);
+    line-height: 1.7;
+  }
+  footer a { color: var(--text-mid); text-decoration: none; }
+
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 1.9em; }
+    .meta-grid { grid-template-columns: 1fr; }
+    .vs-table { grid-template-columns: 1fr; }
+    .vs-cell.vs-default { border-right: none; border-bottom: 1px solid var(--border-light); }
+    .stack-row { grid-template-columns: 100px 1fr; padding: 14px 16px; }
+    .ai-row { grid-template-columns: 1fr; }
+    .ai-row .arrow { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════ Hero ═══════ -->
+<div class="hero">
+  <div class="eyebrow">从 7 份材料中蒸馏</div>
+  <h1>郭宇 · 思维模型</h1>
+  <div class="tagline">
+    AI 时代，2014 年加入字节、2013 年买入 BTC 的路径都是一次性的。<br>
+    但他在 12 年里反复使用的<strong style="color:var(--meta);">那套思考方式</strong>，可以照搬。
+  </div>
+  <div class="source-note">
+    数据来源：36氪 · 凤凰网风眼 · PANews 2025 · China Daily · 21财经 · 罗磊博客 · Twitter @turingou · 一起散步去/回南天播客
+  </div>
+</div>
+
+<!-- ═══════ OS 核心命题：3 条元规则 ═══════ -->
+<div class="os-core">
+  <div class="label">═  郭 宇 OS · 核 心 命 题  ═</div>
+  <h2>支撑他所有决策的 3 条元规则</h2>
+  <div class="meta-grid">
+    <div class="meta-rule">
+      <div class="num">META 01</div>
+      <div class="title">"够"代替"最大化"</div>
+      <div class="body">退休触发条件不是"赚到 X 元"，是"被动收入 ≥ 主动收入"。BTC 12 年不卖的理由是"钱够花"。停止信号是满足，不是峰值。</div>
+    </div>
+    <div class="meta-rule">
+      <div class="num">META 02</div>
+      <div class="title">环境 &gt; 努力</div>
+      <div class="body">"最关键的选择是我妈让我 5 岁多就上学，否则赶不上移动互联网爆发。"选公司、选城市、选信息源 — 这些"环境决策"比"努力做事"重要 100 倍。</div>
+    </div>
+    <div class="meta-rule">
+      <div class="num">META 03</div>
+      <div class="title">减法先于加法</div>
+      <div class="body">退休 = 减"必须做的事"。移居 = 减"必须呆的地方"。退出微信生态 = 减"必须被打扰"。先创造选择权，再选择做什么。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ OS 层级图 ═══════ -->
+<div class="os-stack">
+  <div class="stack-label">═  OS 三 层 结 构  ═</div>
+  <div class="stack">
+    <div class="stack-row l3">
+      <div class="layer-tag">L3 · 决策层</div>
+      <div class="layer-desc">怎么做选择？4 条决策原则 — 落到具体动作</div>
+    </div>
+    <div class="stack-row l2">
+      <div class="layer-tag">L2 · 信仰层</div>
+      <div class="layer-desc">相信什么？4 条价值锚点 — 决定什么算"对的选择"</div>
+    </div>
+    <div class="stack-row l1">
+      <div class="layer-tag">L1 · 起源层</div>
+      <div class="layer-desc">为什么从非科班入场？4 条入场哲学 — 决定他怎么"开始"任何事</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ Layer 1：起源层 ═══════ -->
+<div class="section l1">
+  <div class="section-head">
+    <span class="layer-num">L1</span>
+    <h2>起源层 · 入场哲学</h2>
+    <span class="question">为什么从非科班出身去做编程？</span>
+  </div>
+  <div class="section-intro">
+    郭宇 17 岁在江西矿山小镇高考后开始写代码，不是"找到了热爱"，是"必须养活自己"。
+    这 4 条入场逻辑，是他后来所有决策的<strong style="color:var(--text);">起跳板</strong>。
+    AI 时代任何想从零进入新领域的人，都可以照搬这套。
+  </div>
+
+  <div class="principle">
+    <div class="p-head">
+      <span class="p-num">L1.1</span>
+      <span class="p-title">非科班不是劣势，是杠杆</span>
+    </div>
+    <div class="vs-table">
+      <div class="vs-cell vs-default">
+        <span class="vs-tag">默认做法</span>
+        等专业对口、等学位、等"成为 X 的资格"
+      </div>
+      <div class="vs-cell vs-guoyu">
+        <span class="vs-tag">郭宇做法</span>
+        行政管理专业 → 高考结束当晚下载 phpwind → 直接给社团做网站
+      </div>
+    </div>
+    <div class="takeaway">
+      关键反转：没有"白学的成本"反而是优势。科班生有沉没成本（"我学了 4 年这个不能浪费"），非科班生只问"能不能用"。在 2008 年的互联网，"招他的人也不是计算机专业，是学英语的"——这条规则在 AI 时代更成立。
+    </div>
+    <div class="evidence">
+      <div class="ev-quote">"那个时代非科班出身、但技术厉害的人非常多。"</div>
+      <div class="ev-source"><span class="src-tag src-1">一手</span> 36氪自述 · 罗磊博客佐证（GitHub 中国区前 3-5）</div>
+    </div>
+  </div>
+
+  <div class="principle">
+    <div class="p-head">
+      <span class="p-num">L1.2</span>
+      <span class="p-title">压力先于热爱</span>
+    </div>
+    <div class="vs-table">
+      <div class="vs-cell vs-default">
+        <span class="vs-tag">默认做法</span>
+        "我得先找到我热爱的事，才肯开始投入"
+      </div>
+      <div class="vs-cell vs-guoyu">
+        <span class="vs-tag">郭宇做法</span>
+        "无路可走，必须找到一条能养活自己的出路" → 边做边长出热情
+      </div>
+    </div>
+    <div class="takeaway">
+      关键反转：大多数人在等"内驱力"出现才行动，永远等不到。郭宇是被父亲卧床的生存压力推上编程，<strong style="color:var(--text);">热情是后置的</strong>。他自己说"我的目标只能依靠热情驱动" — 注意这是事后反思，不是起点。先开始做，才有热情可言。
+    </div>
+    <div class="evidence">
+      <div class="ev-quote">"为了抵抗生命的重力，为了支撑自己未来的人生，我无路可走。"</div>
+      <div class="ev-source"><span class="src-tag src-1">一手</span> 21财经专访 · 36氪自述</div>
+    </div>
+  </div>
+
+  <div class="principle">
+    <div class="p-head">
+      <span class="p-num">L1.3</span>
+      <span class="p-title">具体问题先于系统学习</span>
+    </div>
+    <div class="vs-table">
+      <div class="vs-cell vs-default">
+        <span class="vs-tag">默认做法</span>
+        买教材、报课程、按章节学完 PHP 全部语法再开始做项目
+      </div>
+      <div class="vs-cell vs-guoyu">
+        <span class="vs-tag">郭宇做法</span>
+        给社团做论坛 → 缺什么学什么 → 大学接外包项目 → 在真实问题里磨技能
+      </div>
+    </div>
+    <div class="takeaway">
+      关键反转：项目驱动学习的速度是教科书的 3-10 倍。他从来没有"准备好再开始"的阶段——具体问题（社团网站）就是入场券。AI 时代这条更狠：用 Cursor/Claude Code 做出第一个能跑的东西，比读完任何教程都快。
+    </div>
+    <div class="evidence">
+      <div class="ev-quote">"大学期间不怎么上课，在勤工俭学板上接外包项目赚钱。"</div>
+      <div class="ev-source"><span class="src-tag src-1">一手</span> 36氪自述 · 21财经专访</div>
+    </div>
+  </div>
+
+  <div class="principle">
+    <div class="p-head">
+      <span class="p-num">L1.4</span>
+      <span class="p-title">低成本试探撬动大节点</span>
+    </div>
+    <div class="vs-table">
+      <div class="vs-cell vs-default">
+        <span class="vs-tag">默认做法</span>
+        投 100 份简历 + 高强度面试准备 + 海投 + 等 HR 回信
+      </div>
+      <div class="vs-cell vs-guoyu">
+        <span class="vs-tag">郭宇做法</span>
+        给支付宝写一封实习信 → 对方"打电话问几句就让过去了"
+      </div>
+    </div>
+    <div class="takeaway">
+      关键反转：他人生的关键节点几乎都是"小动作"撬动的——一封信进支付宝，三人小团队进字节（被收购），一条微博引爆退休话题。<strong style="color:var(--text);">成本低到可以反复尝试</strong>，但回报是非线性的。规划得越重，反而下不了手。
+    </div>
+    <div class="evidence">
+      <div class="ev-quote">"给支付宝写了一封实习求职信，对方打电话问了几句就让过去实习了。"</div>
+      <div class="ev-source"><span class="src-tag src-1">一手</span> 36氪自述 · 决策链 #2</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ Layer 2：信仰层 ═══════ -->
+<div class="section l2">
+  <div class="section-head">
+    <span class="layer-num">L2</span>
+    <h2>信仰层 · 价值锚点</h2>
+    <span class="question">他真正信仰什么？</span>
+  </div>
+  <div class="section-intro">
+    决策只是表象，决定"什么算对的决策"的是信仰。郭宇这 4 条不是金句，是反复在 12 年里把他从主流叙事里拉出来的<strong style="color:var(--text);">价值锚</strong>。
+  </div>
+
+  <div class="principle">
+    <div class="p-head">
+      <span class="p-num">L2.1</span>
+      <span class="p-title">个体本位 + 元觉察</span>
+    </div>
+    <div class="vs-table">
+      <div class="vs-cell vs-default">
+        <span class="vs-tag">大众叙事</span>
+        "成功是社会赋予的标签 — 财务自由 / 名校 / 大厂 / 创始人"
+      </div>
+      <div class="vs-cell vs-guoyu">
+        <span class="vs-tag">郭宇信仰</span>
+        "贴'财务自由'的标签也算一种歧视"。所有外部标签都拒绝接受
+      </div>
+    </div>
+    <div class="takeaway">
+      他不只是拒绝外部叙事（个体本位），还会觉察自己被什么"内部叙事"驱动（元觉察）。这两条加起来很罕见——大多数人会从一种叙事换到另一种。郭宇的状态是<strong style="color:var(--text);">不让任何叙事入驻</strong>。
+    </div>
+    <div class="evidence">
+      <div class="ev-quote">"自由是个人的私事。钱多钱少，开心到老，想清楚什么让自己得偿所愿，才是最应该做的事。"<br>"人很难主动选择自己想要过的生活，很多看似主动选择的背后是在逃离自己不喜欢的东西。"</div>
+      <div class="ev-source"><span class="src-tag src-1">一手</span> 微博 2020-06 · 播客「回南天」2024-09</div>
+    </div>
+  </div>
+
+  <div class="principle">
+    <div class="p-head">
+      <span class="p-num">L2.2</span>
+      <span class="p-title">体验主义 + 创造惯性</span>
+    </div>
+    <div class="vs-table">
+      <div class="vs-cell vs-default">
+        <span class="vs-tag">大众叙事</span>
+        退休 = 享乐 + 躺平 / 在职 = 创造 + 价值
+      </div>
+      <div class="vs-cell vs-guoyu">
+        <span class="vs-tag">郭宇信仰</span>
+        体验是输入，创造是输出，两个都不能停。退休后住 530+ 温泉旅馆，但还在写代码、做 Web3、做 AI
+      </div>
+    </div>
+    <div class="takeaway">
+      关键反转：把"体验"和"创造"当成两条独立的轨道，不是非此即彼。"只活一次等于没活"是体验侧；退休 5 年还在 vibe 写 131 个提交的 Wanman AI 是创造侧。<strong style="color:var(--text);">真躺平的人会失去手感，再也回不来</strong> — 他知道这一点。
+    </div>
+    <div class="evidence">
+      <div class="ev-quote">"只活一次等于没活。"（Twitter bio · 引米兰·昆德拉）<br>"退休只是手段，找到有意义的事才是目的。"</div>
+      <div class="ev-source"><span class="src-tag src-1">一手</span> Twitter @turingou · PANews 2025-10 · B站「课代表立正」2026-05</div>
+    </div>
+  </div>
+
+  <div class="principle">
+    <div class="p-head">
+      <span class="p-num">L2.3</span>
+      <span class="p-title">结构性平静</span>
+    </div>
+    <div class="vs-table">
+      <div class="vs-cell vs-default">
+        <span class="vs-tag">大众叙事</span>
+        追求"刺激丰富的人生" 或 "稳定平淡的人生" — 二选一
+      </div>
+      <div class="vs-cell vs-guoyu">
+        <span class="vs-tag">郭宇信仰</span>
+        用<strong>人生框架</strong>保多样（退休、移居、转方向）+ 用<strong>日常节奏</strong>保平静（一天情绪不波动）
+      </div>
+    </div>
+    <div class="takeaway">
+      关键反转："只活一次等于没活"和"最完美的一天就是情绪没有很大波动的平静的一天"看起来矛盾，其实是分层的。<strong style="color:var(--text);">在人生宏观尺度追多样，在日常微观尺度追平静</strong>——这是一种被严重低估的生活架构。
+    </div>
+    <div class="evidence">
+      <div class="ev-quote">"最完美的一天就是情绪没有很大波动的平静的一天。"</div>
+      <div class="ev-source"><span class="src-tag src-1">一手</span> 播客「一起散步去」Vol.7-8 · 2024-08</div>
+    </div>
+  </div>
+
+  <div class="principle">
+    <div class="p-head">
+      <span class="p-num">L2.4</span>
+      <span class="p-title">物理感优先于数字感</span>
+    </div>
+    <div class="vs-table">
+      <div class="vs-cell vs-default">
+        <span class="vs-tag">大众叙事</span>
+        互联网工作者 = 屏幕 + 城市 + 数字资产；币圈玩家 = 盯盘 + 梭哈
+      </div>
+      <div class="vs-cell vs-guoyu">
+        <span class="vs-tag">郭宇信仰</span>
+        温泉、农场、公路旅行、手动挡驾照、一级船舶驾照、安曇野蓝莓农户面对面 — 物理体验优先
+      </div>
+    </div>
+    <div class="takeaway">
+      关键反转：他对加密圈"对钱没有概念，今天梭哈这个明天 All in 那个"的批评，本质是批评"脱离物理感的数字游戏"。<strong style="color:var(--text);">把钱花在物理体验上而非数字增值上</strong>，是反复出现的态度。
+    </div>
+    <div class="evidence">
+      <div class="ev-quote">"币圈很多朋友对钱没有概念……常年盯盘，容易脱离现实感。我推荐大家读万卷书行万里路，把钱花在人生的体验上。"</div>
+      <div class="ev-source"><span class="src-tag src-1">一手</span> Twitter @turingou · PANews 2025-10</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ Layer 3：决策层 ═══════ -->
+<div class="section l3">
+  <div class="section-head">
+    <span class="layer-num">L3</span>
+    <h2>决策层 · 决策原则</h2>
+    <span class="question">他是怎么做决策的？</span>
+  </div>
+  <div class="section-intro">
+    把信仰落到行动，需要决策原则。这 4 条原则跨越了 12 年里他做的所有重要决策——
+    从 2014 年加入字节，到 2020 年退休，到 2022 年 Web3，到 2025 年 All in AI。<strong style="color:var(--text);">同一套原则在变化的方向上反复使用</strong>。
+  </div>
+
+  <div class="principle">
+    <div class="p-head">
+      <span class="p-num">L3.1</span>
+      <span class="p-title">以终为始 + 早期下注</span>
+    </div>
+    <div class="vs-table">
+      <div class="vs-cell vs-default">
+        <span class="vs-tag">大众做法</span>
+        "看到机会再追" — 看到字节火了想进字节，看到 BTC 涨了想买 BTC，看到 AI 热了想学 AI
+      </div>
+      <div class="vs-cell vs-guoyu">
+        <span class="vs-tag">郭宇做法</span>
+        "30 岁前一定要退休"是十几岁就有的目标，倒推每一步。在结构性变革早期下注：2014 字节、2013 BTC、2025 AI
+      </div>
+    </div>
+    <div class="takeaway">
+      关键反转：先定<strong style="color:var(--text);">终点</strong>（退休年龄、被动收入门槛），再选过程；先识别<strong style="color:var(--text);">结构性变革</strong>（移动互联网、加密、AI），再在早期入场。这两条加起来 = 不需要预测时机，只需要押对方向 + 早。
+    </div>
+    <div class="evidence">
+      <div class="ev-quote">"最关键的选择在于我妈——她让我 5 岁多就开始上学，如果不那么早，我就赶不上整个移动互联网的爆发。"<br>"我很早就想好了，30 岁之前一定要退休。"</div>
+      <div class="ev-source"><span class="src-tag src-1">一手</span> 21财经/南方周末 · 凤凰网地球青年</div>
+    </div>
+  </div>
+
+  <div class="principle">
+    <div class="p-head">
+      <span class="p-num">L3.2</span>
+      <span class="p-title">"够"作为停止信号</span>
+    </div>
+    <div class="vs-table">
+      <div class="vs-cell vs-default">
+        <span class="vs-tag">大众做法</span>
+        预测顶部 → 高位卖出 → 追求最大化收益 → 永远在算"还能再涨多少"
+      </div>
+      <div class="vs-cell vs-guoyu">
+        <span class="vs-tag">郭宇做法</span>
+        退休触发条件：被动收入 ≥ 主动收入。BTC 12 年不卖的理由：钱够花。期权 vesting 拿满才走，不预测股价峰值
+      </div>
+    </div>
+    <div class="takeaway">
+      关键反转：决策标准是"<strong style="color:var(--text);">满足生活</strong>"而非"<strong style="color:var(--text);">最大化资产</strong>"。这个差异看起来小，但解释了为什么他能在 28 岁退、为什么不变现 BTC、为什么不为 title 提早离开字节。"够"是一个停止函数；"最大化"没有停止函数，永远焦虑。
+    </div>
+    <div class="evidence">
+      <div class="ev-quote">"变现交税太麻烦，而且钱够花。"<br>"一个人能够获得满足生活预期以上的被动收入，就可以达到财务自由。"</div>
+      <div class="ev-source"><span class="src-tag src-1">一手</span> PANews 2025 · 凤凰网风眼 2020-06</div>
+    </div>
+  </div>
+
+  <div class="principle">
+    <div class="p-head">
+      <span class="p-num">L3.3</span>
+      <span class="p-title">决策对象是"环境"，不只是"动作"</span>
+    </div>
+    <div class="vs-table">
+      <div class="vs-cell vs-default">
+        <span class="vs-tag">大众做法</span>
+        "我应该做什么、怎么做、什么时候做" — 全是动作维度的决策
+      </div>
+      <div class="vs-cell vs-guoyu">
+        <span class="vs-tag">郭宇做法</span>
+        移居日本 = 选环境。退出微信生态 = 选信息源。被收购"稀里糊涂进字节" = 选被什么人围绕
+      </div>
+    </div>
+    <div class="takeaway">
+      关键反转：环境决策的杠杆远大于动作决策。在 996 文化里再"努力工作"也回不到 1990 年代的硅谷；选错公司，再"努力 vesting"也拿不到字节级别的回报。<strong style="color:var(--text);">大众想"做什么"，他想"在哪里、和谁一起"</strong>。
+    </div>
+    <div class="evidence">
+      <div class="ev-quote">"我在这个陌生的岛国彻底活成了社会边缘人。"（移居日本后的自我描述）<br>字节文化："个人自我驱动、自由平等表达观点、互相尊重彼此信任。"</div>
+      <div class="ev-source"><span class="src-tag src-1">一手</span> paragraph.com 2022 · 36氪自述</div>
+    </div>
+  </div>
+
+  <div class="principle">
+    <div class="p-head">
+      <span class="p-num">L3.4</span>
+      <span class="p-title">减法先于加法</span>
+    </div>
+    <div class="vs-table">
+      <div class="vs-cell vs-default">
+        <span class="vs-tag">大众做法</span>
+        想做什么就立刻去加 — 加项目、加身份、加爱好、加房产、加社交
+      </div>
+      <div class="vs-cell vs-guoyu">
+        <span class="vs-tag">郭宇做法</span>
+        先减"必须做的事"（退休）→ 再选"想做的事"（温泉/Web3/AI）。先减"必须呆的地方"（移居）→ 再选住哪里
+      </div>
+    </div>
+    <div class="takeaway">
+      关键反转：先创造<strong style="color:var(--text);">选择权</strong>，再使用选择权。大多数人是反过来的——一边背着房贷孩子学区一边问"我真正想做什么"，于是选择权永远不出现。郭宇用 6 年深耕字节换来的<strong style="color:var(--text);">不是钱，是选择权</strong>。钱只是选择权的实现形式。
+    </div>
+    <div class="evidence">
+      <div class="ev-quote">"所谓的 28 岁退休，于我而言，只是从互联网行业退休。"<br>"退休只是手段，找到有意义的事才是目的。"</div>
+      <div class="ev-source"><span class="src-tag src-1">一手</span> 界面新闻专访 · B站「课代表立正」2026-05</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ AI 时代实操映射 ═══════ -->
+<div class="ai-section">
+  <h2>AI 时代如何用这套 OS</h2>
+  <div class="ai-sub">把 12 条原则映射到 2026 年的现实选择上 — 这是井九做这套蒸馏的真正目的。</div>
+  <div class="ai-mapping">
+    <div class="ai-row">
+      <div class="from">2008 年的 phpwind 压缩包 = 入场券</div>
+      <div class="arrow">→</div>
+      <div class="to">2026 年的 Claude Code / Cursor = 入场券。下载就是入场，不需要"准备好"</div>
+    </div>
+    <div class="ai-row">
+      <div class="from">"招他的人是学英语的" — 非科班反而被欢迎</div>
+      <div class="arrow">→</div>
+      <div class="to">AI 时代非程序员用 AI 工具反而更轻 — 没有 "vim/emacs/这才是真编程" 的包袱</div>
+    </div>
+    <div class="ai-row">
+      <div class="from">2014 加入字节 = 押结构性变革早期</div>
+      <div class="arrow">→</div>
+      <div class="to">"一个人公司"用 AI 工具链构建产品 = 这一代的"早期字节"。郭宇本人在做 Wanman AI</div>
+    </div>
+    <div class="ai-row">
+      <div class="from">"以终为始 + 早期下注"</div>
+      <div class="arrow">→</div>
+      <div class="to">不要等"AI 真的能写代码了"才开始用 — 现在的不完美就是早期窗口的标志</div>
+    </div>
+    <div class="ai-row">
+      <div class="from">"环境决策 &gt; 动作决策"</div>
+      <div class="arrow">→</div>
+      <div class="to">选用什么 AI 工具链、混什么社区、看谁的推特 &gt; "今天努力学了多少 prompt"</div>
+    </div>
+    <div class="ai-row">
+      <div class="from">"减法先于加法"</div>
+      <div class="arrow">→</div>
+      <div class="to">先减掉用 AI 替代不掉的低杠杆事 (会议/文档/重复代码)，再用腾出的时间做高杠杆探索</div>
+    </div>
+    <div class="ai-row">
+      <div class="from">"够"作为停止信号</div>
+      <div class="arrow">→</div>
+      <div class="to">在 AI 工具收益曲线上"够用就行"，不在 prompt 工程上死磕最后 5% — 把时间花在创造上</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ Caveat ═══════ -->
+<div class="caveat">
+  <strong>蒸馏的边界：</strong>
+  这 12 条是从郭宇 2020-2026 年公开材料中归纳的<em>事后模式</em>，不是他本人写过的"OS 文档"。
+  其中"L3.1 以终为始"和"L3.2 够作为停止信号"得到他多次明确表态支持；
+  "L1.4 低成本试探"和"L3.3 决策对象是环境"是从决策行为中归纳出的隐含规则，他本人未必这样总结过。
+  作为可迁移思维模型使用 — 但不要当成"郭宇本人认证"。
+</div>
+
+<footer>
+  数据采集于 2026-05-10 · 蒸馏自 7 个维度交叉验证后的研究材料 · 排除知乎/微信公众号/百度百科<br>
+  配套阅读：<a href="人生路线图.html">郭宇 · 人生路线图</a>（事实层）+ 本文档（抽象层）<br>
+  100 个财富自由的年轻人 · 第 01 号档案
+</footer>
+
+</body>
+</html>
