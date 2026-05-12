@@ -36,6 +36,7 @@
 | # | 人物 | 标签 | 事实层 | 抽象层 |
 |---|------|------|--------|--------|
 | 01 | [郭宇](郭宇/) | 28 岁字节退休 · 日本温泉 · AI 创业 | [📊 人生路线图](https://qingshanliuci.github.io/100-young-fire/郭宇/人生路线图.html) | [🧠 思维模型](https://qingshanliuci.github.io/100-young-fire/郭宇/思维模型.html) |
+| 02 | [孙宇晨](孙宇晨/) | 35 岁波场创始人 · 巴菲特午餐 / SEC 案 / 特朗普 WLFI | [📊 人生路线图](https://qingshanliuci.github.io/100-young-fire/孙宇晨/人生路线图.html) | [🧠 思维模型](https://qingshanliuci.github.io/100-young-fire/孙宇晨/思维模型.html) |
 
 > 表格里的链接是 GitHub Pages 在线版，点开就是渲染后的暗色系可视化页面。仓库里的 `.html` 源文件可以 fork 后自行修改。
 
@@ -59,6 +60,9 @@
 
 - 郭宇 · [人生路线图](https://qingshanliuci.github.io/100-young-fire/郭宇/人生路线图.html)（事实层 · 5 分钟扫完）
 - 郭宇 · [思维模型](https://qingshanliuci.github.io/100-young-fire/郭宇/思维模型.html)（抽象层 · OS 三层架构）
+- 孙宇晨 · [人生路线图](https://qingshanliuci.github.io/100-young-fire/孙宇晨/人生路线图.html)（事实层 · 7 阶段 + 22 处勘误）
+- 孙宇晨 · [思维模型 · 普通人速读版](https://qingshanliuci.github.io/100-young-fire/孙宇晨/思维模型.html)（抽象层默认 · 3 个能学 + 3 个学不来 · 5 分钟扫完）
+- 孙宇晨 · [思维模型 · 深度版](https://qingshanliuci.github.io/100-young-fire/孙宇晨/思维模型_深度版.html)（抽象层进阶 · 6 类决策模式集 + 叠加矩阵 + vs 郭宇横向对比）
 
 > 中文路径在浏览器地址栏会显示成 `%E9%83%AD%E5%AE%87` 这种 URL 编码字符，能正常打开，只是不太好看。后续可能改用纯英文路径优化分享体验。
 
@@ -88,4 +92,4 @@
 
 ---
 
-更新于 2026-05-11 · 第 1 / 100 案例完成
+更新于 2026-05-11 · 第 2 / 100 案例完成

@@ -1,0 +1,1244 @@
+<!-- INPUT: 7 维度采集 + 24 处勘误清单 + 14 个决策节点 + 74 个财富节点 + 21 条硬证据（孙宇晨案例 / 02 号） -->
+<!-- OUTPUT: 可视化人生路线图 · 事实层档案 · 暗色单栏 · 含勘误诚信凭证 · 5 分钟读完 -->
+<!-- POS: 100 财富自由年轻人 · 第 02 号案例 · 阶段 3 事实层 HTML 终稿（对标郭宇视觉模板） -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>孙宇晨 · 人生路线图</title>
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --card: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #e0e0e0;
+    --text-dim: #888;
+    --accent-blue: #4a9eff;
+    --accent-green: #4aff8a;
+    --accent-orange: #ff9f4a;
+    --accent-purple: #b44aff;
+    --accent-red: #ff4a6a;
+    --accent-cyan: #4af0ff;
+    --accent-yellow: #ffd85a;
+    --tag-1st: #2d5a1e;
+    --tag-1st-text: #7fff5a;
+    --tag-2nd: #5a4a1e;
+    --tag-2nd-text: #ffd85a;
+    --tag-warn: #5a1e1e;
+    --tag-warn-text: #ff8a8a;
+    --tag-special: #2a1a4a;
+    --tag-special-text: #c89eff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0;
+  }
+  .hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(180deg, #1a1a2e 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 {
+    font-size: 2.4em;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .hero .en-name {
+    font-size: 1.1em;
+    color: var(--text-dim);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+  }
+  .hero .subtitle {
+    color: var(--text-dim);
+    font-size: 0.95em;
+    margin: 0 auto 18px;
+    max-width: 720px;
+    line-height: 1.7;
+  }
+  .hero .tags {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .hero .tag {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    color: var(--text-dim);
+  }
+  .legend {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 20px 0;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 0.82em;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-dim);
+  }
+  .src-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 0.72em;
+    font-weight: 500;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+  .src-1 { background: var(--tag-1st); color: var(--tag-1st-text); }
+  .src-2 { background: var(--tag-2nd); color: var(--tag-2nd-text); }
+  .src-warn { background: var(--tag-warn); color: var(--tag-warn-text); }
+  .src-special { background: var(--tag-special); color: var(--tag-special-text); }
+
+  .timeline {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px 40px;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .phase { margin-bottom: 40px; }
+  .phase-title {
+    position: relative;
+    padding-left: 56px;
+    margin-bottom: 16px;
+  }
+  .phase-title h2 {
+    font-size: 1.15em;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .phase-title .dot {
+    position: absolute;
+    left: 19px;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid;
+    background: var(--bg);
+  }
+
+  .event {
+    position: relative;
+    padding-left: 56px;
+    margin-bottom: 14px;
+  }
+  .event::before {
+    content: '';
+    position: absolute;
+    left: 25px;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .event.special::before {
+    background: var(--accent-purple);
+    box-shadow: 0 0 0 3px rgba(180, 74, 255, 0.2);
+  }
+  .event.target::before {
+    background: var(--accent-cyan);
+    box-shadow: 0 0 0 3px rgba(74, 240, 255, 0.2);
+  }
+  .event.warn::before {
+    background: var(--accent-red);
+    box-shadow: 0 0 0 3px rgba(255, 74, 106, 0.2);
+  }
+  .event-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    transition: border-color 0.2s;
+  }
+  .event-card:hover { border-color: #444; }
+  .event-card.special-card { border-left: 3px solid var(--accent-purple); }
+  .event-card.target-card { border-left: 3px solid var(--accent-cyan); }
+  .event-card.warn-card { border-left: 3px solid var(--accent-red); }
+  .event-time {
+    font-size: 0.8em;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .event-title {
+    font-size: 0.95em;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .event-detail {
+    font-size: 0.85em;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+  .event-source {
+    margin-top: 6px;
+    font-size: 0.75em;
+    color: #555;
+  }
+  .event-marker {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 0.72em;
+    font-weight: 500;
+    background: var(--tag-special);
+    color: var(--tag-special-text);
+  }
+  .event-marker.target { background: rgba(74, 240, 255, 0.15); color: var(--accent-cyan); }
+  .event-marker.warn { background: rgba(255, 74, 106, 0.15); color: var(--accent-red); }
+
+  .dual-version {
+    margin-top: 8px;
+    border-top: 1px dashed #2a2a2a;
+    padding-top: 8px;
+    font-size: 0.82em;
+    line-height: 1.55;
+  }
+  .dual-version .v-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .dual-version .v-label {
+    flex-shrink: 0;
+    font-weight: 500;
+    min-width: 78px;
+  }
+  .dual-version .v-self { color: var(--accent-yellow); }
+  .dual-version .v-reg { color: var(--accent-red); }
+
+  .summary-box {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+  .summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .summary-card h3 {
+    font-size: 1em;
+    margin-bottom: 16px;
+    color: var(--accent-cyan);
+  }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .summary-item { font-size: 0.85em; }
+  .summary-item .label {
+    color: var(--text-dim);
+    font-size: 0.78em;
+    margin-bottom: 2px;
+  }
+  .summary-item .value { font-weight: 500; }
+  .summary-item .value-sub {
+    font-size: 0.78em;
+    color: var(--text-dim);
+    margin-top: 1px;
+  }
+
+  /* 勘误章节（孙宇晨核心模块，比郭宇重 6 倍） */
+  .correction-box {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+  .correction-card {
+    background: #161313;
+    border: 1px solid #3a2020;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+  }
+  .correction-card h3 {
+    font-size: 1.05em;
+    margin-bottom: 6px;
+    color: var(--accent-red);
+    letter-spacing: 0.02em;
+  }
+  .correction-card .corr-sub {
+    font-size: 0.82em;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+    line-height: 1.55;
+  }
+  .corr-cat {
+    margin-bottom: 18px;
+  }
+  .corr-cat:last-child { margin-bottom: 0; }
+  .corr-cat-head {
+    font-size: 0.92em;
+    font-weight: 600;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #2a2020;
+  }
+  .corr-cat-head.A { color: var(--accent-green); }
+  .corr-cat-head.B { color: var(--accent-yellow); }
+  .corr-cat-head.C { color: var(--accent-red); }
+  .corr-cat-head.D { color: var(--accent-purple); }
+  .corr-cat-head .cnt {
+    font-size: 0.75em;
+    color: var(--text-dim);
+    margin-left: 4px;
+    font-weight: 400;
+  }
+  .corr-item {
+    background: #1a1515;
+    border-left: 2px solid #3a2020;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    font-size: 0.83em;
+    line-height: 1.55;
+  }
+  .corr-item:last-child { margin-bottom: 0; }
+  .corr-item.A { border-left-color: var(--accent-green); }
+  .corr-item.B { border-left-color: var(--accent-yellow); }
+  .corr-item.C { border-left-color: var(--accent-red); }
+  .corr-item.D { border-left-color: var(--accent-purple); }
+  .corr-title {
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .corr-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 3px;
+  }
+  .corr-row .lbl {
+    flex-shrink: 0;
+    color: var(--text-dim);
+    font-size: 0.92em;
+    min-width: 60px;
+  }
+  .corr-default { color: var(--accent-green); }
+  .corr-alt { color: var(--accent-yellow); }
+  .corr-rejected { color: #999; text-decoration: line-through; opacity: 0.7; }
+  .corr-uncert { color: var(--accent-red); }
+  .corr-meta {
+    font-size: 0.78em;
+    color: #666;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  /* 一句话哲学 */
+  .quote-box {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+  .quote-block {
+    background: #1a1a25;
+    border-left: 3px solid var(--accent-cyan);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+  }
+  .quote-block .q-text {
+    font-size: 0.95em;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .quote-block .q-meta {
+    margin-top: 8px;
+    font-size: 0.75em;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .quote-block.q-2 { border-left-color: var(--accent-orange); background: #1f1a18; }
+  .quote-block.q-3 { border-left-color: var(--accent-red); background: #211618; }
+
+  .section-divider {
+    max-width: 800px;
+    margin: 50px auto 30px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.78em;
+    letter-spacing: 0.3em;
+  }
+  .section-divider::before,
+  .section-divider::after {
+    content: '';
+    display: inline-block;
+    width: 60px;
+    height: 1px;
+    background: var(--border);
+    vertical-align: middle;
+    margin: 0 16px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px 40px;
+    color: #444;
+    font-size: 0.78em;
+    border-top: 1px solid var(--border);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.8em; }
+    .hero .subtitle { font-size: 0.85em; }
+    .summary-grid { grid-template-columns: 1fr; }
+    .timeline::before { left: 18px; }
+    .phase-title { padding-left: 42px; }
+    .phase-title .dot { left: 9px; width: 16px; height: 16px; }
+    .event { padding-left: 42px; }
+    .event::before { left: 15px; }
+    .dual-version .v-row { flex-direction: column; gap: 2px; }
+    .dual-version .v-label { min-width: auto; }
+    .corr-row { flex-direction: column; gap: 2px; }
+    .corr-row .lbl { min-width: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>孙宇晨</h1>
+  <div class="en-name">Justin Sun</div>
+  <div class="subtitle">
+    1990 青海西宁出生 → 2007 第九届新概念一等奖加分进北大 → 2013 转身区块链 →
+    2017 波场 ICO（中国 9.4 禁令前 2 天）→ 2019 巴菲特午餐 →
+    2021 格林纳达驻 WTO 大使 → 2023 SEC 起诉 →
+    2024 入股特朗普家族 WLFI 7500 万美元 → 2026 SEC 和解（公司认罚 / 个人零罚款）
+  </div>
+  <div class="tags">
+    <span class="tag">波场 TRON 创始人</span>
+    <span class="tag">HTX 顾问</span>
+    <span class="tag">加密亿万富翁</span>
+    <span class="tag">福布斯 2025 · 85 亿美元</span>
+    <span class="tag">彭博 2025 · 124 亿美元</span>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><span class="src-tag src-1">一手</span> 本人自述 / 监管文件 / 链上数据</div>
+  <div class="legend-item"><span class="src-tag src-2">二手</span> 正规媒体多源一致</div>
+  <div class="legend-item"><span class="src-tag src-warn">⚠️</span> 多源冲突 / 未验证</div>
+  <div class="legend-item"><span class="src-tag src-special">⚡ 🎯</span> 特殊节点</div>
+</div>
+
+<!-- ═══════ 人生路线图（7 阶段时间线） ═══════ -->
+
+<div class="timeline">
+
+<!-- ── 第 1 阶段：文学青年起点 ── -->
+<div class="phase">
+  <div class="phase-title">
+    <div class="dot" style="border-color: var(--accent-blue);"></div>
+    <h2 style="color: var(--accent-blue);">① 文学青年起点 · 1990—2007</h2>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">1990 年 7 月 30 日</div>
+      <div class="event-title">出生于青海省西宁市，祖籍山东青岛</div>
+      <div class="event-detail">普通家庭，非富二代。约 4 岁随家迁广东惠州，父亲入惠州市规划局，母亲任《惠州日报》记者——典型工薪知识分子家庭。</div>
+      <div class="event-source"><span class="src-tag src-2">二手</span> 维基百科 · 21财经 · 网易（多源一致，无身份证一手）</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">高中期间</div>
+      <div class="event-title">父母离异 · 母亲改嫁意大利 · 父亲长期酗酒</div>
+      <div class="event-detail">家庭破碎，孙宇晨寄宿学校。高二总分常徘徊在 400 多分（三本线上下），数学物理只考二三十分被迫转文科。</div>
+      <div class="event-source"><span class="src-tag src-2">二手</span> 21财经 · 观察者网</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2003—2007 · 连投 4 届</div>
+      <div class="event-title">连续 3 届新概念预赛落败 · 第九届现场作文一等奖</div>
+      <div class="event-detail">第六、七、八届新概念全部初赛被刷；第九届把第八届的三份原稿原封投出，意外入围；现场作文题《从这里出发，最远》拿到一等奖。常规高考通道几乎走不通时，他选择了一个低概率高赔率的非常规通道。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> 澎湃专访 + 多源（新浪教育 / 中新网 / 文汇报）</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2007 年 9 月</div>
+      <div class="event-title">入北京大学中文系（高考加 20 分）</div>
+      <div class="event-detail">高考 650 分（距北大线差 3 分），靠新概念一等奖加 20 分录取。把 6 个月的分数从 459 拉到 650。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> 澎湃专访 <span class="src-tag src-2">二手</span> 21财经 / 网易</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 第 2 阶段：北大愤青 ── -->
+<div class="phase">
+  <div class="phase-title">
+    <div class="dot" style="border-color: var(--accent-green);"></div>
+    <h2 style="color: var(--accent-green);">② 北大愤青 · 2007—2011</h2>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2008 年</div>
+      <div class="event-title">中文系 → 转入历史系</div>
+      <div class="event-detail">"宁当鸡头，不做凤尾"——主动放弃中文系（北大文科第一大系）的就业溢价，去历史系冲绩点排名。把"第一名"作为下一阶段名校研究生录取的可量化资产。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> 21财经 + 维基百科</div>
+    </div>
+  </div>
+
+  <div class="event special">
+    <div class="event-card special-card">
+      <div class="event-time">2010 年 · 学生会主席竞选</div>
+      <div class="event-title">竞选当天"消失" · 落选后写文章批校方"陷害"<span class="event-marker">⚡ 必败对抗 + 受害者剧本</span></div>
+      <div class="event-detail">独立候选人选北大学生会主席本就胜率为零。竞选当天"消失"，结束后才出现，公开声明被"校方限制人身自由"。落选后获得了远超学生会主席本身的曝光度——"挑战权威的北大愤青"。校方越打压越对剧本有利。</div>
+      <div class="event-source"><span class="src-tag src-2">二手</span> 21财经 / 新浪科技 / Medium 长文（"被校方限制自由"为本人单方说法，校方未确认）</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2010 年</div>
+      <div class="event-title">《南方周末》实习 · 仿胡适创办《每周评论》</div>
+      <div class="event-detail">人人网开《每周评论》专栏（仿胡适 1918 年同名刊物）。<strong>每篇评论的落款都注明"孙宇晨于《南方周末》新闻部"</strong>——把南周品牌嫁接到个人写作上。报社领导提醒去掉这一落款"但是没什么效果"。这是后续机构背书寄生模式的原型。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> 21财经详细记录 + 同期南周实习媒体人回忆佐证</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2011 年 6 月 23 日</div>
+      <div class="event-title">与蒋方舟同登《亚洲周刊》封面《九零后先锋改变中国》</div>
+      <div class="event-detail">封面发行后立即将人人网用户名改为"孙宇晨｜亚洲周刊封面人物"。代表北大赴荷兰海牙参加世界模拟联合国大会。同时拿到斯坦福、UCLA、达特茅斯、哥大、宾大五所名校录取，最终选宾大。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> 张洁平撰稿（事后承认"未细致辨析处理"，让叙述被本人论述呈现）</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2011 年</div>
+      <div class="event-title">北大历史系第一名提前毕业 · 文学学士（B.A.）</div>
+      <div class="event-detail">同时获第九届北大演讲十佳。北大入学渠道（新概念加分）+ 转系（赛道套利）+ 学生会失踪（注意力套利）+ 南周落款（机构背书寄生）四步连续完成。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> 维基百科 + 多源专访一致</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 第 3 阶段：海外华人写手 → 区块链 ── -->
+<div class="phase">
+  <div class="phase-title">
+    <div class="dot" style="border-color: var(--accent-orange);"></div>
+    <h2 style="color: var(--accent-orange);">③ 海外华人写手 → 区块链 · 2011—2013</h2>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2011 年 9 月</div>
+      <div class="event-title">入读宾夕法尼亚大学硕士 ⚠️ 专业归属未官方核实</div>
+      <div class="event-detail">UPenn 期间首次接触并买入比特币（具体金额未公开）。专业说法多源不一致：维基百科 / Coinspeaker = <strong>东亚研究</strong>（多源更多），TheOrg = Political Economy，搜狗百科 = 法律学。倾向"东亚研究"但<strong>未拿到 UPenn 注册档案一手</strong>。</div>
+      <div class="event-source"><span class="src-tag src-warn">⚠️</span> 三种说法并存，无 UPenn 官方源</div>
+    </div>
+  </div>
+
+  <div class="event special">
+    <div class="event-card special-card">
+      <div class="event-time">2011 年秋 · 抵美约 1 个月</div>
+      <div class="event-title">创办《新新青年》 · 创刊号《老兵不死，一九四九》<span class="event-marker">⚡ 人设硬切换点</span></div>
+      <div class="event-detail">《新新青年》仿陈独秀 1915 年《新青年》。创刊号刊登本人撰写的《老兵不死，一九四九》。<strong>普林斯顿沈丹琪发长博文逐句对比，指控该文抄袭其 2010 年《一九八九的一百万》</strong>，要求公开道歉。编辑部集体认抄并道歉；<strong>孙宇晨本人单独发表《我的最终回应》，否认抄袭，称两文只是"风格相似"</strong>。GQ 中国引匿名圈内撰稿人："如果这都不算抄袭，那世界上就不存在抄袭。"</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> 沈诞琦原文（独立中文笔会存档）+ 编辑部声明 + 本人回应均可查</div>
+      <div class="dual-version">
+        <div class="v-row"><span class="v-label v-self">2011 之前：</span>"少年陈独秀 + 胡适"知识青年 / 愤青评论员</div>
+        <div class="v-row"><span class="v-label v-reg">2011 之后：</span>"年轻马云 + 巴菲特"创业者 / 区块链布道者</div>
+        <div class="v-row" style="color:var(--text-dim);font-size:0.78em;margin-top:4px;">切换方式不缝合，直接替换。<strong>孙宇晨在人人网此后永久沉默至今</strong>。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2013 年末</div>
+      <div class="event-title">加入 Ripple Labs 任大中华区首席代表（中国第一员工）</div>
+      <div class="event-detail">"中国留学生在美国终究太边缘，融不进核心圈，只有回国我才能赢。" 一个多月后即以"硅谷独角兽中国一把手"身份回国——"首席代表"在 Ripple 内部分量并不重，他是中国第一个员工，但中国市场当时基本空白。这是一次跨地理身份套利。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> Ripple 任职多源确认（"放弃法学博士"为本人单方说法，未见录取证明）</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 第 4 阶段：创业者 + 布道者 ── -->
+<div class="phase">
+  <div class="phase-title">
+    <div class="dot" style="border-color: var(--accent-purple);"></div>
+    <h2 style="color: var(--accent-purple);">④ 创业者 + 布道者 · 2013—2017</h2>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2014 年 5 月</div>
+      <div class="event-title">创办锐波科技 · 主体在广州（非北京）</div>
+      <div class="event-detail">广州锐波信息技术有限公司，孙宇晨 100% 持股，注册资本 100 万人民币。获 IDG 资本李丰主导的"90 后投资基金"约 100 万美元投资（IDG 内部分歧很大，李丰用 Partner 直投权强行通过）。"达沃斯全球青年领袖"头衔。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> 国家企业信用信息公示系统 / 企查查（推翻"锐波在北京"的常见说法）</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2014.10 — 2015.04</div>
+      <div class="event-title">陪我 APP 上线 · A 轮估值 10 亿人民币</div>
+      <div class="event-detail">把锐波天下（北京）改造成陪我欢乐（北京），主推语音陌生人社交 APP "陪我"。联合创始人为同道大叔（蔡跃栋）。光信资本数百万天使 → A 轮信中利领投、IDG / 中科 / 清控科创跟投，<strong>千万美金级 A 轮，估值 10 亿人民币级</strong>。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> 36氪 / 新浪财经多源一致</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2015 年 3 月</div>
+      <div class="event-title">湖畔大学第一期录取 · 唯一 90 后</div>
+      <div class="event-detail">马云担任校长。同月入选福布斯中国 2015 年 30 位 30 岁以下创业者；2017 年再入福布斯 30 Under 30 中国 + 30 Under 30 亚洲消费科技类。光环加冕完成。2017 年向湖畔大学捐赠 150 万美元。</div>
+      <div class="event-source"><span class="src-tag src-2">二手</span> 21财经 / 福布斯 / 未央网</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2016.06.17</div>
+      <div class="event-title">陪我 APP A 轮融资 6000 万人民币</div>
+      <div class="event-detail">IDG 资本、信中利资本、清控科创、时尚资本参投。表面赛道（社交 APP）跑现金流和光环，地下赛道（区块链）做资产储备——典型双轨并行。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> 36氪</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 第 5 阶段：ICO 鼎盛 + 全球化营销 ── -->
+<div class="phase">
+  <div class="phase-title">
+    <div class="dot" style="border-color: var(--accent-red);"></div>
+    <h2 style="color: var(--accent-red);">⑤ ICO 鼎盛 + 全球化营销 · 2017—2019</h2>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2017 年 7 月</div>
+      <div class="event-title">在新加坡注册 TRON 基金会 · 卸任陪我 CEO</div>
+      <div class="event-detail">把"波场"和"陪我"做主体切割。同月卸任陪我 APP CEO。</div>
+      <div class="event-source"><span class="src-tag src-2">二手</span> 维基百科 / RBLT</div>
+    </div>
+  </div>
+
+  <div class="event target">
+    <div class="event-card target-card">
+      <div class="event-time">2017.08.31 — 09.02 · ICO（3 天）</div>
+      <div class="event-title">波场 TRON ICO 募资 ≈7000 万美元（15,200 BTC）<span class="event-marker target">🎯 时机套利：禁令前 2 天</span></div>
+      <div class="event-detail">单价 $0.0019 / TRX，售出约 400 亿枚（占总供应 40%）。<strong>9 月 4 日中国央行就发布"九四公告"全面禁止 ICO ——晚 2 天财富轨迹完全改写</strong>。TRON 基金会获 34% 总供应，孙宇晨另控制约 10%（合计约 45%）。陪我（北京）科技分得 10%——表面业务用户基础一次性导入地下赛道。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> Wikipedia / Bloomberg / Reuters / CoinCodex 多源金额一致（孙个人从基金会分配中获得多少 TRX <strong>从未公开</strong>）</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2018 年 1 月 4-5 日</div>
+      <div class="event-title">TRX 触历史峰值 ~$0.30 · 流通市值约 200 亿美元</div>
+      <div class="event-detail">从 2017.12.05 的 0.014 元拉到 0.33 元，20 天 23 倍。基金会持仓账面值高峰约 70 亿美元。<strong>2018.01.05 网传孙宇晨亲自抛售 60 亿枚 TRX 套现 3 亿美元</strong>，次日 TRX 跌 20%。本人否认大规模抛售。</div>
+      <div class="event-source"><span class="src-tag src-2">二手</span> CoinMarketCap / BitDegree / 新浪财经（"3 亿美元套现"为社区指控，金额未确认）</div>
+    </div>
+  </div>
+
+  <div class="event warn">
+    <div class="event-card warn-card">
+      <div class="event-time">2018 年 1 月 · 白皮书抄袭门</div>
+      <div class="event-title">Juan Benet 公开指控波场白皮书抄 IPFS / Filecoin 9 页 · V 神：abject plagiarism</div>
+      <div class="event-detail">BuzzFeed News 委托第三方查重平台 Quetext 对比波场和 Filecoin 白皮书，<strong>算法相似度 &gt;15%</strong>。康奈尔 Emin Gün Sirer 称"赤裸裸的抄袭"。孙宇晨"商业社会讨论抄袭无意义"——<strong>默默从官网撤下白皮书</strong>，改成 3 个无关紧要的技术文档。波场近一年没有白皮书。市值从 $18B 巅峰跌至约 $7B。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> Juan Benet / V 神原推 + BuzzFeed 第三方算法证据 + 多家媒体独立验证</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2018 年 6 月 18 日</div>
+      <div class="event-title">以约 1.4 亿美元收购 BitTorrent</div>
+      <div class="event-detail">"BitTorrent 是去中心化互联网的耶路撒冷。" 给空气币找一个真实资产壳——一年后（2019.01.28）BTT 在币安 Launchpad 首发，<strong>15 分钟售罄募资 720 万美元</strong>，10 天暴涨 10 倍，市值一度 3.05 亿美元（已超过收购成本）。典型"买壳 + 二次发币"循环。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> TechCrunch / Variety / Hypebeast / Coinspeaker</div>
+      <div class="dual-version">
+        <div class="v-row"><span class="v-label v-self">✅ 默认</span><span class="corr-default">1.4 亿美元</span>（含承担债务 / 股权置换）</div>
+        <div class="v-row"><span class="v-label v-reg">🟡 副值</span><span class="corr-alt">1.26 亿美元</span>（加州州务卿存档文件 · 实际现金）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="event target">
+    <div class="event-card target-card">
+      <div class="event-time">2019 年 6 月 3 日</div>
+      <div class="event-title">以 $4,567,888（约 3,154 万人民币）拍下巴菲特慈善午餐<span class="event-marker target">🎯 极限注意力定价</span></div>
+      <div class="event-detail">破纪录刷新此前 18 届最高（上一年 330 万美元）。eBay 慈善拍卖（GLIDE Foundation），2019.05.26 开拍-05.31 结拍。原定 2019.07.25 纽约 Smith &amp; Wollensky 牛排馆。<strong>巴菲特此前称比特币为 "probably rat poison squared"（平方级别老鼠药）</strong>。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> eBay 公告 + GLIDE 公告 + PR Newswire</div>
+    </div>
+  </div>
+
+  <div class="event warn">
+    <div class="event-card warn-card">
+      <div class="event-time">2019 年 7 月 23 日 · 戏剧性反转</div>
+      <div class="event-title">巴菲特午餐推迟 · 双层叙事冲突<span class="event-marker warn">⚠️ 自述 vs 监管</span></div>
+      <div class="event-detail">TRX 当日跌 19%。"肾结石"和"被边控"在时间上完全重合。最大可能解释：边控触发了取消，肾结石是对外说辞。</div>
+      <div class="dual-version">
+        <div class="v-row"><span class="v-label v-self">🟢 本人版</span>微博公告 <strong>"突发肾结石"</strong> · 当晚旧金山开直播自证身在美国</div>
+        <div class="v-row"><span class="v-label v-reg">🔴 监管版</span><strong>财新</strong>证实"被列入边控名单"；21 世纪经济报道指"涉嫌非法集资 / 洗钱 / 涉黄涉赌"，互金整治办建议公安立案；<strong>Coindesk 引北京媒体</strong>"Sun 处于中国政府控制下，无法离境"</div>
+      </div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> 本人微博 <span class="src-tag src-1">一手</span> 财新 + 21 世经 + Coindesk（指控未法庭证实）</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2019 年 7 月 25 日凌晨</div>
+      <div class="event-title">微博公开道歉信："过度营销，深表歉意"</div>
+      <div class="event-detail">"巴菲特午餐源于我对巴菲特的崇敬和对慈善的热爱……由于我言行不成熟、年少轻狂、不加节制的口无遮拦，渐渐演化成一场失控失败的过度营销。" <strong>罕见地公开道歉——把放鸽子归因为"健康/态度"等可恢复的软变量，不承认监管层面问题</strong>。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> 本人微博原文 / Coindesk 转载</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2018.07 — 2019.07</div>
+      <div class="event-title">陪我 APP 因"涉黄音视频"被新华社点名 → 下架 → 解散</div>
+      <div class="event-detail">2018 年 6 月被新华社直接点名批评"涉黄音视频"，下架；2019 年 7 月公司决议解散。"陪我"主体被切割，孙宇晨与公司绑定脱钩。</div>
+      <div class="event-source"><span class="src-tag src-2">二手</span> The Verge / SCMP / 凤凰新闻 / 澎湃新闻</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 第 6 阶段：监管套利 + 持续造势 ── -->
+<div class="phase">
+  <div class="phase-title">
+    <div class="dot" style="border-color: var(--accent-cyan);"></div>
+    <h2 style="color: var(--accent-cyan);">⑥ 监管套利 + 持续造势 · 2019—2023</h2>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2020 年 1 月 23 日</div>
+      <div class="event-title">巴菲特午餐补行 · 实际饭费 $515.05</div>
+      <div class="event-detail">奥马哈乡村俱乐部，孙带 Charlie Lee（莱特币）、eToro CEO 等同行。送巴菲特两台三星 Galaxy Fold（装 1 个 BTC + 1,930,830 个 TRX，比特币巴菲特日期生日组合）。孙发推："$4.56 MIL for a $515.05 dinner was money well spent!" 巴菲特至今未公开改变其对加密货币的负面评价。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> CoinDesk / CNBC / SCMP</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2020 年 11 月 6 日</div>
+      <div class="event-title">在《学习时报》发表区块链文章 ⚠️ "中央党校客座教授"无原始来源</div>
+      <div class="event-detail">中央党校机关报《学习时报》刊文《区块链技术给金融服务带来信任革命》，被学习强国 App 转载。2021.07.27 列为校级课题"基于区块链技术的社会治理机制创新研究"副组长。<strong>"客座教授""教学职位"找不到任何可信来源</strong>，业界普遍认为是宣传夸大。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> 学习时报刊文可查 <span class="src-tag src-warn">⚠️</span> "客座教授"未验证</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2021 年 3 月</div>
+      <div class="event-title">JUST NFT 基金 + 7840 万美元贾科梅蒂 + 2000 万美元毕加索</div>
+      <div class="event-detail">JUST NFT 基金专投 100 万美元以上蓝筹艺术品 NFT 化。Christie's Beeple 拍卖以 $69M 出价仅 20 秒败给 Vignesh "Metakovan"。同月在 Christie's 伦敦：<strong>2000 万美元毕加索《Femme nue couchée au collier》(1932)</strong> + 200 万美元安迪·沃霍尔《Three Self Portraits》。11 月 Sotheby's 纽约 Macklowe Collection <strong>7840 万美元贾科梅蒂《Le Nez》(1947)</strong>，捐赠给 APENFT 基金会（账面捐出，实际控制权仍在自己）。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> Sotheby's / Christie's 官方 + ARTnews / Bloomberg</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2021 年 6 月</div>
+      <div class="event-title">2800 万美元拍下 Blue Origin 首次载人航班席位 · 首航当日"档期冲突"放弃</div>
+      <div class="event-detail">2021.07.20 首飞实施时身份未公开。2021.12.22 才公开承认是中标者。资金捐 Blue Origin Club for the Future 基金会，分给 19 个航天慈善机构。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> Washington Post / CCN</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2021 年 9 月</div>
+      <div class="event-title">链上持仓估值高峰 71 亿美元（Arkham 监控）</div>
+      <div class="event-detail">按 Arkham 监控的当时已识别钱包计算。基金会 + APENFT + 多个公开关联钱包之和。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> Arkham Intelligence 链上数据</div>
+    </div>
+  </div>
+
+  <div class="event target">
+    <div class="event-card target-card">
+      <div class="event-time">2021 年 12 月 17 日</div>
+      <div class="event-title">被格林纳达政府任命为 WTO 大使及常驻代表（日内瓦）<span class="event-marker target">🎯 法律辖区套利</span></div>
+      <div class="event-detail">投资入籍金额估约 15-35 万美元（律师推算）。同步辞去波场基金会 CEO——把"个人法律责任"和"公司主体"做物理切割。WTO 明确："外交豁免仅由瑞士赋予，仅在瑞士领土生效。" <strong>2022.06 授他身份的 NNP 政党败选下台后被实质召回</strong>，但孙的法律团队仍在诉讼中主张外交豁免（被 Protos 揭穿）；<strong>2023.03.30 GBN 报道身份被撤回</strong>——刚好与 SEC 起诉同月。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> 中国日报 + NOW Grenada + Protos + Decrypt</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2022.05.05 → 06.14</div>
+      <div class="event-title">USDD 上线（Terra 同月崩盘）· 部署 20 亿美元捍卫锚定</div>
+      <div class="event-detail">TRON 上算法稳定币 USDD，TRON DAO Reserve 提供 30% 年化"无风险"利率（与 Terra UST 机制相似）。2022.06 跌至 0.98、2022.11 跌至 0.97。后改为超额抵押模式（目标 200%）。2025.01 升级 USDD 2.0 完全加密资产抵押。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> BusinessWire 公告 / TheBlock / CoinDesk</div>
+    </div>
+  </div>
+
+  <div class="event warn">
+    <div class="event-card warn-card">
+      <div class="event-time">2022 年 10 月</div>
+      <div class="event-title">通过 About Capital 接手火必（Huobi）· 本人最初否认<span class="event-marker warn">⚠️ 收购金额至今不透明</span></div>
+      <div class="event-detail">Huobi 公告控股股东将股份转让给 About Capital 旗下基金。WuBlockchain 等多源指证孙宇晨为核心投资人；<strong>孙公开否认主导收购</strong>，后任 HTX 全球咨询委员会顾问。火币改"火必"（"必"取意必胜）→ 2023.09.13 TOKEN2049 期间正式更名 HTX。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> WuBlockchain + Huobi 公告 + The Block</div>
+      <div class="dual-version">
+        <div class="v-row"><span class="v-label v-self">报道额</span><span class="corr-default">10 亿美元</span>（吴说 / Blockworks）</div>
+        <div class="v-row"><span class="v-label v-reg">彭博估</span><span class="corr-alt">20-30 亿美元</span>（李林原本只想卖 60% 股权）</div>
+        <div class="v-row"><span class="v-label v-self">官方</span><span class="corr-uncert">未披露</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="event warn">
+    <div class="event-card warn-card">
+      <div class="event-time">2023 年 3 月 22 日</div>
+      <div class="event-title">SEC 起诉 · 案号 1:23-cv-02433 · 60 万次刷量交易</div>
+      <div class="event-detail">U.S. District Court SDNY，主审法官 Edgardo Ramos。被告：Justin Sun, Tron Foundation Limited, BitTorrent Foundation Ltd., Rainberry, Inc.（前 BitTorrent）+ 8 位明星代言人（Lindsay Lohan, Jake Paul, Soulja Boy, Akon, Ne-Yo, Lil Yachty, Austin Mahone, Michele Mason）。指控：未注册证券发行 + 60 万次 wash trading（2018.04-2019.02 日刷 450-740 万 TRX）+ 付费请明星无披露推广 TRX/BTT。SEC 起诉前 48 小时，孙宇晨在推特放话"以自己的 15 亿美元收购瑞信"。当日反击：连发 3 条推特"美 SEC 起诉缺乏证据"，TRX 当日跌 13%。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> SEC 起诉书 PDF + CourtListener + Press Release 2023-59</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2023 年 4 月</div>
+      <div class="event-title">受邀参加香港 Web3 嘉年华 · 反向扩张</div>
+      <div class="event-detail">SEC 起诉同期反向收购火必扩张 + 扬言收购瑞信 + 重返中国大陆周边合规舞台。"被攻击越强 → 扩张越激进"。2023.11 Poloniex 被黑客攻击损失 1.2 亿美元，悬赏 650 万美元让黑客归还剩余资金。</div>
+      <div class="event-source"><span class="src-tag src-2">二手</span> 多源</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 第 7 阶段：政治套利 + 互诉 ── -->
+<div class="phase">
+  <div class="phase-title">
+    <div class="dot" style="border-color: var(--accent-yellow);"></div>
+    <h2 style="color: var(--accent-yellow);">⑦ 政治套利 + 互诉 · 2023—2026</h2>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2024 年 11 月 20 日</div>
+      <div class="event-title">624 万美元（含佣金）Sotheby's 拍下 Cattelan《Comedian》香蕉</div>
+      <div class="event-detail">落槌价 520 万美元，起拍 80 万美元。竞价 7 分钟与 6 名竞拍者较量。<strong>用 TRX（自家代币）支付</strong>。作品本体仅含一卷胶带 + 安装说明 + 真品证书（香蕉本体由总部门外水果摊提供，应离地恰好 160cm）。<strong>2024.11.29 在香港半岛酒店召开新闻发布会当众吃掉这根 624 万美元的香蕉</strong>。售予孙时 TRX 全市值约 120 亿美元，他个人净资产被报为 15 亿美元。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> Sotheby's 官方 + The Art Newspaper + NPR + ARTnews</div>
+    </div>
+  </div>
+
+  <div class="event target">
+    <div class="event-card target-card">
+      <div class="event-time">2024.11.21 → 2025.01.19 · 两次精准下注</div>
+      <div class="event-title">投 World Liberty Financial 累计 7500 万美元（特朗普家族）<span class="event-marker target">🎯 政治套利的极致</span></div>
+      <div class="event-detail">2024.11 WLFI 上线后冷淡（首日只卖出 6.1 亿枚 / 910 万美元）。<strong>2024.11.25 单笔 3000 万美元买入 WLFI 代币（通过火币关联钱包），重新点燃市场兴趣</strong>。2025.01.19（特朗普就职前一天）追加 4500 万美元。<strong>就职日 1.20 WLFI 公告增持 4.7 亿美元加密资产，含 470 万美元 TRX——TRX 首次纳入 WLFI 持仓</strong>。福布斯估算特朗普家族从孙的 7500 万美元投资中净赚约 4 亿美元。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> NBC / CBS / Fortune / 链上数据</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2024 年 12 月 4 日</div>
+      <div class="event-title">TRX 触历史新高 $0.4365 / TRX</div>
+      <div class="event-detail">超越 2018 年 1 月峰值 $0.30。流通市值再次突破 200 亿美元。2018-2024 长达 6 年熊市期间持续推出 BTT (2019)、USDD (2022)、APENFT (2021)、Huobi 收购 (2022) 维持市场关注度。两次峰值之间相隔 7 年，超长熊市生存能力。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> CoinGecko / CoinMarketCap / Coinbase</div>
+      <div class="dual-version">
+        <div class="v-row"><span class="v-label v-self">✅ 默认</span><span class="corr-default">$0.4365</span>（CoinGecko UTC+8）</div>
+        <div class="v-row"><span class="v-label v-reg">🟡 副值</span><span class="corr-alt">$0.4313</span>（BitDegree · 不同交易所瞬时差异）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2025.02.26 → 2026.03.05</div>
+      <div class="event-title">SEC 案进入和解通道 · 公司认罚 1000 万 / 个人零罚款</div>
+      <div class="event-detail">2025.02.26（特朗普就任后）SEC 与孙宇晨提交联合动议<strong>暂停诉讼"为达成潜在和解"</strong>——此举发生在他重金投资 WLFI 之后。2026.03.05 最终和解：仅 <strong>Rainberry 因 17(a)(3) 洗售认罚 1000 万美元；对孙宇晨本人、TRON Foundation、BitTorrent Foundation 全部撤诉（dismiss with prejudice 不可重提）</strong>。各方对指控不承认也不否认。8 名代言人中 6 人此前已支付总计约 $400K 罚金和解。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> SEC LR-26496 + The Block + CoinDesk</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2025 年 3 月</div>
+      <div class="event-title">登福布斯 2025 全球富豪榜首次上榜 · 估值 85 亿美元（第 353 位）</div>
+      <div class="event-detail">"40 岁以下白手起家"全球第 5 名。2025.05.05 福布斯封面故事："帮助特朗普家族赚到 4 亿美元的加密亿万富翁"。2025.08.10 彭博亿万富豪指数：净资产 124 亿美元（全球第 241 位）。三家估值差异巨大（85 亿 vs 124 亿 vs 链上 14 亿）的核心：福布斯 / 彭博用了 TRON 全部市值的部分折价；Arkham 只看链上确认钱包；<strong>真实数字无人能精确知道</strong>。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> Forbes 榜单 + Bloomberg Billionaires Index + Arkham</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2025 年 5 月 22 日</div>
+      <div class="event-title">TRUMP 币顶级买家晚宴第一名 · 收陀飞轮腕表（限量 147 块）</div>
+      <div class="event-detail">华盛顿郊外 Trump National Golf Club。220 名顶级买家三周内累计投入 1.48 亿美元；前 25 名获私人 VIP 招待会 + 白宫专属导览，前 4 名获限量"特朗普陀飞轮腕表"（号称价值 10 万美元/块）。孙以 1860 万美元 TRUMP 持仓为榜一大哥。晚宴讲话："就在 100 天前，他们还在到处追捕加密货币人士……所有加密人聚集在美国做加密的事——这是我一辈子能想到的最好的事。"</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> Washington Post / CNN / CNBC + 链上 Arkham/Nansen</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2025 年 7 月 24 日</div>
+      <div class="event-title">Tron Inc.（NASDAQ: TRON）通过反向并购在纳斯达克敲钟</div>
+      <div class="event-detail">从 SEC 被告变为华尔街敲钟人。2025.07.11 公开宣布追加购买 1 亿美元 TRUMP memecoin。2025.05.01 Token 2049 迪拜峰会与特朗普次子 Eric Trump 同台壁炉对话；公布 WLFI 稳定币 USD1 将原生发行于波场链——<strong>"政治关系"转化为"业务订单"</strong>。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> Bloomberg / CNBC / TheBlock</div>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="event-card">
+      <div class="event-time">2025 年 8 月 3 日</div>
+      <div class="event-title">乘 Blue Origin NS-34 完成 2021 年 2800 万美元拍下的太空之旅（拖了 4 年）</div>
+      <div class="event-detail">New Shepard 第 34 次飞行 / 第 14 次载人。太空高度约 106 公里（66 英里），越过 Karman Line。X bio 自称 "Astronaut #712"。35 岁，史上最年轻华人商业宇航员之一。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> Blue Origin 官方 / Space.com / Cryptopolitan</div>
+    </div>
+  </div>
+
+  <div class="event warn">
+    <div class="event-card warn-card">
+      <div class="event-time">2025.09.04 → 2026.05.04 · 政治关系反转</div>
+      <div class="event-title">被特朗普家族拉黑 → 孙起诉 WLFI 欺诈 → WLFI 反诉孙诽谤</div>
+      <div class="event-detail">9.01 WLFI 上线（TGE）当天暴跌；<strong>9.04 特朗普家族将孙宇晨钱包地址列入黑名单，禁止其转移代币</strong>，并指控他通过抛售导致币价下跌（Nansen CEO 反驳：转账发生在跌价之后）。9.17 民主党议员 Jeff Merkley + Sean Casten 致信 SEC 主席 Paul Atkins，<strong>直接质疑：孙宇晨在特朗普家族控制的加密项目上的"巨额投资"是否影响了 SEC 暂停其案件的决定</strong>。2026.04.21 孙起诉 WLFI 欺诈（涉案 WLFI 代币历史峰值估值"超过 10 亿美元"）；2026.05.04 WLFI 反诉孙诽谤（指控其策划"焦土施压运动"、用 bot 攻击、做空 WLFI 自抬价格）。WLFI 较 8 月峰值跌 74%，跌至约 8 美分。</div>
+      <div class="event-source"><span class="src-tag src-1">一手</span> CBS / NBC / Fortune + 法庭文件 + Casten 国会信函</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /timeline -->
+
+<!-- ═══════ 关键数字 ═══════ -->
+<div class="summary-box">
+  <div class="summary-card">
+    <h3>关键数字 · 12 张硬事实卡</h3>
+    <div class="summary-grid">
+      <div class="summary-item">
+        <div class="label">出生</div>
+        <div class="value">1990-07-30 · 青海西宁</div>
+        <div class="value-sub">祖籍山东青岛 · ~4 岁迁惠州</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">第九届新概念一等奖</div>
+        <div class="value">北大加 20 分</div>
+        <div class="value-sub">连投 4 届 · 现场作文《从这里出发，最远》</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">波场 ICO 募资</div>
+        <div class="value">≈ 7000 万美元 / 15,200 BTC</div>
+        <div class="value-sub">9.4 禁令前 2 天 · 售出 400 亿 TRX (40%)</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">收购 BitTorrent</div>
+        <div class="value">1.4 亿美元（一说 1.26 亿）</div>
+        <div class="value-sub">Rainberry 收购完成 2018.06.18</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">巴菲特午餐</div>
+        <div class="value">$4,567,888</div>
+        <div class="value-sub">≈ 3,154 万人民币 · 实际饭费 $515.05</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">TRX 历史最高</div>
+        <div class="value">$0.4365 (2024-12-04)</div>
+        <div class="value-sub">2018.01 旧峰 $0.30 · 相隔 7 年再创新高</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">Cattelan 香蕉</div>
+        <div class="value">624 万美元（含佣金）</div>
+        <div class="value-sub">用 TRX 付款 · 11.29 当众吃掉</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">投 WLFI 累计</div>
+        <div class="value">7500 万美元</div>
+        <div class="value-sub">2024.11 三千万 + 2025.01 四千五百万</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">Blue Origin 太空票</div>
+        <div class="value">2800 万美元（2021）</div>
+        <div class="value-sub">2025.08.03 NS-34 完成飞行 · "Astronaut #712"</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">SEC 案号</div>
+        <div class="value">1:23-cv-02433</div>
+        <div class="value-sub">2023.03.22 起诉 → 2026.03.05 和解 · 公司 1000 万 / 个人零</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">福布斯 2025 / 彭博 2025</div>
+        <div class="value">85 亿 / 124 亿美元</div>
+        <div class="value-sub">⚠️ 链上可识别仅 ~14 亿（Arkham 2024.04）</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">@justinsuntron 粉丝</div>
+        <div class="value">≈ 390 万</div>
+        <div class="value-sub">⚠️ ~30% 被第三方判定假号 (CCN/SocialBlade)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider">勘误诚信凭证</div>
+
+<!-- ═══════ 勘误章节（核心模块·24 处分 4 类）═══════ -->
+<div class="correction-box">
+  <div class="correction-card">
+    <h3>交叉验证勘误清单 · 24 处</h3>
+    <div class="corr-sub">
+      孙宇晨档案的"自述 vs 客观"分裂强度远高于郭宇（郭宇 4 处勘误，孙 24 处）——这本身就是档案的核心信号。
+      按处理方式分四类：A 已修源文件，B 保留双版本，C 多源冲突无法裁决，D 来源池设计阶段错误（项目级遗产纠正）。
+      <strong>不回避、不评判，让事实自己说话。</strong>
+    </div>
+
+    <!-- A 类：已修源文件 -->
+    <div class="corr-cat">
+      <div class="corr-cat-head A">A 类 · 已修源文件笔误<span class="cnt">3 处</span></div>
+
+      <div class="corr-item A">
+        <div class="corr-title">A1 · 巴菲特午餐拍卖时间</div>
+        <div class="corr-row"><span class="lbl">原版本</span><span class="corr-rejected">"2018.06.03 拍下" / "2018.07.23 推迟"</span></div>
+        <div class="corr-row"><span class="lbl">✅ 正确</span><span class="corr-default">2019.06.03 拍下 / 2019.07.23 推迟</span></div>
+        <div class="corr-meta">否决理由：CNN / Fortune / Reuters / Coindesk URL 路径都是 /2019/07/23/...；上一届 2018 年 330 万美元由第三方中标。已 Edit 06-财富时间线.md。</div>
+      </div>
+
+      <div class="corr-item A">
+        <div class="corr-title">A2 · 巴菲特午餐人民币换算多算 10 倍</div>
+        <div class="corr-row"><span class="lbl">原版本</span><span class="corr-rejected">"$4,567,888（约 4567 万人民币）"</span></div>
+        <div class="corr-row"><span class="lbl">✅ 正确</span><span class="corr-default">$4,567,888 ≈ 3,154 万人民币（按 2019 年中汇率 6.91）</span></div>
+        <div class="corr-meta">否决理由：$4,567,888 × 6.91 ≈ 3155 万。"4567 万"是把美元数字直接当人民币。已 Edit 04-他人视角.md。</div>
+      </div>
+
+      <div class="corr-item A">
+        <div class="corr-title">A3 · 陪我 APP 下架时间宽口径</div>
+        <div class="corr-row"><span class="lbl">原版本</span><span class="corr-rejected">"2018.07-08 因'扰乱社会主义价值观'被中国政府下架"</span></div>
+        <div class="corr-row"><span class="lbl">✅ 正确</span><span class="corr-default">2018.07-2019.07 因"涉黄音视频"被新华社点名 → 下架 → 2019.07 公司决议解散</span></div>
+        <div class="corr-meta">否决理由：实际是连续 1 年的事件链，不是单点。已 Edit 06-财富时间线.md。</div>
+      </div>
+    </div>
+
+    <!-- B 类：保留双版本 -->
+    <div class="corr-cat">
+      <div class="corr-cat-head B">B 类 · 真实存在的多源差异<span class="cnt">8 处 · 两个数字都呈现</span></div>
+
+      <div class="corr-item B">
+        <div class="corr-title">B1 · BitTorrent 收购金额</div>
+        <div class="corr-row"><span class="lbl">✅ 默认</span><span class="corr-default">1.4 亿美元</span>（含承担债务 / 股权置换）· TechCrunch / Variety / Hypebeast / Coinspeaker / Tracxn 多源</div>
+        <div class="corr-row"><span class="lbl">🟡 副值</span><span class="corr-alt">1.26 亿美元</span>（实际现金）· 加州州务卿存档文件</div>
+        <div class="corr-meta">差额成因：1400 万美元差异可能来自含负债 / 股权置换。</div>
+      </div>
+
+      <div class="corr-item B">
+        <div class="corr-title">B2 · TRON 基金会持股比例</div>
+        <div class="corr-row"><span class="lbl">✅ 默认</span><span class="corr-default">基金会 34-35% + 孙另控制 ≈10%（合计 ≈45%）</span> · 07 + Wikipedia + CMC</div>
+        <div class="corr-row"><span class="lbl">🟡 副值</span><span class="corr-alt">单算"基金会"34%</span>（不算孙个人控制实体）· 06 简化口径</div>
+        <div class="corr-meta">差额成因：是否把孙宇晨控制的"陪我（北京）"等实体持的 10% 算入。</div>
+      </div>
+
+      <div class="corr-item B">
+        <div class="corr-title">B3 · TRX 历史最高价（2024.12.04）</div>
+        <div class="corr-row"><span class="lbl">✅ 默认</span><span class="corr-default">$0.4365 / TRX</span>（CoinGecko UTC+8）</div>
+        <div class="corr-row"><span class="lbl">🟡 副值</span><span class="corr-alt">$0.4313</span>（BitDegree）</div>
+        <div class="corr-meta">差额成因：不同交易所瞬时价位 / 时区取样差异。</div>
+      </div>
+
+      <div class="corr-item B">
+        <div class="corr-title">B4 · Cattelan 香蕉总价</div>
+        <div class="corr-row"><span class="lbl">✅ 默认</span><span class="corr-default">624 万美元</span>（含 buyer's premium）· Sotheby's 官方 / NPR / Artnet</div>
+        <div class="corr-row"><span class="lbl">🟡 副值</span><span class="corr-alt">620 万美元</span>（The Art Newspaper 近似）</div>
+        <div class="corr-row"><span class="lbl">落槌价</span>520 万美元（hammer），起拍 80 万 · The Art Newspaper</div>
+      </div>
+
+      <div class="corr-item B">
+        <div class="corr-title">B5 · 波场 ICO 募资金额</div>
+        <div class="corr-row"><span class="lbl">✅ 默认</span><span class="corr-default">≈ 7000 万美元 / 15,200 BTC</span> · Wikipedia / Bloomberg / Reuters / CoinCodex</div>
+        <div class="corr-row"><span class="lbl">🟡 副值</span><span class="corr-alt">7600 万美元</span>（部分中文媒体）</div>
+      </div>
+
+      <div class="corr-item B">
+        <div class="corr-title">B6 · BitTorrent 收购完成日期</div>
+        <div class="corr-row"><span class="lbl">✅ 默认</span><span class="corr-default">2018-06-18</span>（TechCrunch · 最高引用率）</div>
+        <div class="corr-row"><span class="lbl">🟡 副值</span><span class="corr-alt">2018-06-11</span>（Tracxn 数据库）</div>
+      </div>
+
+      <div class="corr-item B">
+        <div class="corr-title">B7 · Twitter @justinsuntron 粉丝数</div>
+        <div class="corr-row"><span class="lbl">✅ 默认</span><span class="corr-default">≈ 390-400 万</span>（X 平台一手）</div>
+        <div class="corr-row"><span class="lbl">⚠️ 须并列</span><span class="corr-uncert">其中 ~30% 被独立分析报告判定为假账号 / 僵尸粉</span> · CCN / Cointelegraph / SocialBlade</div>
+        <div class="corr-meta">2019.03 被指每日购买约 5000 个粉丝；20% 新增集中在 Tesla 抽奖期间。</div>
+      </div>
+
+      <div class="corr-item B">
+        <div class="corr-title">B8 · 巴菲特午餐放鸽子原因（本人版 vs 监管版）</div>
+        <div class="corr-row"><span class="lbl">🟢 本人版</span><span class="corr-default">微博公告"突发肾结石"</span>（孙宇晨本人微博 2019-07-23）</div>
+        <div class="corr-row"><span class="lbl">🔴 监管版</span><span class="corr-uncert">涉嫌非法集资 / 洗钱 / 涉黄涉赌，被互金整治办建议立案；财新证实"被列入边控名单"</span> · 财新 + 21 世纪经济报道 + Coindesk</div>
+        <div class="corr-meta">两版并列，不评判，让读者看到"自述 vs 监管"的并存。之前来源池误标"胃病"——已纠正为"肾结石"（本人微博原文）。</div>
+      </div>
+    </div>
+
+    <!-- C 类：未验证 / 多源冲突 -->
+    <div class="corr-cat">
+      <div class="corr-cat-head C">C 类 · 未验证 / 多源冲突<span class="cnt">6 处 · ⚠️ 标记</span></div>
+
+      <div class="corr-item C">
+        <div class="corr-title">⚠️ C1 · 宾大硕士专业（三种说法并存）</div>
+        <div class="corr-row"><span class="lbl">说法 1</span>东亚研究（East Asian Studies）· Wikipedia / Coinspeaker / 06 / 02 / 05 多源</div>
+        <div class="corr-row"><span class="lbl">说法 2</span>政治经济学（Political Economy）· TheOrg</div>
+        <div class="corr-row"><span class="lbl">说法 3</span>法律学 · 搜狗百科</div>
+        <div class="corr-meta">倾向：东亚研究（多源更多 + 宾大不开设独立"政治经济硕士"项目）。<strong>裁决：未验证</strong>（无 UPenn 注册档案一手）。</div>
+      </div>
+
+      <div class="corr-item C">
+        <div class="corr-title">⚠️ C2 · 中央党校"客座教授 / 教学职位"完全未坐实</div>
+        <div class="corr-row"><span class="lbl">网传</span><span class="corr-rejected">"中央党校客座教授" / "教学职位"</span> · ❌ 找不到任何可信来源</div>
+        <div class="corr-row"><span class="lbl">✅ 仅可证</span><span class="corr-default">(1) 2020-11-06《学习时报》发表 1 篇区块链文章；(2) 2021-07-27 列为校级课题"基于区块链技术的社会治理机制创新研究"副组长</span></div>
+        <div class="corr-meta">"客座教授""教学职位"为团队营销夸大。</div>
+      </div>
+
+      <div class="corr-item C">
+        <div class="corr-title">⚠️ C3 · 本人 BTC 持仓量（自报 vs 链上）</div>
+        <div class="corr-row"><span class="lbl">🟢 本人</span><span class="corr-alt">28,614 BTC（约 16 亿美元）</span> · @justinsuntron 2024-02 推文自报</div>
+        <div class="corr-row"><span class="lbl">🟢 链上</span><span class="corr-default">≈ 4,800 BTC（$265M）</span> · Arkham 2024-04 链上识别</div>
+        <div class="corr-row"><span class="lbl">差额</span><span class="corr-uncert">~24,000 BTC（约 13 亿美元）"在哪里"未知</span> · 142 个潜在关联钱包未全确认</div>
+      </div>
+
+      <div class="corr-item C">
+        <div class="corr-title">⚠️ C4 · Huobi/HTX 实际买方（本人否认 vs 多源指证）</div>
+        <div class="corr-row"><span class="lbl">本人</span>最初向吴说和 The Block 否认主导收购</div>
+        <div class="corr-row"><span class="lbl">多源</span>WuBlockchain + 多家英文媒体指证孙为 About Capital M&amp;A 基金核心投资人</div>
+        <div class="corr-row"><span class="lbl">本人后续</span>任 HTX 全球咨询委员会顾问（X bio 自报）</div>
+        <div class="corr-row"><span class="lbl">报道额</span><span class="corr-uncert">10 亿美元 vs 彭博估值 20-30 亿（双源差异巨大）</span> · Blockworks / Bloomberg</div>
+      </div>
+
+      <div class="corr-item C">
+        <div class="corr-title">⚠️ C5 · 湖畔大学论文真实性（存在性可证 vs 代写指控）</div>
+        <div class="corr-row"><span class="lbl">题目+日期</span><span class="corr-default">《The Birth of a Decentralized Internet》/ 2018-03-26</span> · 多家英文媒体 + Decrypt 多源</div>
+        <div class="corr-row"><span class="lbl">全文</span><span class="corr-uncert">未公开</span>（湖畔大学校内非公开材料）</div>
+        <div class="corr-row"><span class="lbl">代写指控</span><span class="corr-uncert">前波场 COO 刘明 2018 年公开称："孙宇晨找刘明代写湖畔大学的开题报告……就是拼凑了点东西让孙宇晨应付马云"</span> · Sohu 报道（孙未系统反驳）</div>
+        <div class="corr-meta">英文媒体多处误传该论文为"宾大东亚研究硕士论文"——实际是湖畔大学的毕业论文，时间为 2018 年（远晚于宾大 2013 年硕士毕业）。</div>
+      </div>
+
+      <div class="corr-item C">
+        <div class="corr-title">⚠️ C6 · 国籍轨迹（多米尼克入籍无证据）</div>
+        <div class="corr-row"><span class="lbl">已证</span><span class="corr-default">中国出生 → 圣基茨和尼维斯（SEC 法庭文件）→ 马耳他居留卡（2018-2020 投资取得）→ 格林纳达（2021-12 公民 + WTO 大使，2023-03 任期结束）</span></div>
+        <div class="corr-row"><span class="lbl">未证</span><span class="corr-uncert">❌ 多米尼克入籍 — 无任何官方公告或可靠媒体记录</span></div>
+        <div class="corr-row"><span class="lbl">未坐实</span><span class="corr-uncert">几内亚比绍（仅"据报道试图获取"）</span></div>
+      </div>
+    </div>
+
+    <!-- D 类：来源池设计阶段错误 -->
+    <div class="corr-cat">
+      <div class="corr-cat-head D">D 类 · 来源池设计阶段错误<span class="cnt">5 处 · 项目级遗产 · 案例制作过程的诚信凭证</span></div>
+
+      <div class="corr-item D">
+        <div class="corr-title">D1 · 湖畔大学论文 vs 宾大硕士论文</div>
+        <div class="corr-row"><span class="lbl">原设定</span><span class="corr-rejected">"宾大东亚研究硕士论文《The Birth of a Decentralized Internet》"</span></div>
+        <div class="corr-row"><span class="lbl">✅ 实际</span><span class="corr-default">湖畔大学 2018 毕业论文</span>（不是宾大硕士论文）</div>
+        <div class="corr-meta">错误成因：英文媒体多处把湖畔大学论文误传为"宾大硕士论文"，沿用了误传。</div>
+      </div>
+
+      <div class="corr-item D">
+        <div class="corr-title">D2 · 多米尼克 + 格林纳达驻 WTO 代表 vs 仅格林纳达</div>
+        <div class="corr-row"><span class="lbl">原设定</span><span class="corr-rejected">"多米尼克 + 格林纳达驻 WTO 代表"</span></div>
+        <div class="corr-row"><span class="lbl">✅ 实际</span><span class="corr-default">仅格林纳达任命，多米尼克无证</span></div>
+        <div class="corr-meta">错误成因：把两个加勒比小国混为一谈。</div>
+      </div>
+
+      <div class="corr-item D">
+        <div class="corr-title">D3 · 巴菲特午餐"胃病"vs "肾结石"</div>
+        <div class="corr-row"><span class="lbl">原设定</span><span class="corr-rejected">"巴菲特午餐'胃病'放鸽子"</span></div>
+        <div class="corr-row"><span class="lbl">✅ 实际</span><span class="corr-default">本人微博发的是"肾结石"</span></div>
+        <div class="corr-meta">错误成因：用了错误的传播版本，未核实本人原文。</div>
+      </div>
+
+      <div class="corr-item D">
+        <div class="corr-title">D4 · 锐波科技在北京 vs 广州</div>
+        <div class="corr-row"><span class="lbl">原设定</span><span class="corr-rejected">"锐波科技在北京"</span></div>
+        <div class="corr-row"><span class="lbl">✅ 实际</span><span class="corr-default">广州锐波信息技术有限公司</span>（孙 100% 持股，最早主体）</div>
+        <div class="corr-meta">错误成因：锐波品牌下有多个公司主体（广州锐波 + 北京锐波天下 → 陪我欢乐），误把后期北京公司当作早期主体。已通过国家企业信用信息公示系统核实。</div>
+      </div>
+
+      <div class="corr-item D">
+        <div class="corr-title">D5 · 中央党校教学职位 vs 1 篇文 + 1 个挂名</div>
+        <div class="corr-row"><span class="lbl">原设定</span><span class="corr-rejected">"中央党校教学职位"</span></div>
+        <div class="corr-row"><span class="lbl">✅ 实际</span><span class="corr-default">"客座教授"无原始来源；仅 1 篇《学习时报》文 + 1 个校级课题副组长</span></div>
+        <div class="corr-meta">错误成因：直接采纳了营销夸大说法，未核实党校官方信息。</div>
+      </div>
+
+      <div class="corr-item D" style="border-left-color: var(--accent-cyan); margin-top: 14px; background: #161a1d;">
+        <div class="corr-title" style="color: var(--accent-cyan);">📌 对档案制作流程的反哺建议</div>
+        <div style="color: var(--text-dim); font-size: 0.92em; line-height: 1.65; margin-top: 4px;">
+          · 来源池设计阶段，对<strong>英文媒体广泛流传的中文人物事实</strong>应保留怀疑（多源一致 ≠ 真实，可能是同一误源被层层转引）<br>
+          · 对<strong>"教学职位""客座教授""国籍"</strong>等头衔类信息，必须找到机构 / 政府的官方公告，否则标注"未验证"<br>
+          · 涉及<strong>多个法人主体的同名品牌</strong>，必须用工商注册数据库核实
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider">一句话哲学（自我定位演变）</div>
+
+<!-- ═══════ 一句话哲学 ═══════ -->
+<div class="quote-box">
+  <div class="quote-block">
+    <div class="q-text">"财富自由的定义就是，不需要为金钱做出价值观的妥协。"</div>
+    <div class="q-meta"><span class="src-tag src-1">一手</span> 2017 年自传《这世界既残酷也温柔》PART 5 / 喜马拉雅《财富自由革命之路》播客（27 岁，知识付费爆发期，波场 ICO 启动同期，订阅人群以 95 后—85 后为主）<br>book.douban.com/subject/26984629/</div>
+  </div>
+
+  <div class="quote-block q-2">
+    <div class="q-text">"六年创业其实回到原点。发现就只能做鸭。鸡做不了，也不适合、不爱做。"</div>
+    <div class="q-meta"><span class="src-tag src-1">一手</span> 2018-03-26 锌财经/界面新闻《孙宇晨独家万字实录：我不是币圈贾跃亭》3 小时长谈（28 岁，回国参加湖畔大学论文答辩 + 白皮书抄袭质疑 + 跑路质疑三事汇流期 · 通过自我嘲讽完成对批评者的反向攻击）<br>m.jiemian.com/article/3187543.html</div>
+  </div>
+
+  <div class="quote-block q-3">
+    <div class="q-text">"由于我言行不成熟、年少轻狂、不加节制的口无遮拦，渐渐演化成一场失控失败的过度营销。"</div>
+    <div class="q-meta"><span class="src-tag src-1">一手</span> 2019-07-25 凌晨微博道歉信（29 岁，巴菲特午餐取消同一周。Coindesk 转载："Tron's Sun Apologizes to Regulators for Over-Marketing Buffett Lunch"。把放鸽子归因为"健康/态度"等可恢复软变量，不承认监管层面问题——孙宇晨"否认 + 切换战场"模式的最经典样本）<br>coindesk.com/markets/2019/07/25/trons-sun-apologizes-to-regulators-for-over-marketing-buffett-lunch/</div>
+  </div>
+
+  <div style="margin-top: 14px; padding: 14px 16px; background: #1a1a1f; border-radius: 8px; font-size: 0.85em; color: var(--text-dim); line-height: 1.65;">
+    <strong style="color: var(--text);">三句的演变轴：</strong>
+    2017 理想叙事（"价值观先决"）→ 2018 自嘲反向攻击（"做鸭做鸡"）→ 2019 危机切换叙事（"过度营销致歉"）。
+    自我定位再往后：2021 "国家级布道"（学习时报 + WTO 大使）→ 2025 "加密政治家"（特朗普晚宴第一名 + 福布斯封面）。
+    <strong style="color: var(--accent-cyan);">同一个人 14 年里在同一个议题上的话术演变本身，就是这份档案最稀缺的一手资料。</strong>
+  </div>
+</div>
+
+<footer>
+  数据采集于 2026-05-11 · 7 维度交叉验证 · 24 处勘误诚信凭证 · 排除知乎 / 微信公众号 / 百度百科来源<br>
+  主要一手来源：SEC 起诉书 + CourtListener · Sotheby's / eBay / GLIDE / Blue Origin 官方 · Arkham / CoinGecko / CMC 链上数据<br>
+  Wikipedia (en/zh) · 维基中文百科 · 财新 / 21 财经 / 澎湃 / 36氪 · CoinDesk / The Verge / TechCrunch / Bloomberg<br>
+  本人作品：《这世界既残酷也温柔》ISBN 9787510850660 · 《财富自由革命之路》播客 155 集 · @justinsuntron · hejustinsun.com
+</footer>
+
+</body>
+</html>

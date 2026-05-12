@@ -1,0 +1,1032 @@
+<!-- INPUT: 孙宇晨 14 决策节点 + 6 类决策模式（深度版蒸馏）+ 24 处勘误清单 + 普通读者代入测试反馈 -->
+<!-- OUTPUT: 孙宇晨思维模型 · 普通人速读版（C 方案）· 3 个能学 + 3 个学不来 · 5 分钟扫完 -->
+<!-- POS: 100 财富自由年轻人 · 第 02 号案例 · 默认入口（深度版作为进阶可选） -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>孙宇晨 · 思维模型（普通人速读版）</title>
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --card: #1a1a1a;
+    --card-deep: #1e1a14;
+    --card-soft: #161210;
+    --border: #2a2a2a;
+    --border-light: #3a3a3a;
+    --text: #e8e8e8;
+    --text-mid: #aaa;
+    --text-dim: #777;
+    --text-faint: #555;
+
+    --accent: #ff8c42;        /* 主色：和深度版完全一致 */
+    --accent-deep: #c66a30;
+    --accent-soft: #2a1e14;
+
+    --learn: #6aff8c;          /* 能学的：绿 */
+    --learn-bg: #0f1c12;
+    --learn-border: #1f4a2c;
+
+    --avoid: #ff6a6a;          /* 学不来的：红 */
+    --avoid-bg: #1c0f0f;
+    --avoid-border: #4a1f1f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+  }
+
+  /* ═══ Hero ═══ */
+  .hero {
+    text-align: center;
+    padding: 70px 20px 50px;
+    background: radial-gradient(ellipse at top, #2a1810 0%, var(--bg) 70%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero .eyebrow {
+    color: var(--text-dim);
+    font-size: 0.78em;
+    letter-spacing: 0.4em;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 2.4em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .hero .en-name {
+    color: var(--text-dim);
+    font-size: 0.92em;
+    letter-spacing: 0.18em;
+    margin-bottom: 12px;
+  }
+  .hero .subtitle {
+    color: var(--accent);
+    font-size: 0.95em;
+    letter-spacing: 0.18em;
+    margin-bottom: 22px;
+  }
+  .hero .tagline {
+    color: var(--text-mid);
+    font-size: 1.1em;
+    max-width: 680px;
+    margin: 22px auto 0;
+    line-height: 1.85;
+  }
+  .hero .tagline strong { color: var(--accent); font-weight: 600; }
+  .hero .read-time {
+    margin-top: 30px;
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--accent-soft);
+    border: 1px solid #4a3220;
+    border-radius: 20px;
+    font-size: 0.78em;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+
+  /* ═══ 通用 Section 容器 ═══ */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ═══ Part 1：代入桥 ═══ */
+  .bridge {
+    margin: 70px auto 30px;
+  }
+  .bridge .label {
+    text-align: center;
+    color: var(--accent);
+    font-size: 0.78em;
+    letter-spacing: 0.3em;
+    margin-bottom: 22px;
+  }
+  .bridge h2 {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 14px;
+    line-height: 1.55;
+  }
+  .bridge .sub {
+    text-align: center;
+    color: var(--text-mid);
+    font-size: 0.95em;
+    margin-bottom: 36px;
+  }
+  .bridge-grid {
+    display: grid;
+    gap: 14px;
+    margin-top: 30px;
+  }
+  .bridge-row {
+    display: grid;
+    grid-template-columns: 1fr 38px 1fr;
+    gap: 14px;
+    align-items: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .bridge-you {
+    color: var(--text);
+    font-size: 0.95em;
+    line-height: 1.65;
+  }
+  .bridge-you .you-tag {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.72em;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 6px;
+  }
+  .bridge-arrow {
+    text-align: center;
+    color: var(--accent);
+    font-size: 1.4em;
+    font-weight: 300;
+  }
+  .bridge-sun {
+    color: var(--text);
+    font-size: 0.95em;
+    line-height: 1.65;
+  }
+  .bridge-sun .sun-tag {
+    display: block;
+    color: var(--accent);
+    font-size: 0.72em;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 6px;
+  }
+  .bridge-sun strong { color: var(--accent); }
+
+  .bridge-conclusion {
+    margin-top: 36px;
+    padding: 22px 24px;
+    background: var(--card-deep);
+    border: 1px solid #4a3220;
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.05em;
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .bridge-conclusion strong { color: var(--accent); }
+
+  /* ═══ 视觉分隔 ═══ */
+  .divider {
+    max-width: 800px;
+    margin: 70px auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--border-light) 50%, transparent 100%);
+  }
+
+  /* ═══ Part 标头（绿 / 红） ═══ */
+  .part-banner {
+    max-width: 800px;
+    margin: 60px auto 36px;
+    padding: 18px 24px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .part-banner.learn {
+    background: var(--learn-bg);
+    border: 1px solid var(--learn-border);
+    color: var(--learn);
+  }
+  .part-banner.avoid {
+    background: var(--avoid-bg);
+    border: 1px solid var(--avoid-border);
+    color: var(--avoid);
+  }
+  .part-banner .small {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.7em;
+    letter-spacing: 0.18em;
+    opacity: 0.7;
+    font-weight: 500;
+  }
+
+  /* ═══ 模式卡（能学的 3 个） ═══ */
+  .pattern-section {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+  }
+  .pattern {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .pattern .p-head {
+    padding: 28px 30px 22px;
+    background: linear-gradient(180deg, #1f1810 0%, var(--card) 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .pattern .p-num {
+    color: var(--accent);
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 10px;
+  }
+  .pattern .p-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .pattern .p-subtitle {
+    color: var(--accent);
+    font-size: 0.95em;
+    font-weight: 500;
+  }
+
+  .p-block {
+    padding: 28px 30px;
+    border-top: 1px solid var(--border);
+  }
+  .p-block:first-of-type { border-top: none; }
+  .p-block h3 {
+    font-size: 1em;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+  .p-block .h-icon {
+    margin-right: 8px;
+    font-size: 1.1em;
+  }
+
+  .p-block.you-version h3 { color: #f5d090; }
+  .p-block.sun-version { background: var(--card-soft); }
+  .p-block.sun-version h3 { color: var(--accent); }
+  .p-block.howto h3 { color: var(--learn); }
+  .p-block.caveat h3 { color: var(--text-mid); }
+
+  .p-block p {
+    color: var(--text-mid);
+    font-size: 0.95em;
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+  .p-block p:last-child { margin-bottom: 0; }
+  .p-block p strong { color: var(--text); }
+
+  /* 孙宇晨怎么用 — 案例 */
+  .sun-cases {
+    margin-top: 8px;
+  }
+  .sun-case {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 14px;
+    padding: 12px 14px;
+    background: #14110d;
+    border-radius: 6px;
+    font-size: 0.9em;
+    line-height: 1.7;
+    margin-bottom: 8px;
+    align-items: baseline;
+  }
+  .sun-case:last-child { margin-bottom: 0; }
+  .sun-case .t {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.88em;
+  }
+  .sun-case .x { color: var(--text); }
+  .sun-case .x .num { color: var(--accent); font-weight: 600; }
+
+  /* 你怎么用 — todo 列表 */
+  .todo-list {
+    counter-reset: todo;
+    list-style: none;
+    margin-top: 8px;
+  }
+  .todo-list li {
+    counter-increment: todo;
+    position: relative;
+    padding: 14px 16px 14px 56px;
+    background: #0f1612;
+    border: 1px solid var(--learn-border);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: var(--text);
+    font-size: 0.95em;
+    line-height: 1.7;
+  }
+  .todo-list li:last-child { margin-bottom: 0; }
+  .todo-list li::before {
+    content: counter(todo);
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    width: 28px;
+    height: 28px;
+    background: var(--learn);
+    color: #0f1612;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-weight: 700;
+    font-size: 0.85em;
+  }
+  .todo-list li .when {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--learn-border);
+    color: var(--learn);
+    border-radius: 4px;
+    font-size: 0.72em;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .todo-list li strong { color: var(--learn); }
+
+  /* caveat 块 */
+  .p-block.caveat {
+    background: #1a1515;
+  }
+  .caveat-text {
+    color: var(--text-mid);
+    font-size: 0.92em;
+    line-height: 1.8;
+  }
+  .caveat-text strong { color: #ff9a9a; }
+
+  /* ═══ 学不来的 3 个（极简卡片） ═══ */
+  .avoid-section {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+    display: grid;
+    gap: 18px;
+  }
+  .avoid-card {
+    background: var(--card);
+    border: 1px solid var(--avoid-border);
+    border-radius: 12px;
+    padding: 24px 26px;
+  }
+  .avoid-card .a-num {
+    color: var(--avoid);
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 8px;
+  }
+  .avoid-card .a-title {
+    font-size: 1.15em;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+  .avoid-card .a-why {
+    color: var(--text-mid);
+    font-size: 0.92em;
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .avoid-card .a-why strong { color: #ff9a9a; }
+  .avoid-card .a-alt {
+    padding: 12px 14px;
+    background: #14110d;
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    color: var(--text);
+    font-size: 0.9em;
+    line-height: 1.7;
+  }
+  .avoid-card .a-alt .alt-tag {
+    display: inline-block;
+    color: var(--accent);
+    font-size: 0.72em;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin-right: 6px;
+  }
+
+  /* ═══ Part 4：结语 + 跳转 ═══ */
+  .closing {
+    max-width: 800px;
+    margin: 60px auto 40px;
+    padding: 0 20px;
+  }
+  .closing-formula {
+    padding: 32px 28px;
+    background: var(--card-deep);
+    border: 1px solid #4a3220;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .closing-formula .label {
+    color: var(--accent);
+    font-size: 0.78em;
+    letter-spacing: 0.3em;
+    margin-bottom: 18px;
+  }
+  .closing-formula .formula {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.85;
+    margin-bottom: 14px;
+  }
+  .closing-formula .formula em {
+    color: var(--accent);
+    font-style: normal;
+    font-weight: 700;
+  }
+  .closing-formula .footnote {
+    color: var(--text-mid);
+    font-size: 0.92em;
+    line-height: 1.75;
+    margin-top: 14px;
+  }
+
+  /* 跳转 */
+  .jumps {
+    margin-top: 40px;
+    display: grid;
+    gap: 14px;
+  }
+  .jump-card {
+    display: block;
+    padding: 22px 26px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: border 0.15s, background 0.15s;
+  }
+  .jump-card:hover {
+    border-color: var(--accent);
+    background: #1f1810;
+  }
+  .jump-card .j-tag {
+    display: block;
+    color: var(--accent);
+    font-size: 0.72em;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 8px;
+  }
+  .jump-card .j-title {
+    color: var(--text);
+    font-size: 1.05em;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .jump-card .j-desc {
+    color: var(--text-mid);
+    font-size: 0.88em;
+    line-height: 1.65;
+  }
+  .jump-card .j-arrow {
+    color: var(--accent);
+    margin-left: 6px;
+  }
+
+  /* 总 caveat */
+  .final-caveat {
+    max-width: 800px;
+    margin: 50px auto 30px;
+    padding: 22px 24px;
+    background: #1a1515;
+    border-left: 3px solid var(--text-faint);
+    border-radius: 4px;
+    color: var(--text-mid);
+    font-size: 0.85em;
+    line-height: 1.8;
+  }
+  .final-caveat .label {
+    display: block;
+    color: #ff9a9a;
+    font-size: 0.75em;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+  }
+  .final-caveat strong { color: var(--text); }
+  .final-caveat ul { margin: 8px 0 0 22px; padding: 0; }
+  .final-caveat li { margin-bottom: 6px; }
+
+  footer {
+    text-align: center;
+    padding: 36px 20px 50px;
+    color: var(--text-faint);
+    font-size: 0.78em;
+    border-top: 1px solid var(--border);
+    line-height: 1.85;
+    margin-top: 30px;
+  }
+  footer a { color: var(--text-mid); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 1.85em; }
+    .hero .tagline { font-size: 1em; }
+    .bridge h2 { font-size: 1.2em; }
+    .bridge-row {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .bridge-arrow {
+      transform: rotate(90deg);
+      font-size: 1.2em;
+    }
+    .pattern .p-head { padding: 22px 20px 18px; }
+    .pattern .p-title { font-size: 1.25em; }
+    .p-block { padding: 22px 20px; }
+    .sun-case {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+    .sun-case .t { font-size: 0.82em; }
+    .todo-list li { padding: 14px 14px 14px 52px; }
+    .avoid-card { padding: 20px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ Hero ═══════════════ -->
+<div class="hero">
+  <div class="eyebrow">100 财富自由年轻人 · 第 02 号</div>
+  <h1>孙宇晨 · 思维模型</h1>
+  <div class="en-name">JUSTIN SUN</div>
+  <div class="subtitle">普 通 人 速 读 版</div>
+  <div class="tagline">
+    他不是"<em>做你做不到的事</em>"——<br>
+    是把<strong>你早就在做的 3 件事</strong>，做到了 100 倍尺度；<br>
+    另外 <strong>3 件你学不来也别学</strong>。
+  </div>
+  <div class="read-time">⏱ 5 分钟扫完</div>
+</div>
+
+<!-- ═══════════════ Part 1 · 代入桥 ═══════════════ -->
+<div class="container bridge">
+  <div class="label">═  先 看 一 下 你 自 己  ═</div>
+  <h2>你以为孙宇晨在玩你看不懂的游戏？<br>不，你早就在玩底层一样的游戏。</h2>
+  <div class="sub">下面 3 件事，你大概率做过其中 1-2 件。</div>
+
+  <div class="bridge-grid">
+
+    <div class="bridge-row">
+      <div class="bridge-you">
+        <span class="you-tag">▼ 你做过</span>
+        换工作前，先把新 offer 谈到手 / 拿到 verbal，<br>再开口辞职。
+      </div>
+      <div class="bridge-arrow">→</div>
+      <div class="bridge-sun">
+        <span class="sun-tag">▲ 孙宇晨在做</span>
+        同时跑两条赛道（A 给现金流，B 攒真正的赌注），<br>等 B 起来，<strong>把 A 的资源一次性导进 B</strong>。
+      </div>
+    </div>
+
+    <div class="bridge-row">
+      <div class="bridge-you">
+        <span class="you-tag">▼ 你做过</span>
+        副业用马甲号 / 用一个有限责任公司收款，<br>不挂自己实名头像。
+      </div>
+      <div class="bridge-arrow">→</div>
+      <div class="bridge-sun">
+        <span class="sun-tag">▲ 孙宇晨在做</span>
+        把"个人"和"公司主体"<strong>物理切割</strong>。<br>
+        出事让公司扛，个人不被连坐。
+      </div>
+    </div>
+
+    <div class="bridge-row">
+      <div class="bridge-you">
+        <span class="you-tag">▼ 你做过</span>
+        抢早鸟价 / 抢茅台 / 抢演唱会票 / 抢小米 SU7 首批，<br>朋友圈晒一下。
+      </div>
+      <div class="bridge-arrow">→</div>
+      <div class="bridge-sun">
+        <span class="sun-tag">▲ 孙宇晨在做</span>
+        花 <strong>$457 万</strong>抢一顿和巴菲特的午餐。<br>
+        同样是抢稀缺事件，他抢的<strong>能上头版</strong>。
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bridge-conclusion">
+    你看，<strong>你早就懂这套底层语法了</strong>。<br>
+    区别只是—— 孙宇晨把这 3 件做到了 <strong>100 倍尺度</strong>，<br>
+    再用另外 3 件你学不来的事把它放大。
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ Part 2 · 能学的 3 个 ═══════════════ -->
+<div class="part-banner learn">
+  ✅ 这 3 个你能学
+  <span class="small">M1 / M4 / M6 · 普通人能等比例缩小到自己尺度</span>
+</div>
+
+<!-- ─────── M1 · 注意力 ─────── -->
+<div class="pattern-section">
+  <div class="pattern">
+    <div class="p-head">
+      <div class="p-num">M01 · 能 学</div>
+      <div class="p-title">注意力套利</div>
+      <div class="p-subtitle">—— 你早就懂"抢稀缺"，他只是抢的尺度更大</div>
+    </div>
+
+    <div class="p-block you-version">
+      <h3><span class="h-icon">🪞</span>你已经在用的版本</h3>
+      <p>
+        你抢早鸟价、抢茅台、抢演唱会票、抢小米 SU7 首批用户身份——
+        你不只是为了那个东西，<strong>你也是为了"被人看到你抢到了"</strong>。
+        发朋友圈、晒社群、写小红书，都是顺手的。
+      </p>
+      <p>
+        这就是注意力套利的微缩版：用一笔钱（或一段时间）<strong>同时换两件东西——商品本身 + 你被记住</strong>。
+        多数人不会算第二件东西的价值，但你下意识在用。
+      </p>
+    </div>
+
+    <div class="p-block sun-version">
+      <h3><span class="h-icon">🚀</span>孙宇晨怎么用到 100 倍</h3>
+      <p>
+        他不是不算第二件东西的价值，是<strong>把第二件东西当主菜</strong>—— 商品本身只是入场券。
+      </p>
+      <div class="sun-cases">
+        <div class="sun-case">
+          <span class="t">2019.06</span>
+          <span class="x"><span class="num">$457 万</span>拍下巴菲特慈善午餐，破当时 19 年最高价。换来全球财经媒体头版数月，单位曝光成本远低于投广告。</span>
+        </div>
+        <div class="sun-case">
+          <span class="t">2024.11</span>
+          <span class="x"><span class="num">$624 万</span>买下"用胶带粘在墙上的香蕉"艺术品，当众吃掉。这事估价只值 100-150 万，剩下的钱<strong>就是注意力定价</strong>。</span>
+        </div>
+        <div class="sun-case">
+          <span class="t">2025.05</span>
+          <span class="x">花约 <span class="num">$1900 万</span>买够 TRUMP 币，坐稳特朗普私人晚宴第一名席位，拿到限量陀飞轮腕表合影。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-block howto">
+      <h3><span class="h-icon">✅</span>你怎么用</h3>
+      <ol class="todo-list">
+        <li>
+          <span class="when">今天</span>
+          列出你打算未来 3 个月做的 3-5 件事。在每件事旁边写一句：「<strong>这件事会让谁专门搜我的名字？</strong>」 答不上来的，就是只能换钱、换不了注意力的事。
+        </li>
+        <li>
+          <span class="when">这周</span>
+          挑一笔你本来就要花的"获客预算"（投流 / 信息流 / 朋友圈广告 / 拓展礼）—— 把它<strong>从"投放"改成"做事件"</strong>。同样的钱，做一件别人会主动谈论的事。
+        </li>
+        <li>
+          <span class="when">这个月</span>
+          做一次"<strong>反共识下注</strong>"—— 在你的圈子里，公开做一件 80% 的人觉得不值 / 不会做的事（金额可以小，但姿势要鲜明）。这件事的回报不是事本身，是它带来的搜索量和讨论量。
+        </li>
+        <li>
+          <span class="when">每季度</span>
+          复盘一次：过去 90 天，"我做的事 vs 我说的话"，<strong>哪个带来的关注更多</strong>？多数人会发现是前者。如果是后者，你还在做"内容创作者"，没在做"事件创作者"—— 这两件事的天花板不一样。
+        </li>
+      </ol>
+    </div>
+
+    <div class="p-block caveat">
+      <h3><span class="h-icon">⚠️</span>你和他不一样的地方</h3>
+      <p class="caveat-text">
+        他能这么搞 18 年不死，是因为他<strong>有"道德库存"——每用一次就消耗一点，但他底子厚</strong>。
+        普通人没那么厚的库存，三五次就会被打回原形（"哦原来他每次都这样"）。
+        所以你要的不是"每件事都搞个大新闻"，是<strong>每年精选 1-2 件做大</strong>—— 频率低、声势集中。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ─────── M4 · 双轨 ─────── -->
+<div class="pattern-section">
+  <div class="pattern">
+    <div class="p-head">
+      <div class="p-num">M04 · 能 学</div>
+      <div class="p-title">双轨并行 + 一次性切换</div>
+      <div class="p-subtitle">—— 你早就懂"先把 offer 拿到手再辞职"，他只是把这套放到了 5 年尺度</div>
+    </div>
+
+    <div class="p-block you-version">
+      <h3><span class="h-icon">🪞</span>你已经在用的版本</h3>
+      <p>
+        换工作前你不会先裸辞——你会<strong>同时跑两条线</strong>：现在的工作给现金流，新机会偷偷面试。
+        等新 offer 到手、待遇确认、入职日定下来，你才开口辞职。
+      </p>
+      <p>
+        这就是双轨并行 + 一次性切换。<strong>大多数人本能就会做这个</strong>—— 因为切错了代价太大。
+        但很多人会停在 "短期换工作" 这个尺度，没把它<strong>放大到 1-3 年的事业切换尺度</strong>。
+      </p>
+    </div>
+
+    <div class="p-block sun-version">
+      <h3><span class="h-icon">🚀</span>孙宇晨怎么用到 100 倍</h3>
+      <p>
+        他不是换工作—— 是<strong>同时跑两个表面无关的赛道，让 A 给 B 做"资源储备池"</strong>，
+        等 B 起来，<strong>一次性把 A 的全部资源导进 B</strong>，然后弃掉 A。
+      </p>
+      <div class="sun-cases">
+        <div class="sun-case">
+          <span class="t">2014-2017</span>
+          <span class="x">表面赛道：陪我 APP（社交产品，跑现金流和 <span class="num">6000 万</span> A 轮融资 + 福布斯 / 湖畔大学光环）；地下赛道：默默搭建波场 TRON（一个加密货币项目）。</span>
+        </div>
+        <div class="sun-case">
+          <span class="t">2017.08</span>
+          <span class="x">波场做 ICO（加密币首次发行，类似公司上市但用的是币）时，分配方案里<strong>把 10% 直接给"陪我（北京）科技"</strong>—— 把 A 赛道的用户和现金流，一次性导进 B 赛道。</span>
+        </div>
+        <div class="sun-case">
+          <span class="t">2018-2019</span>
+          <span class="x">波场起飞、单次套现 <span class="num">$3 亿</span>之后，陪我 APP <strong>注销</strong>。表面赛道弃用，地下赛道独立运行。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-block howto">
+      <h3><span class="h-icon">✅</span>你怎么用</h3>
+      <ol class="todo-list">
+        <li>
+          <span class="when">今天</span>
+          列出你<strong>正在做的 1-2 件主事</strong>（你的本职 / 主要收入来源）。
+          这是你的"主轨"—— 它要继续跑，不是用来弃掉的。
+        </li>
+        <li>
+          <span class="when">这周</span>
+          在主轨之外，开一条"<strong>看似无关、但能切换过去</strong>"的副轨。
+          关键词是"看似无关"—— 如果副轨和主轨完全同构，它救不了你；如果完全无关，又导不过去。
+          理想是「同一批人对它感兴趣，但形式不同」（比如：本职是写代码 → 副轨是教别人写代码 / 做 AI 工具 / 写技术博客）。
+        </li>
+        <li>
+          <span class="when">这个月</span>
+          给副轨设<strong>最低投入</strong>—— 比如「每周 6 小时 + 每月 ¥500 试错预算」。
+          少于这个就停了，多于这个会侵蚀主轨。这个数字要写下来贴墙上，<strong>不是放在心里的</strong>。
+        </li>
+        <li>
+          <span class="when">12 个月</span>
+          给副轨设<strong>"切换信号"</strong>—— 客观、可测的那种。比如：「副业 MRR 连续 3 个月 ≥ 主业月薪 60%」 或 「订阅数过 5000 + 转化率 ≥ 2%」。
+          <strong>信号不到，绝对不切</strong>。多数人切失败不是没本事，是切早了。
+        </li>
+        <li>
+          <span class="when">12 个月</span>
+          也给副轨设<strong>"退出信号"</strong>—— 比如「投入满 18 个月，订阅数仍 &lt; 500 / MRR 持续 ¥0」。
+          双轨不是"骑墙一辈子"，是<strong>主动设计的过渡结构</strong>。退出信号触发就果断停—— 砍掉副轨比砍主轨容易得多。
+        </li>
+      </ol>
+    </div>
+
+    <div class="p-block caveat">
+      <h3><span class="h-icon">⚠️</span>你和他不一样的地方</h3>
+      <p class="caveat-text">
+        孙宇晨能"一次性切换"是因为<strong>主轨现金流足够厚</strong>—— 陪我有 6000 万 A 轮和持续打赏收入。
+        普通人切换前必须先<strong>攒够 6-12 个月生活费</strong>作缓冲，否则切换信号触发那一刻你也不敢动手。
+        现金流不够 ≠ 不切，而是<strong>把"切换信号"门槛设高一点</strong>，多跑几个月再说。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ─────── M6 · 主体绝缘 ─────── -->
+<div class="pattern-section">
+  <div class="pattern">
+    <div class="p-head">
+      <div class="p-num">M06 · 能 学</div>
+      <div class="p-title">主体切割 / 风险绝缘</div>
+      <div class="p-subtitle">—— 你早就懂"副业用马甲号"，他只是把这套放到了法律和资金维度</div>
+    </div>
+
+    <div class="p-block you-version">
+      <h3><span class="h-icon">🪞</span>你已经在用的版本</h3>
+      <p>
+        副业你不会用实名头像，会另开一个号。
+        在闲鱼出二手你也不挂工作邮箱。
+        贷款买房之前你会查信用记录、避开过度负债。
+      </p>
+      <p>
+        这些都是同一件事——<strong>把"做这件事的我"和"作为整体的我"切开</strong>，
+        让任何一头出问题不会连坐到另一头。<strong>这条对个人开发者 / 副业玩家反而最实用</strong>，
+        因为你接触外部用户和钱越多，被连坐的风险越大。
+      </p>
+    </div>
+
+    <div class="p-block sun-version">
+      <h3><span class="h-icon">🚀</span>孙宇晨怎么用到 100 倍</h3>
+      <p>
+        他把这套放到<strong>法律主体维度</strong>—— 公司、基金会、外国实体、辞 CEO，全都是同一个动作：
+        <strong>让法律责任和资金责任找不到唯一收件人</strong>。
+      </p>
+      <div class="sun-cases">
+        <div class="sun-case">
+          <span class="t">2017.07</span>
+          <span class="x">波场 ICO <strong>前 1 个月</strong>，先卸任陪我 APP CEO。把"波场创始人"和"陪我 CEO"两个身份提前切开。</span>
+        </div>
+        <div class="sun-case">
+          <span class="t">2019.07</span>
+          <span class="x">陪我 APP 被新华社点名"涉黄音视频"—— 公司决议直接<strong>解散</strong>，业务消失，个人无追溯。</span>
+        </div>
+        <div class="sun-case">
+          <span class="t">2026.03</span>
+          <span class="x">SEC（美国证监会）案最终和解：<strong>Rainberry 公司付 $1000 万罚款，孙宇晨本人零处罚</strong>且不予重提。这就是主体切割打到极致的样子。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-block howto">
+      <h3><span class="h-icon">✅</span>你怎么用</h3>
+      <ol class="todo-list">
+        <li>
+          <span class="when">今天</span>
+          盘一遍你目前<strong>有外部用户付费的副业 / 接私活 / 卖课卖咨询</strong>—— 收款是不是用的个人账户、个人微信、个人 PayPal？
+          有一个就有一个<strong>主体切割漏洞</strong>。
+        </li>
+        <li>
+          <span class="when">这周</span>
+          上工商网站查一下：在你所在地，<strong>注册一家小微企业 / 个体工商户 / 一人有限公司的真实成本是多少</strong>。
+          答案大概率比你想的便宜（中国大陆 ¥0-2000；香港 / 新加坡 / 美国 LLC 几千到一万）。
+        </li>
+        <li>
+          <span class="when">这个月</span>
+          凡是<strong>有外部用户付费的</strong>副业，全部换到那个法律主体下走账。
+          收款、合同、发票、退款、纠纷—— 全部走主体，<strong>不再走个人</strong>。
+          这是孙宇晨用了 18 年最稳定的一条防御。
+        </li>
+        <li>
+          <span class="when">这个季度</span>
+          做一份"<strong>个人 vs 业务</strong>"清单：哪些资产 / 账号 / 邮箱 / 手机号是「个人不能丢的」，哪些是「业务出事可以一起埋掉的」。
+          清单写下来，<strong>定期检查这两堆有没有混</strong>。混了就拆。
+        </li>
+        <li>
+          <span class="when">长期</span>
+          副业做大到一定规模（年收入过 ¥50 万 / 涉及多个客户合同），找一次<strong>1-2 小时的律师 / 会计咨询</strong>。
+          几千块换一次专业意见，比出事后赔几十万划算 100 倍。
+        </li>
+      </ol>
+    </div>
+
+    <div class="p-block caveat">
+      <h3><span class="h-icon">⚠️</span>你和他不一样的地方</h3>
+      <p class="caveat-text">
+        主体切割<strong>只在"法律 / 资金"维度有效，在"声誉"维度无效</strong>。
+        SEC 案最后确实公司付罚款、孙本人零处罚，但外界对他的"个人即责任主体"判断没消失。
+        普通人也一样—— 注册公司能挡住法律连坐，挡不住<strong>圈子里的口碑传播</strong>。
+        所以这条不是"出事就改名"的免死金牌，是"<strong>提前隔离财务和法律风险</strong>"的防御工事。
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ Part 3 · 学不来的 3 个 ═══════════════ -->
+<div class="part-banner avoid">
+  🚫 这 3 个别学
+  <span class="small">M2 / M3 / M5 · 普通人模仿 = 大概率违法 / 信用清零 / 被秒杀</span>
+</div>
+
+<div class="avoid-section">
+
+  <div class="avoid-card">
+    <div class="a-num">M02 · 不 建 议</div>
+    <div class="a-title">监管 / 法律辖区套利</div>
+    <p class="a-why">
+      他做的事是：<strong>同时持有多个国家的身份/居留权</strong>（圣基茨、马耳他、格林纳达大使），
+      在一个辖区监管收紧时立刻切换到另一个辖区放大业务。
+      这需要<strong>千万美元起的资本量级 + 对各国监管时差的实时把控 + 律师团队 + 政治人脉</strong>。
+      普通人尝试 = 大概率<strong>被中介骗投资移民、或在不熟的辖区违法</strong>。
+    </p>
+    <div class="a-alt">
+      <span class="alt-tag">🟡 普通人版的最弱替代</span>
+      想类似的事，最多做<strong>"区域套利"</strong>—— 找新一线城市的落户补贴、
+      跨境电商的窗口期、新平台的早期创作者红利、海外远程工作的汇率差。
+      <strong>绝对不要碰跨国监管套利、不要为"避税"去注册不熟悉的离岸公司</strong>。
+    </div>
+  </div>
+
+  <div class="avoid-card">
+    <div class="a-num">M03 · 不 建 议</div>
+    <div class="a-title">机构背书寄生</div>
+    <p class="a-why">
+      他做的事是：拿一个<strong>短期、低门槛的与高声誉机构的关联</strong>（实习、约稿一篇、校级课题挂名），
+      在简历 / 名片 / 媒体稿里反复用 5-10 年。
+      这套打法在 2010 年代有效，但<strong>AI 时代普通人 1 分钟就扒得动你所有履历</strong>——
+      LinkedIn 标题虚标、自封的 title、没坐实的"客座教授"，<strong>识破速度是 10 年前的 100 倍</strong>。
+      有效期已从 10 年压缩到 6 个月。
+    </p>
+    <div class="a-alt">
+      <span class="alt-tag">🟡 普通人版的最弱替代</span>
+      <strong>每年争取 1 次"高声誉平台的可证明关联"</strong>—— 一次大会发言、一次有名媒体投稿、
+      一次开源项目的 contributor、一次 YC / 字节 / OpenAI 校友活动出席。
+      关键是「<strong>可证明</strong>」—— 别人随手一搜能找到证据。
+      虚标的成本在 AI 时代远高于诚实的成本。
+    </div>
+  </div>
+
+  <div class="avoid-card">
+    <div class="a-num">M05 · 不 建 议</div>
+    <div class="a-title">否认范式 + 切换战场</div>
+    <p class="a-why">
+      他做的事是：被指控时<strong>不修复、不道歉、直接否认</strong>，然后迁移到一个不在乎这个错的新圈子。
+      他能切是因为他<strong>每个圈子都有备份赛道</strong>—— 写作圈出局可以跳加密圈，加密圈出问题可以跳政治圈。
+      <strong>普通人没有"下一个战场"可切</strong>—— 你的同事、客户、朋友都在同一个微信生态里，
+      在小圈子里硬否认 = <strong>信用清零，再无翻身</strong>。
+    </p>
+    <div class="a-alt">
+      <span class="alt-tag">🟡 普通人版的最弱替代</span>
+      出事时<strong>不要默认"必须道歉到底"，先冷静评估"修复 vs 切换"的成本</strong>。
+      如果是小事故，<strong>诚实坦白 + 修复</strong>永远是首选（成本低、还能赢回信任）；
+      如果是关系彻底破裂，体面退出 + 时间换空间，比硬扛 / 硬否认强 100 倍。
+      <strong>核心是：永远不要把"否认"当默认动作</strong>。
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ Part 4 · 结语 + 跳转 ═══════════════ -->
+<div class="container closing">
+
+  <div class="closing-formula">
+    <div class="label">═  一  句  话  总  结  ═</div>
+    <div class="formula">
+      孙宇晨的真实公式不是"<em>包装 + 营销 + 投机</em>"，<br>
+      是 <em>「注意力放大 + 多注下注 + 主体绝缘」</em>。
+    </div>
+    <div class="footnote">
+      前者是外界对他的标签，后者才是从 14 个决策节点里反复跑出来的动作结构。<br>
+      <strong>后两件，才是普通人能学的部分。</strong>
+    </div>
+  </div>
+
+  <div class="jumps">
+    <a href="思维模型_深度版.html" class="jump-card">
+      <span class="j-tag">▶ 想看完整版</span>
+      <div class="j-title">思维模型 · 深度版 <span class="j-arrow">→</span></div>
+      <div class="j-desc">
+        完整 6 模式深度展开 · 反常识对比表 · 6 模式叠加矩阵 · vs 第 01 号案例（郭宇）横向对比。
+        给愿意花 30 分钟的行业读者。
+      </div>
+    </a>
+    <a href="人生路线图.html" class="jump-card">
+      <span class="j-tag">▶ 想看人生时间线</span>
+      <div class="j-title">人生路线图 · 事实层 <span class="j-arrow">→</span></div>
+      <div class="j-desc">
+        孙宇晨 1990-2026 完整时间线 · 14 个关键决策节点 · 74 个财富节点 · 24 处勘误标记。
+        所有事实带一手来源。
+      </div>
+    </a>
+  </div>
+
+</div>
+
+<!-- ═══════════════ 总 caveat ═══════════════ -->
+<div class="final-caveat">
+  <span class="label">═  使  用  须  知  ═</span>
+  <ul>
+    <li><strong>这不是道德评判</strong>。本档案不讨论"该不该这么活"，只描述"<strong>实际是这么活</strong>"。
+    读完应该让你觉得"原来还能这么活"，而不是"他是不是骗子"。</li>
+    <li><strong>6 个模式名都是事后归纳，不是孙宇晨自己写的"playbook"</strong>。
+    本人公开口径里每个动作都有崇高叙事（"对加密的信仰""推动数字经济""支持艺术"）。
+    模式是从 4-7 次同构动作里反复出现的形状归纳的。</li>
+    <li><strong>3 个能学的模式也别原样复制</strong>。M1 注意力套利对道德库存消耗大；
+    M4 双轨切换需要现金流缓冲；M6 主体切割只挡法律责任、挡不住声誉。
+    每条 caveat 都要看。</li>
+    <li><strong>3 个别学的模式如果你硬学</strong>—— M2 大概率违法 / 被骗，M3 半年内被识破，M5 信用清零。
+    时代变了，2010 年能跑 18 年的打法，今天 6 个月就被打回原形。</li>
+    <li>引用本档案请注明出处："100 个财富自由的年轻人 · 第 02 号 · 孙宇晨 · 思维模型（普通人版）"。</li>
+  </ul>
+</div>
+
+<footer>
+  数据采集于 2026-05-11 · 蒸馏自 7 维度交叉验证 + 14 决策节点 + 74 财富节点 + 24 处勘误清单<br>
+  本文档（普通人速读版）· <a href="思维模型_深度版.html">深度版</a> · <a href="人生路线图.html">事实层</a><br>
+  <a href="../郭宇/思维模型.html">第 01 号 · 郭宇 · 思维模型</a> —— 横向对比可见两条截然不同的路线<br>
+  100 个财富自由的年轻人 · 第 02 号档案
+</footer>
+
+</body>
+</html>

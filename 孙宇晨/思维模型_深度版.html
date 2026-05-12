@@ -1,0 +1,1285 @@
+<!-- INPUT: 14 个决策节点 + 74 个财富节点 + 24 处勘误清单 + 已完成事实层 HTML -->
+<!-- OUTPUT: 孙宇晨 6 类高频决策模式 · 抽象层蒸馏 · 不套郭宇 OS 三层架构 · B 方案"决策模式集" -->
+<!-- POS: 100 财富自由年轻人 · 第 02 号案例 · 阶段 4 抽象层 HTML 终稿 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>孙宇晨 · 思维模型</title>
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --card: #1a1a1a;
+    --card-deep: #1e1a14;
+    --border: #2a2a2a;
+    --border-light: #3a3a3a;
+    --text: #e8e8e8;
+    --text-mid: #aaa;
+    --text-dim: #777;
+    --text-faint: #555;
+
+    --accent: #ff8c42;        /* 主强调色 - 橙红，区别于郭宇的青紫橙系 */
+    --accent-deep: #c66a30;
+    --accent-soft: #2a1e14;
+
+    --warn: #ff6a6a;
+    --safe: #6aff8c;
+
+    --tag-1st: #2d5a1e;
+    --tag-1st-text: #7fff5a;
+    --tag-2nd: #5a4a1e;
+    --tag-2nd-text: #ffd85a;
+    --tag-warn: #5a1e1e;
+    --tag-warn-text: #ff8a8a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ═══ Hero ═══ */
+  .hero {
+    text-align: center;
+    padding: 70px 20px 50px;
+    background: radial-gradient(ellipse at top, #2a1810 0%, var(--bg) 70%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero .eyebrow {
+    color: var(--text-dim);
+    font-size: 0.78em;
+    letter-spacing: 0.4em;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 2.6em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .hero .en-name {
+    color: var(--text-dim);
+    font-size: 0.95em;
+    letter-spacing: 0.18em;
+    margin-bottom: 22px;
+  }
+  .hero .tagline {
+    color: var(--text-mid);
+    font-size: 1.05em;
+    max-width: 640px;
+    margin: 16px auto 0;
+    line-height: 1.7;
+  }
+  .hero .tagline strong { color: var(--accent); font-weight: 600; }
+  .hero .source-note {
+    margin-top: 26px;
+    font-size: 0.78em;
+    color: var(--text-faint);
+  }
+
+  /* ═══ 开篇 hook ═══ */
+  .opener {
+    max-width: 800px;
+    margin: 60px auto 70px;
+    padding: 0 20px;
+  }
+  .opener .label {
+    text-align: center;
+    color: var(--accent);
+    font-size: 0.78em;
+    letter-spacing: 0.3em;
+    margin-bottom: 22px;
+  }
+  .opener h2 {
+    text-align: center;
+    font-size: 1.55em;
+    font-weight: 600;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .opener .lead {
+    color: var(--text-mid);
+    font-size: 1em;
+    line-height: 1.8;
+    margin-bottom: 22px;
+  }
+  .opener .lead strong { color: var(--text); }
+  .signal-box {
+    background: var(--card-deep);
+    border: 1px solid #4a3220;
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-top: 24px;
+    font-size: 0.92em;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .signal-box .signal-tag {
+    display: inline-block;
+    color: var(--accent);
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+  }
+  .signal-box strong { color: var(--text); }
+
+  /* ═══ 模式总览（导航条） ═══ */
+  .toc {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+  }
+  .toc-label {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.78em;
+    letter-spacing: 0.3em;
+    margin-bottom: 20px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 8px;
+  }
+  .toc-row {
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 0.88em;
+  }
+  .toc-row:hover { background: #181410; }
+  .toc-num {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.9em;
+  }
+  .toc-name { color: var(--text); }
+
+  /* ═══ Section 通用 ═══ */
+  .section {
+    max-width: 800px;
+    margin: 0 auto 70px;
+    padding: 0 20px;
+    scroll-margin-top: 20px;
+  }
+
+  /* ═══ 模式卡 ═══ */
+  .pattern {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .pattern .p-head {
+    padding: 26px 28px 20px;
+    background: linear-gradient(180deg, #1f1810 0%, var(--card) 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .pattern .p-num {
+    color: var(--accent);
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 10px;
+  }
+  .pattern .p-title {
+    font-size: 1.45em;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.35;
+  }
+  .pattern .p-def {
+    color: var(--text-mid);
+    font-size: 0.95em;
+    line-height: 1.65;
+  }
+  .pattern .p-def strong { color: var(--text); }
+
+  .p-section {
+    padding: 22px 28px;
+    border-top: 1px solid var(--border);
+  }
+  .p-section:first-of-type { border-top: none; }
+  .p-section h3 {
+    font-size: 0.85em;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--text-mid);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  /* 反常识对比表 */
+  .vs-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .vs-cell {
+    padding: 14px 16px;
+    font-size: 0.88em;
+    line-height: 1.6;
+  }
+  .vs-default {
+    background: #1a1212;
+    color: #c89090;
+    border-right: 1px solid var(--border-light);
+  }
+  .vs-sun {
+    background: #1f1810;
+    color: #f0c8a0;
+  }
+  .vs-tag {
+    display: block;
+    font-size: 0.7em;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+    opacity: 0.85;
+  }
+  .vs-default .vs-tag { color: #ff7a7a; }
+  .vs-sun .vs-tag { color: var(--accent); }
+  .vs-row {
+    display: contents;
+  }
+  .vs-row > .vs-cell {
+    border-top: 1px solid var(--border-light);
+  }
+  .vs-row.first > .vs-cell { border-top: none; }
+
+  /* 案例列表 */
+  .cases {
+    display: grid;
+    gap: 10px;
+  }
+  .case-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 14px;
+    padding: 11px 14px;
+    background: #14110d;
+    border-radius: 6px;
+    font-size: 0.87em;
+    line-height: 1.55;
+    align-items: baseline;
+  }
+  .case-time {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.85em;
+    letter-spacing: 0.02em;
+  }
+  .case-text { color: var(--text); }
+  .case-text .num { color: var(--accent); font-weight: 600; }
+
+  /* AI 时代映射 */
+  .ai-map {
+    background: #14110d;
+    border: 1px solid #3a2a1a;
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .ai-map .ai-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 0.88em;
+    line-height: 1.6;
+  }
+  .ai-map .ai-row:last-child { margin-bottom: 0; }
+  .ai-map .ai-bullet {
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .ai-map .ai-text { color: var(--text); }
+  .ai-map .ai-text strong { color: var(--accent); }
+
+  /* caveat */
+  .caveat-box {
+    background: #1a1515;
+    border-left: 3px solid var(--text-faint);
+    border-radius: 4px;
+    padding: 14px 18px;
+    font-size: 0.85em;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .caveat-box .caveat-label {
+    display: inline-block;
+    color: #ff9a9a;
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .caveat-box strong { color: var(--text); }
+  .src-tag {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 8px;
+    font-size: 0.7em;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
+  }
+  .src-1 { background: var(--tag-1st); color: var(--tag-1st-text); }
+  .src-2 { background: var(--tag-2nd); color: var(--tag-2nd-text); }
+  .src-warn { background: var(--tag-warn); color: var(--tag-warn-text); }
+
+  /* ═══ Part 3：综合视图（叠加矩阵） ═══ */
+  .stack-section {
+    max-width: 800px;
+    margin: 0 auto 70px;
+    padding: 0 20px;
+  }
+  .stack-head {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .stack-head .label {
+    color: var(--accent);
+    font-size: 0.78em;
+    letter-spacing: 0.3em;
+    margin-bottom: 14px;
+  }
+  .stack-head h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .stack-head p {
+    color: var(--text-mid);
+    font-size: 0.95em;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .stack-head p strong { color: var(--text); }
+
+  .stack-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 24px;
+    font-size: 0.85em;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .stack-table th, .stack-table td {
+    padding: 12px 10px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+  .stack-table th:last-child, .stack-table td:last-child { border-right: none; }
+  .stack-table tr:last-child td { border-bottom: none; }
+  .stack-table thead th {
+    background: #1f1810;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.82em;
+    letter-spacing: 0.05em;
+  }
+  .stack-table tbody td {
+    color: var(--text-mid);
+  }
+  .stack-table tbody td:first-child {
+    text-align: left;
+    color: var(--text);
+    font-weight: 500;
+    padding-left: 16px;
+    background: #181410;
+  }
+  .stack-table .hit {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.1em;
+  }
+  .stack-table .super-row td:first-child {
+    color: var(--accent);
+    font-weight: 700;
+    background: #2a1e14;
+  }
+
+  .super-note {
+    margin-top: 22px;
+    padding: 16px 20px;
+    background: var(--card-deep);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    font-size: 0.92em;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .super-note strong { color: var(--text); }
+  .super-note .num { color: var(--accent); font-weight: 700; }
+
+  /* ═══ Part 4：对比郭宇 ═══ */
+  .compare-section {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+  }
+  .compare-head {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .compare-head .label {
+    color: var(--text-dim);
+    font-size: 0.78em;
+    letter-spacing: 0.3em;
+    margin-bottom: 12px;
+  }
+  .compare-head h2 {
+    font-size: 1.45em;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .compare-head p {
+    color: var(--text-mid);
+    font-size: 0.92em;
+    max-width: 660px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 18px;
+    font-size: 0.9em;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .compare-table th, .compare-table td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table thead th {
+    background: #1a1a1a;
+    color: var(--text-mid);
+    font-weight: 700;
+    font-size: 0.82em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .compare-table thead th:nth-child(2) { color: #6fff90; }
+  .compare-table thead th:nth-child(3) { color: var(--accent); }
+  .compare-table tbody td:first-child {
+    color: var(--text);
+    font-weight: 500;
+    width: 26%;
+    background: #181410;
+  }
+  .compare-table tbody td:nth-child(2) { color: #a8d8b0; background: #121a14; width: 37%; }
+  .compare-table tbody td:nth-child(3) { color: #f0c8a0; background: #1f1810; width: 37%; }
+
+  .compare-note {
+    margin-top: 22px;
+    text-align: center;
+    color: var(--text-mid);
+    font-size: 0.95em;
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .compare-note strong {
+    color: var(--text);
+    font-style: normal;
+  }
+
+  /* ═══ Footer / 总 caveat ═══ */
+  .final-caveat {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    padding: 22px 24px;
+    background: #1a1515;
+    border-left: 3px solid var(--text-faint);
+    border-radius: 4px;
+    color: var(--text-mid);
+    font-size: 0.88em;
+    line-height: 1.75;
+  }
+  .final-caveat strong { color: var(--text); }
+  .final-caveat .label {
+    display: block;
+    color: #ff9a9a;
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+  }
+  .final-caveat ul { margin: 8px 0 0 22px; padding: 0; }
+  .final-caveat li { margin-bottom: 6px; }
+
+  footer {
+    text-align: center;
+    padding: 36px 20px 50px;
+    color: var(--text-faint);
+    font-size: 0.78em;
+    border-top: 1px solid var(--border);
+    line-height: 1.8;
+    margin-top: 30px;
+  }
+  footer a { color: var(--text-mid); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 1.9em; }
+    .hero .tagline { font-size: 0.95em; }
+    .opener h2 { font-size: 1.2em; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .vs-table { grid-template-columns: 1fr; }
+    .vs-default { border-right: none; border-bottom: 1px solid var(--border-light); }
+    .case-row { grid-template-columns: 1fr; gap: 4px; }
+    .case-time { font-size: 0.8em; }
+    .stack-table { font-size: 0.75em; }
+    .stack-table th, .stack-table td { padding: 8px 6px; }
+    .compare-table { font-size: 0.85em; }
+    .compare-table th, .compare-table td { padding: 10px 12px; }
+    .pattern .p-head { padding: 22px 20px 18px; }
+    .pattern .p-title { font-size: 1.25em; }
+    .p-section { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════ Hero ═══════ -->
+<div class="hero">
+  <div class="eyebrow">从 14 个决策节点蒸馏</div>
+  <h1>孙宇晨 · 思维模型</h1>
+  <div class="en-name">JUSTIN SUN</div>
+  <div class="tagline">
+    他不是一个 "<em>信什么</em>" 的人，他是一个 "<em>做什么</em>" 的人。<br>
+    要看懂他，得看他在 18 年里反复使用的<strong>那 6 种决策模式</strong>，<br>而不是他说过什么。
+  </div>
+  <div class="source-note">
+    数据来源：14 个关键决策节点 · 74 个财富节点 · 24 处勘误清单（一手专访 / SEC 文件 / 链上数据 / 主流媒体）
+  </div>
+</div>
+
+<!-- ═══════ 开篇 hook ═══════ -->
+<div class="opener">
+  <div class="label">═  为 什 么 这 份 档 案 长 这 样  ═</div>
+  <h2>研究孙宇晨，"听他怎么说"是误导，<br>"看他反复怎么做"才是答案。</h2>
+  <div class="lead">
+    7 个维度的资料采集结束后，跨文件比对发现 <strong>24 处需要勘误的事实点</strong>——是郭宇档案勘误密度的 6 倍。
+    肾结石 vs 边控、宾大硕士 vs 湖畔论文、客座教授 vs 一篇约稿、链上 BTC 4800 个 vs 自报 28614 个⋯⋯
+    每一处分裂都不是失误，是<strong>同一种叙事策略</strong>的副产品。
+  </div>
+  <div class="lead">
+    所以这份抽象层不套郭宇的"价值观三层 OS"——孙宇晨的 OS 不是<em>价值观自洽</em>型，是<em>行为模式型</em>。
+    他从北大新概念加分到 TRUMP 晚宴第一名，<strong>同样的 6 种动作反复出现</strong>，每次场景不同、对象不同，
+    但<strong>动作的形状一模一样</strong>。
+  </div>
+  <div class="signal-box">
+    <span class="signal-tag">核心信号</span>
+    自述与客观行为的高分裂本身就是档案的核心信号——
+    <strong>这种分裂不是缺陷，是这套打法能跑下去的必要条件</strong>。
+    本档案不评判道德，只描述可观察的决策结构。读完应该让人觉得"原来还能这么活"，
+    而不是"他是不是骗子"。
+  </div>
+</div>
+
+<!-- ═══════ 模式总览 ═══════ -->
+<div class="toc">
+  <div class="toc-label">═  6  类  决  策  模  式  ═</div>
+  <div class="toc-grid">
+    <div class="toc-row"><span class="toc-num">M1</span><span class="toc-name">注意力套利</span></div>
+    <div class="toc-row"><span class="toc-num">M2</span><span class="toc-name">监管 / 法律辖区套利</span></div>
+    <div class="toc-row"><span class="toc-num">M3</span><span class="toc-name">机构背书寄生</span></div>
+    <div class="toc-row"><span class="toc-num">M4</span><span class="toc-name">双轨资源并行 + 一次性切换</span></div>
+    <div class="toc-row"><span class="toc-num">M5</span><span class="toc-name">否认范式 + 切换战场</span></div>
+    <div class="toc-row"><span class="toc-num">M6</span><span class="toc-name">风险转嫁 + 主体切割</span></div>
+  </div>
+</div>
+
+<!-- ═══════ 模式 1 ═══════ -->
+<div class="section">
+  <div class="pattern">
+    <div class="p-head">
+      <div class="p-num">M01 · 贯穿全程</div>
+      <div class="p-title">注意力套利</div>
+      <div class="p-def">
+        <strong>主动选择必败 / 必爆 / 必争议的场景</strong>，把"事件本身"当成投放预算，
+        把"被讨论"当成投资回报。代价（声誉 / 钱 / 道德印象）越大，回报（曝光）越大。
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>默认做法 vs 孙宇晨做法</h3>
+      <div class="vs-table">
+        <div class="vs-row first">
+          <div class="vs-cell vs-default"><span class="vs-tag">大多数人会</span>避免可预见的失败、避免争议、避免"被骂"</div>
+          <div class="vs-cell vs-sun"><span class="vs-tag">孙宇晨会</span>主动选必败赛道（北大学生会主席），把"输"包装成"被打压"，输了赛道赢了流量</div>
+        </div>
+        <div class="vs-row">
+          <div class="vs-cell vs-default">把广告费砸给 KOL / 投放渠道</div>
+          <div class="vs-cell vs-sun">把广告费砸给"事件本身"——457 万拍午餐、624 万吃香蕉、2800 万买太空票</div>
+        </div>
+        <div class="vs-row">
+          <div class="vs-cell vs-default">"我做的事说出去丢人，能不提就不提"</div>
+          <div class="vs-cell vs-sun">"被嘲笑也是一种被记住"——白皮书被 V 神嘲讽抄袭，反而获得圈内最大曝光</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>这个模式在他身上反复出现</h3>
+      <div class="cases">
+        <div class="case-row"><span class="case-time">2007</span><span class="case-text">连投 4 届新概念，第九届一等奖换北大 <span class="num">20 分</span>加分——常规路径胜率为零，押小概率开关改命</span></div>
+        <div class="case-row"><span class="case-time">2010</span><span class="case-text">北大学生会主席必败选举 + 当天"消失" + 落选后写"被校方限制人身自由"，把失败加工成全国性"90 后青年领袖"标签</span></div>
+        <div class="case-row"><span class="case-time">2017.08</span><span class="case-text">波场白皮书被 Vitalik 公开嘲讽抄袭——"波场=空气币"反向成为加密圈最大圈内曝光</span></div>
+        <div class="case-row"><span class="case-time">2019.06</span><span class="case-text"><span class="num">$4,567,888</span> 拍下巴菲特午餐，破 19 年最高纪录——全球财经媒体头版数月，单位曝光成本远低于传统广告</span></div>
+        <div class="case-row"><span class="case-time">2024.11</span><span class="case-text"><span class="num">$624 万</span>拍下 Cattelan 香蕉艺术品并当众吃掉——估价仅 100-150 万，溢价部分就是注意力定价</span></div>
+        <div class="case-row"><span class="case-time">2025.05</span><span class="case-text">TRUMP 币持有第一名出席特朗普私人晚宴，限量陀飞轮腕表合影——"全球加密圈第一贵宾"标签锁定</span></div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>AI 时代怎么用这个模式</h3>
+      <div class="ai-map">
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>变得更狠</strong>：AI 让生产成本接近零，注意力反而成为唯一稀缺资源。
+            "投流买曝光"的 ROI 在持续衰减，"做事件本身"的 ROI 在持续上升。
+          </div>
+        </div>
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>具体动作</strong>：与其每月花 5 万投信息流广告，不如花同样的钱做一件
+            "<em>有人会因为这件事专门搜你名字</em>"的事——可以是一次极端实验、一次公开赌注、
+            一次反共识下注，让事件成为搜索入口。
+          </div>
+        </div>
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>风险</strong>：注意力套利对"道德库存"消耗极快。
+            孙宇晨用了 18 年才把库存耗到主流媒体集体怀疑的程度——
+            一般人没有他的库存厚度，三五次就会被打回原形。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <div class="caveat-box">
+        <span class="caveat-label">⚠ CAVEAT</span>
+        <strong>本人从未明说过"我在做注意力套利"</strong>——他对每次事件都给出具体崇高叙事
+        （"和股神对话""支持艺术""支持加密创新"）。
+        "注意力套利"是从 6+ 个不同场景重复出现的相同动作结构里归纳的隐含规则，
+        <strong>非本人认证</strong>。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 模式 2 ═══════ -->
+<div class="section">
+  <div class="pattern">
+    <div class="p-head">
+      <div class="p-num">M02 · 中后期主线</div>
+      <div class="p-title">监管 / 法律辖区套利</div>
+      <div class="p-def">
+        <strong>不在一个法律辖区里和监管硬碰</strong>，而是同时在多个辖区准备身份 / 主体 / 关系，
+        当一个辖区压力上升时，立刻切到另一个辖区放大业务。监管不是约束，是定价信号。
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>默认做法 vs 孙宇晨做法</h3>
+      <div class="vs-table">
+        <div class="vs-row first">
+          <div class="vs-cell vs-default"><span class="vs-tag">大多数人会</span>等监管明朗才进场，"先合规再做事"</div>
+          <div class="vs-cell vs-sun"><span class="vs-tag">孙宇晨会</span>在监管落地前 N 天完成关键动作——ICO 抢九四前 2 天，WLFI 投在特朗普就职前一天</div>
+        </div>
+        <div class="vs-row">
+          <div class="vs-cell vs-default">被一国监管盯上 → 收缩业务、降低声量</div>
+          <div class="vs-cell vs-sun">被 SEC 起诉同期——反向收购火必（业务规模↑）+ 投 7500 万买 WLFI（政治筹码↑）</div>
+        </div>
+        <div class="vs-row">
+          <div class="vs-cell vs-default">国籍 = 家乡身份，是被动属性</div>
+          <div class="vs-cell vs-sun">国籍 = 法律工具——同时持有 / 准备 圣基茨 + 马耳他居留 + 格林纳达 WTO 大使护身符</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>这个模式在他身上反复出现</h3>
+      <div class="cases">
+        <div class="case-row"><span class="case-time">2014.01</span><span class="case-text">硅谷 Ripple "中国第一员工" → 回国包装成"大中华区首席代表"——同一身份在中国是顶级 title，在硅谷不算什么</span></div>
+        <div class="case-row"><span class="case-time">2017.09.02</span><span class="case-text">波场 ICO 募资 <span class="num">7000 万美元</span>——比中国央行"九四公告"<strong>早 2 天</strong>完成，晚 2 天财富轨迹归零</span></div>
+        <div class="case-row"><span class="case-time">2021.12</span><span class="case-text">接受加勒比小国格林纳达驻 WTO 特命全权大使任命——以"外交身份"对冲 SEC 调查</span></div>
+        <div class="case-row"><span class="case-time">2022.10</span><span class="case-text">通过 About Capital 接手火必（HTX）——SEC 调查酝酿同期反而扩张交易所版图</span></div>
+        <div class="case-row"><span class="case-time">2024.11</span><span class="case-text">特朗普当选后立即投 <span class="num">3000 万美元</span>买 WLFI；2025.01 就职前一天再追 <span class="num">4500 万</span>，合计 <span class="num">7500 万</span></span></div>
+        <div class="case-row"><span class="case-time">2025.02</span><span class="case-text">SEC 与孙宇晨共同申请暂停诉讼 60 天——民主党议员 9 月致信 SEC 公开质疑这笔投资换了暂停起诉</span></div>
+        <div class="case-row"><span class="case-time">2026.03</span><span class="case-text">SEC 案以 Rainberry 公司支付 <span class="num">$1000 万</span>罚款、<strong>本人零处罚</strong>和解收场</span></div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>AI 时代怎么用这个模式</h3>
+      <div class="ai-map">
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>仍然有效但门槛升高</strong>：AI 时代信息透明化让"小国身份套利"被识破速度加快——
+            孙宇晨的格林纳达大使身份从任命到被外界识破只用了 3 个月，再到被撤回也才 15 个月。
+          </div>
+        </div>
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>具体动作</strong>：对个人和小团队来说，可迁移版本是"业务多辖区拆分"——
+            数据存储、收款主体、税务居住地、AI 模型调用入口，<em>不要全部押在一个司法辖区</em>。
+            这是 18 年前 Web2 创业者很少考虑的，AI 时代必须考虑。
+          </div>
+        </div>
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>风险</strong>：政治套利（投资国家元首家族项目）对个人来说不可复制——
+            没有 9000 万美元下注资格的人，模仿这个动作 = 被秒杀。
+            <em>这条对普通人是反例，不是教材</em>。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <div class="caveat-box">
+        <span class="caveat-label">⚠ CAVEAT</span>
+        孙宇晨从未承认 WLFI 投资是"为了换 SEC 暂停起诉"——他公开口径是"对加密创新的支持"。
+        "政治资源量化"的因果关系在法律层面永远难以证实，但
+        <strong>2024.11-2025.02 的时间紧密性是民主党议员公开质疑的事实基础</strong>。
+        本档案描述时间结构，不替司法定性。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 模式 3 ═══════ -->
+<div class="section">
+  <div class="pattern">
+    <div class="p-head">
+      <div class="p-num">M03 · 贯穿全程</div>
+      <div class="p-title">机构背书寄生</div>
+      <div class="p-def">
+        <strong>把短期、低门槛、本无授权的与高声誉机构的关联</strong>，反复打包成长期身份标签，
+        让外界自动完成"信誉迁移"。借的越多，自己的边际声誉成本越低。
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>默认做法 vs 孙宇晨做法</h3>
+      <div class="vs-table">
+        <div class="vs-row first">
+          <div class="vs-cell vs-default"><span class="vs-tag">大多数人会</span>实习生 = 个人身份；写完一篇约稿 = 一次性发表</div>
+          <div class="vs-cell vs-sun"><span class="vs-tag">孙宇晨会</span>南周实习生 → 每篇评论落款"《南方周末》新闻部"，把临时实习身份做成长期 title</div>
+        </div>
+        <div class="vs-row">
+          <div class="vs-cell vs-default">"必须真的得到机构授权才能自称代表"</div>
+          <div class="vs-cell vs-sun">"机构没否认 = 默认授权"——Ripple Labs 中国第一员工自称"大中华区首席代表"</div>
+        </div>
+        <div class="vs-row">
+          <div class="vs-cell vs-default">校级课题副组长 = 学术挂名；一篇约稿 = 一次发表</div>
+          <div class="vs-cell vs-sun">在《学习时报》发 1 篇文 + 课题副组长 → 对外打包成"中央党校学术研究"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>这个模式在他身上反复出现</h3>
+      <div class="cases">
+        <div class="case-row"><span class="case-time">2010</span><span class="case-text">北大大三人人网《每周评论》专栏，每篇落款"《南方周末》新闻部"——南周提醒去掉无效</span></div>
+        <div class="case-row"><span class="case-time">2014</span><span class="case-text">Ripple Labs 中国第一个员工 = 包装为"大中华区首席代表"，IDG 资本据此投锐波 <span class="num">100 万美元</span></span></div>
+        <div class="case-row"><span class="case-time">2015</span><span class="case-text">湖畔大学第一期<strong>唯一 90 后</strong> + 福布斯 30 under 30 + 达沃斯全球杰出青年——光环组合包</span></div>
+        <div class="case-row"><span class="case-time">2020.11</span><span class="case-text">在中央党校机关报《学习时报》发 1 篇区块链文章，被学习强国 App 转载</span></div>
+        <div class="case-row"><span class="case-time">2021.07</span><span class="case-text">列名"基于区块链技术的社会治理机制创新研究"<strong>校级课题副组长</strong>——对外被传为"中央党校客座教授"</span></div>
+        <div class="case-row"><span class="case-time">2021.12</span><span class="case-text">格林纳达"特命全权大使"——人口 11 万的加勒比小国，"大使"标签在国际场合等价高声誉机构背书</span></div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>AI 时代怎么用这个模式</h3>
+      <div class="ai-map">
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>变种依然有效</strong>：今天的等价物是"YC 校友""OpenAI Fellow""Y Combinator demo day 出席者"——
+            一次性的低门槛关联，在简历 / 推特 bio / 投资 BD 里被反复使用 N 年。
+          </div>
+        </div>
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>具体动作</strong>：每年争取至少 1 次"高声誉机构 / 平台的可证明关联"——
+            不是为了里面学什么，是为了拿到那张<em>可被反复引用 5 年的标签</em>。
+            投入 1 周时间，换取未来 5 年降低 BD 摩擦。
+          </div>
+        </div>
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>风险（变得更大）</strong>：AI 让事实核查成本接近零——LinkedIn 标题、推特 bio 里的虚标
+            正在被 GPT 自动比对到工商系统 / 学校档案 / SEC 文件。
+            <em>"标签注水"在 2026 年被识破的速度是 2014 年的 100 倍</em>。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <div class="caveat-box">
+        <span class="caveat-label">⚠ CAVEAT</span>
+        本人极少正面回应这套品牌嫁接逻辑——南周提醒去掉落款"<strong>没什么效果</strong>"是 21 财经
+        <span class="src-tag src-1">一手</span>报道，本人未公开评论。
+        "中央党校客座教授"说法本档案核查后<span class="src-tag src-warn">无可信来源</span>，
+        是团队 / 二手媒体的营销夸大。"机构背书寄生"是从 6 次同构动作中归纳的模式名，<strong>非本人认证</strong>。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 模式 4 ═══════ -->
+<div class="section">
+  <div class="pattern">
+    <div class="p-head">
+      <div class="p-num">M04 · 重大节点</div>
+      <div class="p-title">双轨资源并行 + 一次性切换</div>
+      <div class="p-def">
+        <strong>表面赛道</strong>跑现金流和合法光环；<strong>地下赛道</strong>积累真正的赌注资产。
+        风口到来时，把表面赛道的所有资源（用户 / 现金 / 品牌）<em>一次性导入</em>地下赛道，
+        然后把表面赛道弃掉。
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>默认做法 vs 孙宇晨做法</h3>
+      <div class="vs-table">
+        <div class="vs-row first">
+          <div class="vs-cell vs-default"><span class="vs-tag">大多数人会</span>找到一个赛道全力跑——"专注是美德"</div>
+          <div class="vs-cell vs-sun"><span class="vs-tag">孙宇晨会</span>同时跑两个表面无关的赛道（陪我 APP + 锐波 / 波场），让两边互为对方的资源储备池</div>
+        </div>
+        <div class="vs-row">
+          <div class="vs-cell vs-default">"积累的资源在 A 业务里就只用在 A 业务"</div>
+          <div class="vs-cell vs-sun">陪我 APP 的现金流 / 用户基础，2017 年 ICO 时一次性导入波场——分配 10% TRX 给"陪我（北京）科技"</div>
+        </div>
+        <div class="vs-row">
+          <div class="vs-cell vs-default">收购一家公司是为了让它继续赚钱</div>
+          <div class="vs-cell vs-sun">收购 BitTorrent 不是为它赚钱——是为了在它身上发 BTT 代币，<em>币的市值快速覆盖收购成本</em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>这个模式在他身上反复出现</h3>
+      <div class="cases">
+        <div class="case-row"><span class="case-time">2014-2017</span><span class="case-text">表面：陪我 APP 跑现金流 + A 轮 <span class="num">6000 万</span>融资 + 福布斯 / 湖畔光环；地下：锐波 → 波场基金会准备 ICO</span></div>
+        <div class="case-row"><span class="case-time">2017.08</span><span class="case-text">波场 ICO 分配方案中，<strong>10% TRX</strong> 直接分给"陪我（北京）科技"——表面赛道资源一次性导入地下赛道</span></div>
+        <div class="case-row"><span class="case-time">2018.06</span><span class="case-text">花 <span class="num">1.4 亿美元</span>买 BitTorrent 实体公司——表面是"为了去中心化梦想"，地下是 6 个月后发 BTT 代币</span></div>
+        <div class="case-row"><span class="case-time">2019.01</span><span class="case-text">BTT 在 Binance Launchpad <strong>15 分钟卖光</strong>，募资 720 万美元；上线 10 天市值 <span class="num">3.05 亿</span>——已超 BitTorrent 收购成本</span></div>
+        <div class="case-row"><span class="case-time">2018-2019</span><span class="case-text">陪我 APP 在波场起飞后<strong>注销</strong>——表面赛道弃用，地下赛道独立运行</span></div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>AI 时代怎么用这个模式</h3>
+      <div class="ai-map">
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>变体很多</strong>：当下版本是 "本职工作 + AI 工具链副业"——本职工作给现金流和身份合法性，
+            副业积累 AI 时代的真正资产（产品 / 影响力 / 链上身份 / 邮件订阅）。
+          </div>
+        </div>
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>具体动作</strong>：在副业上做 12-24 个月静默积累，<em>不要太早辞职</em>。
+            等副业的"切换信号"出现（订阅过 1 万 / MRR 过 5 万 / 单条内容自然破圈），
+            再用本职 18 个月的现金流一次性导入。这是孙宇晨陪我→波场 ICO 的迁移逻辑。
+          </div>
+        </div>
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>关键反转</strong>：双轨不是"骑墙"，是<em>主动设计的过渡结构</em>。
+            大多数人失败的不是"专注力不够"，是<em>没给切换日设计触发条件</em>，
+            所以要么永远不切（永远兼职），要么切早了（裸辞失败）。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <div class="caveat-box">
+        <span class="caveat-label">⚠ CAVEAT</span>
+        "双轨并行"是从陪我→波场 + BitTorrent→BTT 两次同构动作中归纳的结构性观察，
+        <strong>本人未明说</strong>过这是有意设计。本人公开口径里陪我 APP 是"独立社交业务"，
+        BitTorrent 收购是"对去中心化的信仰"。所以这条规则的<strong>因果方向是推断的</strong>，
+        不是孙宇晨自己写的"playbook"。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 模式 5 ═══════ -->
+<div class="section">
+  <div class="pattern">
+    <div class="p-head">
+      <div class="p-num">M05 · 危机应对</div>
+      <div class="p-title">否认范式 + 切换战场</div>
+      <div class="p-def">
+        指控来了不修复、不道歉、<strong>直接否认</strong>，同时迁移到一个对原圈子声誉不敏感的新圈子。
+        损失短期合法性，换长期叙事一致性——"我没错过，所以也不需要纠正"。
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>默认做法 vs 孙宇晨做法</h3>
+      <div class="vs-table">
+        <div class="vs-row first">
+          <div class="vs-cell vs-default"><span class="vs-tag">大多数人会</span>错了 → 承认 → 道歉 → 修复关系</div>
+          <div class="vs-cell vs-sun"><span class="vs-tag">孙宇晨会</span>错了 → 否认 → 切换到一个不在乎这个错的新圈子，从零叙事重启</div>
+        </div>
+        <div class="vs-row">
+          <div class="vs-cell vs-default">"在 A 圈子搞砸了 → 努力恢复 A 圈子的信任"</div>
+          <div class="vs-cell vs-sun">写作圈搞砸 → 跳进 2013 加密圈（一个完全不在乎"过往身份、只看链上动作"的新赛道）</div>
+        </div>
+        <div class="vs-row">
+          <div class="vs-cell vs-default">事实清晰的指控 → 接受 → 教训</div>
+          <div class="vs-cell vs-sun">事实清晰的指控 → "商业社会讨论抄袭无意义" → 默默撤稿换故事</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>这个模式在他身上反复出现</h3>
+      <div class="cases">
+        <div class="case-row"><span class="case-time">2011</span><span class="case-text">沈丹琪段落级对比指控《新新青年》创刊号抄袭，编辑部已认抄——<strong>孙宇晨单独发文否认</strong>，写作圈出局后切换到加密圈</span></div>
+        <div class="case-row"><span class="case-time">2017.08</span><span class="case-text">波场白皮书被指 12 页与以太坊 / IPFS 雷同 → "中文原版没抄，英文是志愿者翻译错" → 默默撤下白皮书</span></div>
+        <div class="case-row"><span class="case-time">2019.07</span><span class="case-text">巴菲特午餐取消同期被传边控 + 互联网金融风险整治建议立案 → 公开口径"<strong>肾结石急性发作</strong>"，监管层面始终不承认</span></div>
+        <div class="case-row"><span class="case-time">2023.03</span><span class="case-text">SEC 起诉 60 万次 wash trading → 当日连发推特"美 SEC 缺乏证据" + 反向收购火必扩张</span></div>
+        <div class="case-row"><span class="case-time">2025.09</span><span class="case-text">被 WLFI 拉黑指控砸盘 → 第三方数据反驳（Nansen CEO 证转账在跌价之后）+ 继续推进 USD1 业务</span></div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>AI 时代怎么用这个模式</h3>
+      <div class="ai-map">
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>普通人不要复制</strong>：这条是 6 个模式里<em>最有毒、最不可推广的一条</em>。
+            它对孙宇晨能持续运转，是因为他的"切换战场"能力——每个圈子他都有备份赛道。
+            没备份赛道的人用这套，就是社会性死亡。
+          </div>
+        </div>
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>可迁移版本</strong>：一旦出现公关危机，
+            <em>评估"修复 vs 切换"两个选项的真实成本</em>——不是默认"必须修复"。
+            如果修复成本（道歉、整改、补偿、信任重建周期）&gt; 切换成本（迁移到一个新圈子从零开始），
+            "切换"是合理的。
+          </div>
+        </div>
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>风险</strong>：AI 时代信息永久可搜——所有"切换战场"的旧账都会被拉到新战场上展示。
+            孙宇晨能切是因为他从一个圈子（写作圈）<em>跳到一个不重视那个圈子的圈子</em>（加密圈）。
+            如果新旧圈子重叠用户多，切换无效。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <div class="caveat-box">
+        <span class="caveat-label">⚠ CAVEAT</span>
+        本人对"否认范式"<strong>从未承认是策略</strong>——他每次否认都坚持是事实判断
+        （"我真的没抄""真的是肾结石""SEC 真的缺乏证据"）。
+        本档案把 5 次同构动作归纳为"模式"，是<strong>结构性观察</strong>，不是心理推测。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 模式 6 ═══════ -->
+<div class="section">
+  <div class="pattern">
+    <div class="p-head">
+      <div class="p-num">M06 · 风控底层</div>
+      <div class="p-title">风险转嫁 + 主体切割</div>
+      <div class="p-def">
+        永远<strong>把"个人"和"公司主体"做物理切割</strong>——出事时让公司主体扛、个人净身出户。
+        改名 / 注销 / 辞 CEO / 用基金接盘，本质都是同一个动作：让法律责任和声誉责任<em>找不到唯一收件人</em>。
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>默认做法 vs 孙宇晨做法</h3>
+      <div class="vs-table">
+        <div class="vs-row first">
+          <div class="vs-cell vs-default"><span class="vs-tag">大多数人会</span>"我是创始人 = 我对公司一切问题负责"</div>
+          <div class="vs-cell vs-sun"><span class="vs-tag">孙宇晨会</span>问题出现前就把法律实体和个人切割——基金会、外国主体、隐名股东、辞 CEO</div>
+        </div>
+        <div class="vs-row">
+          <div class="vs-cell vs-default">公司被监管点名 → 整改 → 继续以原品牌经营</div>
+          <div class="vs-cell vs-sun">陪我 APP 被新华社点名"涉黄音视频" → 公司决议<strong>解散</strong> → 业务消失，个人无追溯</div>
+        </div>
+        <div class="vs-row">
+          <div class="vs-cell vs-default">业务出事 = 创始人出事</div>
+          <div class="vs-cell vs-sun">SEC 起诉 6 个被告，最终和解时<strong>Rainberry 公司付 1000 万、本人零罚款</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>这个模式在他身上反复出现</h3>
+      <div class="cases">
+        <div class="case-row"><span class="case-time">2017.07</span><span class="case-text">波场 ICO <strong>前 1 个月</strong>卸任陪我 APP CEO——把"波场创始人"和"陪我 CEO"两个身份切开</span></div>
+        <div class="case-row"><span class="case-time">2017.08</span><span class="case-text">白皮书抄袭指控 → 把责任推给"志愿者翻译错了"——责任分散到无主体</span></div>
+        <div class="case-row"><span class="case-time">2019.07</span><span class="case-text">陪我欢乐（北京）公司决议解散——"涉黄"业务责任随主体一起消失</span></div>
+        <div class="case-row"><span class="case-time">2021.12</span><span class="case-text">辞去波场基金会 CEO 同月接受格林纳达大使任命——"个人 vs 公司"切割 + 外交身份对冲</span></div>
+        <div class="case-row"><span class="case-time">2022.10</span><span class="case-text">通过<strong>About Capital 基金</strong>接手火币——他最初否认主导收购，"基金"作为隔离层</span></div>
+        <div class="case-row"><span class="case-time">2023.09</span><span class="case-text">"火币"改名"火必"（HTX）——和原所有者李林的法律 / 商标风险切割</span></div>
+        <div class="case-row"><span class="case-time">2026.03</span><span class="case-text">SEC 案最终结构：<strong>Rainberry 公司付 $1000 万，孙宇晨本人零处罚</strong>且不予重提（dismissed with prejudice）</span></div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <h3>AI 时代怎么用这个模式</h3>
+      <div class="ai-map">
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>这条对个人开发者反而最实用</strong>：AI 时代独立做产品的人越来越多——
+            个人 IP 和产品主体如果不切割，一旦产品出现版权 / 数据 / 监管纠纷，
+            个人会被直接连坐。
+          </div>
+        </div>
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>具体动作</strong>：在做任何<em>有外部用户付费</em>的副业前，
+            先用一个有限责任主体（公司 / LLC / 海外实体）承担业务责任。
+            投入几千块的注册成本，换取个人和业务的法律隔离层——
+            这是孙宇晨用了 18 年的最稳定的一条防御。
+          </div>
+        </div>
+        <div class="ai-row">
+          <span class="ai-bullet">◆</span>
+          <div class="ai-text">
+            <strong>边界</strong>：主体切割 ≠ 道德豁免——SEC 案最终公司付罚款本人零处罚是法律层面，
+            外界对孙宇晨的"个人即责任主体"判断并未消失。
+            这条规则只在<em>法律和资金维度</em>有效，在<em>声誉维度</em>无效。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <div class="caveat-box">
+        <span class="caveat-label">⚠ CAVEAT</span>
+        本人从未公开把"主体切割"作为策略表述——每次切割都给出业务理由
+        （"专注新业务才辞 CEO""公司本就该解散""火必改名是品牌升级"）。
+        模式名是结构性归纳，<strong>非本人认证</strong>。
+        SEC 案和解结果"公司罚 1000 万 / 本人零处罚"是<span class="src-tag src-1">一手</span>监管文件。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ Part 3：综合视图 ═══════ -->
+<div class="stack-section">
+  <div class="stack-head">
+    <div class="label">═  6  模  式  叠  加  视  图  ═</div>
+    <h2>哪几次决策同时用了 2 类以上模式？</h2>
+    <p>
+      孙宇晨真正的"超级动作"，不是用了某一种模式，而是<strong>同一次决策里把 3-4 种模式叠加</strong>。
+      这才是他能在被 SEC 起诉同期反向上市纳斯达克的原因——单一模式的反噬会被其他模式吸收。
+    </p>
+  </div>
+
+  <table class="stack-table">
+    <thead>
+      <tr>
+        <th>关键决策</th>
+        <th>M1<br>注意力</th>
+        <th>M2<br>监管套利</th>
+        <th>M3<br>背书寄生</th>
+        <th>M4<br>双轨切换</th>
+        <th>M5<br>否认</th>
+        <th>M6<br>主体切割</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2010 北大学生会必败竞选</td>
+        <td class="hit">●</td><td></td><td></td><td></td><td class="hit">●</td><td></td>
+      </tr>
+      <tr>
+        <td>2014 Ripple "大中华区首席代表"</td>
+        <td></td><td class="hit">●</td><td class="hit">●</td><td></td><td></td><td></td>
+      </tr>
+      <tr class="super-row">
+        <td>2017.09 波场 ICO 抢九四前 2 天</td>
+        <td class="hit">●</td><td class="hit">●</td><td class="hit">●</td><td class="hit">●</td><td></td><td class="hit">●</td>
+      </tr>
+      <tr>
+        <td>2018 收购 BitTorrent + 发 BTT</td>
+        <td class="hit">●</td><td></td><td></td><td class="hit">●</td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>2019 巴菲特午餐 + 肾结石放鸽</td>
+        <td class="hit">●</td><td></td><td class="hit">●</td><td></td><td class="hit">●</td><td></td>
+      </tr>
+      <tr>
+        <td>2021.12 格林纳达 WTO 大使</td>
+        <td></td><td class="hit">●</td><td class="hit">●</td><td></td><td></td><td class="hit">●</td>
+      </tr>
+      <tr class="super-row">
+        <td>2024.11 投 WLFI 7500 万美元</td>
+        <td class="hit">●</td><td class="hit">●</td><td class="hit">●</td><td></td><td></td><td class="hit">●</td>
+      </tr>
+      <tr>
+        <td>2026.03 SEC 案和解（公司扛罚款）</td>
+        <td></td><td class="hit">●</td><td></td><td></td><td class="hit">●</td><td class="hit">●</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="super-note">
+    <strong>两个"超级动作"读法：</strong><br>
+    <span class="num">2017.09 波场 ICO</span>是 5 模式叠加 ——
+    监管时机套利（抢九四前 2 天）+ 注意力（V 神嘲讽抄袭反获曝光）+ 机构背书（Binance 平台 + 福布斯光环背书）
+    + 双轨切换（陪我用户/现金流导入）+ 主体切割（卸任陪我 CEO）。
+    这是孙宇晨财富的真正起点。<br><br>
+    <span class="num">2024.11 投 WLFI 7500 万</span>是另一个 4 模式叠加 ——
+    注意力（晚宴第一名 + 陀飞轮腕表合影）+ 监管套利（特朗普就职前一天追投）
+    + 背书寄生（"美国总统家族项目最大投资人"标签）+ 主体切割（通过 HTX 关联钱包操作）。
+    结果是 SEC 在 3 个月后暂停起诉、福布斯估算特朗普家族从这笔投资净赚 4 亿美元。
+  </div>
+</div>
+
+<!-- ═══════ Part 4：和郭宇横向对比 ═══════ -->
+<div class="compare-section">
+  <div class="compare-head">
+    <div class="label">═  和  第  01  号  案  例  对  比  ═</div>
+    <h2>同样是财富自由，路线截然不同</h2>
+    <p>
+      项目核心宣言："成长路线，真的只有一种吗？"——
+      郭宇是<strong>价值观自洽 / 主动退出</strong>型，孙宇晨是<strong>行为模式 / 持续放大</strong>型。
+      不评判优劣，只点出两端的真实存在。
+    </p>
+  </div>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>维度</th>
+        <th>郭宇 · 第 01 号</th>
+        <th>孙宇晨 · 第 02 号</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>决策驱动力</td>
+        <td>"够"代替"最大化"，被动收入≥主动收入即停</td>
+        <td>"造势"代替"够"，财富必须持续制造头条才能维持估值</td>
+      </tr>
+      <tr>
+        <td>风险偏好</td>
+        <td>低成本试探撬动大节点（一封信进支付宝 / 早期字节）</td>
+        <td>高成本高赔率下注（457 万午餐 / 7500 万 WLFI）</td>
+      </tr>
+      <tr>
+        <td>退出策略</td>
+        <td>28 岁退休 → 移居日本 → 退出微信生态 → "活成边缘人"</td>
+        <td>从未退出 → 每次危机都反向放大 → SEC 起诉同期上纳斯达克</td>
+      </tr>
+      <tr>
+        <td>时间观</td>
+        <td>BTC 12 年不卖，"钱够花就行"</td>
+        <td>每次窗口期按天数计算（ICO 抢 2 天、WLFI 抢 1 天）</td>
+      </tr>
+      <tr>
+        <td>公开形象一致性</td>
+        <td>说什么做什么对得上，勘误 4 处</td>
+        <td>自述 vs 客观行为高分裂，勘误 24 处（郭宇的 6 倍）</td>
+      </tr>
+      <tr>
+        <td>"自由"的定义</td>
+        <td>自由 = 选择权 = 可以不做任何事的能力</td>
+        <td>自由 = 监管不能定罪 + 能反复制造头条 + 政治资源在手</td>
+      </tr>
+      <tr>
+        <td>对 AI 时代的迁移性</td>
+        <td>OS 可整体迁移，普通人能用</td>
+        <td>6 个模式中 3 个对普通人有毒（M2/M5），3 个可借鉴（M1/M4/M6）</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="compare-note">
+    郭宇的路线是<strong>减法</strong>，孙宇晨的路线是<strong>叠加</strong>。<br>
+    两条路都能到"年轻财富自由"，<strong>但每天醒来要面对的人生是完全不同的两件事</strong>。
+  </div>
+</div>
+
+<!-- ═══════ 总 caveat ═══════ -->
+<div class="final-caveat">
+  <span class="label">═  使  用  须  知  ·  蒸  馏  边  界  ═</span>
+  这份抽象层是从孙宇晨 2007-2026 年公开材料中归纳的<em>事后模式</em>，不是他本人写过的"playbook"。
+  使用时请保持以下边界：
+  <ul>
+    <li><strong>抽象层 ≠ 心理画像</strong>。本档案只描述可观察的决策结构，不替孙宇晨做心理推测。</li>
+    <li><strong>"本人明说" vs "从行为归纳"必须分清</strong>。每个模式底部 caveat 已标注。
+    简单规则：6 个模式名（"注意力套利""监管套利""机构背书寄生""双轨切换""否认范式""主体切割"）<strong>本人均未公开使用</strong>，
+    都是从 4-7 次同构动作中归纳的结构性观察。</li>
+    <li><strong>不评判道德</strong>。"反复用监管套利"是描述，不是批评。
+    本档案严格回避"是不是骗子"这类问题——读完应该让人觉得"原来还能这么活"，而不是"该不该这么活"。</li>
+    <li><strong>3 类模式对普通人有毒</strong>：M2 监管套利（需要 9000 万下注资格）、
+    M5 否认范式（需要切换战场的备份赛道）、M3 机构背书寄生（AI 时代核查成本接近零，被识破速度 100 倍）。
+    模仿前请评估自己的"道德库存"和"赛道备份"。</li>
+    <li><strong>引用本档案请注明出处</strong>："100 个财富自由的年轻人 · 第 02 号 · 孙宇晨 · 思维模型"。</li>
+  </ul>
+</div>
+
+<footer>
+  数据采集于 2026-05-11 · 蒸馏自 7 维度交叉验证 + 14 决策节点 + 74 财富节点 + 24 处勘误清单<br>
+  配套阅读：<a href="人生路线图.html">孙宇晨 · 人生路线图</a>（事实层）+ 本文档（抽象层）<br>
+  <a href="../郭宇/思维模型.html">第 01 号 · 郭宇 · 思维模型</a> · 横向对比可见两条截然不同的路线<br>
+  100 个财富自由的年轻人 · 第 02 号档案
+</footer>
+
+</body>
+</html>
